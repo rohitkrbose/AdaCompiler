@@ -24,7 +24,7 @@ def getHTML(actual,token,D):
 			s += D['LITERALS']
 		else:
 			s += D['DEFAULT']
-		s += '>' + str(actual[i]) + ' &nbsp;</font>' # format HTML code
+		s += '>' + actual[i] + ' &nbsp;</font>' # format HTML code
 		Z += s
 	Z += '</br>' # newline
 	return (Z)

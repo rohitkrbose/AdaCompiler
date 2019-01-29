@@ -21,12 +21,12 @@ tokenstring = [] # Token types
 c_line = lexer.lineno
 
 for token in lexer:
-    if(token.lineno != c_line) : # once we get to next line
+    if (token.lineno != c_line) : # once we get to next line
         H += getHTML(actstring,tokenstring,enc) # get colour-formatted HTML code for current line
         actstring = []
         tokenstring = []
         c_line = token.lineno # update current line number
-    actstring.append(token.value)
+    actstring.append(str(token.value))
     tokenstring.append(str(token.type))
 
 H += getHTML(actstring,tokenstring,enc) # get colour-formatted HTML code for current line
