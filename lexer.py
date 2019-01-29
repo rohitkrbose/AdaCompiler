@@ -1,4 +1,5 @@
-import sys,lex,re
+import sys,re
+from ply import lex
 from adaTokens import *
 from colour import *
 
