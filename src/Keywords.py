@@ -1,7 +1,5 @@
-#Reserved Token Definitions for Ada Language
-
-#These literals are taken from http://en.wikibooks.org/wiki/Ada_Programming/All_Keywords
-# Some of them are for specific Ada verisons, we are designing a compiler for Ada 2012 but are still including all the special words in Ada
+#http://en.wikibooks.org/wiki/Ada_Programming/All_Keywords
+#http://en.wikibooks.org/wiki/Ada_Programming/Attributes
 
 reserved = {
     'ada':'ADA_RESERVED', 
@@ -78,8 +76,6 @@ reserved = {
 	'while':'WHILE',
 	'with':'WITH',
 	'xor':'XOR',
-	
-	#Attributes - These are taken by parsing http://en.wikibooks.org/wiki/Ada_Programming/Attributes
 	'\'Access':'ATTR_ACCESS',
 	'\'Address':'ATTR_ADDRESS',
 	'\'Adjacent':'ATTR_ADJACENT',
@@ -183,8 +179,6 @@ reserved = {
 	'\'Wide_Width':'ATTR_WIDE_WIDTH',
 	'\'Width':'ATTR_WIDTH',
 	'\'Write':'ATTR_WRITE',
-    
-    #Standard Data Types
     'integer':'INT_TYPE',
     'float':'FLOAT_TYPE',
     'duration':'DURATION_TYPE',

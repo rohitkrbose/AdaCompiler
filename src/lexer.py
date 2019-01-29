@@ -1,41 +1,38 @@
 import sys,re
 from ply import lex
-from adaTokens import *
+from Tokens import *
 from colour import *
 
 cfg_file = sys.argv[1][6:]
 prog_name = sys.argv[2]
 output_file = sys.argv[3][9:]
 enc = createColDict(cfg_file)
+H = '<!DOCTYPE html><html><head><title>'+prog_name+'</title></head><body>'
 
 lexer = lex.lex()
 with open(prog_name) as fp:
-    data = fp.read() + '\n'
-    lexer.input(data)
-    datalist = data.split('\n')
+    code = fp.read() + '\n'
+    lexer.input(code)
     actstring = []
-    tokstring = ''
-    old_line = lexer.lineno
-    H = '<!DOCTYPE html><html><head><title>'+prog_name+'</title></head><body>'
+    tokenstring = []
+    c_line = lexer.lineno
 
-    for tok in lexer:
-        if(tok.lineno != old_line) :
-            tokstring = tokstring.strip()
-            h = getHTML(actstring,tokstring.split(' '),enc)
-            H += h
+    for token in lexer:
+        if(token.lineno != c_line) :
+            H += getHTML(actstring,tokenstring,enc)
             actstring = []
-            tokstring = ''
-            old_line = tok.lineno
-        actstring.append(tok.value)
-        tokstring += ' ' + str(tok.type)
+            tokenstring = []
+            c_line = token.lineno
+        actstring.append(token.value)
+        tokenstring.append(str(token.type))
     
-    tokstring = tokstring.strip()
-    h = getHTML(actstring,tokstring.split(' '),enc)
-    H += h
-    H += '</body></html>'
-    with open(output_file, "w") as out:
-        out.write(H)
+    H += getHTML(actstring,tokenstring,enc)
 
-if error_list : 
-    print  ("=====ERRORS=====")
-    print ('\n'.join(error_list), )
+H += '</body></html>'
+with open(output_file, 'w') as fp:
+    fp.write(H)
+
+if (len(errors) > 0): 
+    print  ("--------ISSUES--------")
+    for e in errors:
+        print (e)
