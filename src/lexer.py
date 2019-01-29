@@ -3,11 +3,13 @@ from ply import lex
 from Tokens import *
 from Colour import *
 
-cfg_file = sys.argv[1][6:]
-prog_name = sys.argv[2]
-output_file = sys.argv[3][9:]
-enc = createColDict(cfg_file)
-H = '<!DOCTYPE html><html><head><title>'+prog_name+'</title></head><body>'
+cfg_file = sys.argv[1][6:] # Config file
+prog_name = sys.argv[2] # Code file
+output_file = sys.argv[3][9:] # Output HTML file
+
+enc = createColDict(cfg_file) # Get keyword-to-colour mapping
+
+H = '<!DOCTYPE html><html><head><title>'+prog_name+'</title></head><body>' # HTML document output
 
 lexer = lex.lex()
 with open(prog_name) as fp:
@@ -18,20 +20,21 @@ with open(prog_name) as fp:
     c_line = lexer.lineno
 
     for token in lexer:
-        if(token.lineno != c_line) :
-            H += getHTML(actstring,tokenstring,enc)
+        if(token.lineno != c_line) : # once we get to next line
+            H += getHTML(actstring,tokenstring,enc) # get colour-formatted HTML code for current line
             actstring = []
             tokenstring = []
-            c_line = token.lineno
+            c_line = token.lineno # update current line number
         actstring.append(token.value)
         tokenstring.append(str(token.type))
     
-    H += getHTML(actstring,tokenstring,enc)
+    H += getHTML(actstring,tokenstring,enc) # get colour-formatted HTML code for current line
 
 H += '</body></html>'
 with open(output_file, 'w') as fp:
     fp.write(H)
 
+# Print errors on terminal
 if (len(errors) > 0): 
     print  ("--------ISSUES--------")
     for e in errors:
