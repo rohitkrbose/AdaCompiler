@@ -32,7 +32,7 @@ for token in lexer:
 H += getHTML(actstring,tokenstring,enc) # get colour-formatted HTML code for current line
 
 H += '</body></html>'
-with open(output_file, 'w') as fp:
+with open(output_file, 'w') as fp: # Write to HTML file
     fp.write(H)
 
 # Print errors on terminal
