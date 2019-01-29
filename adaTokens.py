@@ -7,61 +7,35 @@ error_list = []
 
 tokens = [
     'IDENTIFIER',
-    'INTEGER',
+    'INT',
     'FLOAT',
     'STRING',
     'CHAR',
     'ARROW',
     'DOTDOT',
     'STARSTAR',
-    'ASSIGNMENT',
-    'NOTEQUAL',
-    'GREATER',
-    'LESS',
-    'GREATEREQ',
-    'LESSEQ',
-    'LLBRACKET',
-    'RLBRACKET',
+    'ASSIGN',
+    'NEQ',
+    'GEQ',
+    'LEQ',
+    'LL',
+    'RR',
     'BOX',
-    'PLUS',
-    'MINUS',
-    'MULTIPLY',
-    'DIVIDE',
-    'AMPERSAND',
-    'LPAREN',
-    'RPAREN',
-    'COMMA',
-    'DOT',
-    'COLON',
-    'SEMICOLON',
-    'EQUAL',
-    'TICK' #Special Token
+    'COMMENT',
+    'TICK'
 ] + list(reserved.values())
 
 t_ARROW = r'=>'
 t_DOTDOT = r'\.\.'
 t_STARSTAR = r'\*\*'
-t_ASSIGNMENT = r':='
-t_NOTEQUAL = r'/='
-t_GREATER = r'\>'
-t_LESS = r'\<' 
-t_GREATEREQ = r'>='
-t_LESSEQ = r'<='
-t_LLBRACKET = r'<<'
-t_RLBRACKET = r'>>'
+t_ASSIGN = r':='
+t_NEQ = r'/=' 
+t_GEQ = r'>='
+t_LEQ = r'<='
+t_LL = r'<<'
+t_RR = r'>>'
 t_BOX = r'<>'
-t_PLUS = r'\+'
-t_MINUS = r'\-'
-t_MULTIPLY = r'\*'
-t_DIVIDE = r'\/'
-t_AMPERSAND = r'\&'
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_COMMA = r'\,'
-t_DOT = r'\.'
-t_COLON = r'\:'
-t_SEMICOLON = r'\;'
-t_EQUAL = r'\='
+t_TICK = r'\''
 
 def t_IDENTIFIER(t):
     r'[A-Za-z](_?[A-Za-z0-9])*'
@@ -73,24 +47,20 @@ def t_CHAR(t):
     return t
 
 def t_STRING(t):
-    r'(\"([^\\\"]|(\\.))*\")|(\'([^\\\']|(\\.))*\')'
+    r'\"((\"\")|[^"])*\"'
     return t
-
-def t_TICK(t):
-    r'\''
-    return t
-
-# float and integer not getting recognized separately
 
 def t_FLOAT(t):
-    r'[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?'
-    t.value = float(t.value.replace("_",""))
+    r'[+-]?(\d+\.(\d*)?|\.\d+)([eE][+-]?\d+)?'
+    t.value = float(t.value)
     return t
 
-def t_INTEGER(t):
-    r'[+-]?[0-9](_?[0-9]+)*([Ee](\+)?[0-9](_?[0-9]+)*)?'
-    t.value = int(float(t.value.replace("_","")))
+def t_INT(t):
+    r'[-+]?\d+'
+    t.value = int(float(t.value))
     return t
+
+literals = "&()*+,-./:;<=>"
 
 t_ignore  = ' \t'
 
@@ -98,10 +68,11 @@ def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
-def t_comment(t):
+def t_COMMENT(t):
     r'--.*'
+    return t
 
 def t_error(t):
-    error_list.append("Line:" + str( t.lineno) + " illegal character '%s' found"% t.value[0])
+    error_list.append("Line:" + str(t.lineno) + " illegal character '%s' found"% t.value[0])
     t.lexer.skip(1)
 

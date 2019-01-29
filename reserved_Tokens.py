@@ -1,12 +1,10 @@
 #Reserved Token Definitions for Ada Language
 
 #These literals are taken from http://en.wikibooks.org/wiki/Ada_Programming/All_Keywords
-#Some of them are for specific Ada verisons, we are designing a compiler for Ada 2012 but are still including all the special words in Ada
+# Some of them are for specific Ada verisons, we are designing a compiler for Ada 2012 but are still including all the special words in Ada
 
 reserved = {
     'ada':'ADA_RESERVED', 
-   """ this is added by us, is not included in the general reserved keywords for Ada. We wanted to make it reserved as all
-    standard libraries are like ada.(*) ... """
 	'abort':'ABORT',
 	'abs':'ABS',
 	'abstract':'ABSTRACT',
@@ -187,7 +185,7 @@ reserved = {
 	'\'Write':'ATTR_WRITE',
     
     #Standard Data Types
-    'integer':'INTEGER_TYPE',
+    'integer':'INT_TYPE',
     'float':'FLOAT_TYPE',
     'duration':'DURATION_TYPE',
     'character':'CHARACTER_TYPE',
@@ -196,7 +194,5 @@ reserved = {
     'storage_offset':'STORAGE_OFFSET_TYPE',
     'storage_count':'STORAGE_COUNT_TYPE',
     'storage_element':'STORAGE_ELEMENT_TYPE',
-    'storage_array':'STORAGE_ARRAY_TYPE',
-    'natural':'NATURAL_TYPE',
-    'positive':'POSITIVE_TYPE'
+    'storage_array':'STORAGE_ARRAY_TYPE'
 }

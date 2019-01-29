@@ -1,46 +1,40 @@
-#!/usr/bin/env python
-import sys
-import lex
-import re
-from  adaTokens import *
+import sys,lex,re
+from adaTokens import *
+from colour import *
 
-#Scanning the file name
-if (len(sys.argv) == 1):
-    file_name =raw_input( "Give an Ada file to lex: ")
-else:
-    file_name = sys.argv[1]
+cfg_file = sys.argv[1][6:]
+prog_name = sys.argv[2]
+output_file = sys.argv[3][9:]
+enc = createColDict(cfg_file)
 
-try:
-    lexer = lex.lex()
-    with open(file_name) as fp:
-        data = fp.read()
-        data += '\n'
-        lexer.input(data)
-        datalist = data.split('\n')
-        tokstring = ""
-        old_line = lexer.lineno
-        
-        for tok in lexer:
-            if(tok.lineno != old_line) :
-                print (datalist[old_line-1] + "--" + tokstring)
-                tokstring = ""
-                for i in range(old_line,tok.lineno-1):
-                    print (datalist[i])
-                old_line=tok.lineno
-            tokstring += " " + str(tok.type)
-   
-        print (datalist[old_line-1] + "--" + tokstring)
-        tokstring = ""
-        for i in range(old_line,tok.lineno-1):
-            print (datalist[i])
-        old_line=tok.lineno
-   
-    if error_list : 
-        print  ("=====ERRORS=====")
-        print ('\n'.join(error_list), )
+lexer = lex.lex()
+with open(prog_name) as fp:
+    data = fp.read() + '\n'
+    lexer.input(data)
+    datalist = data.split('\n')
+    actstring = []
+    tokstring = ''
+    old_line = lexer.lineno
+    H = '<!DOCTYPE html><html><head><title>'+prog_name+'</title></head><body>'
 
-except IOError as e:
-    print ("I/O error({0}): "+ "We are not able to open " + file_name + " . Does it Exists? Check permissions!")
-
+    for tok in lexer:
+        if(tok.lineno != old_line) :
+            tokstring = tokstring.strip()
+            h = getHTML(actstring,tokstring.split(' '),enc)
+            H += h
+            actstring = []
+            tokstring = ''
+            old_line = tok.lineno
+        actstring.append(tok.value)
+        tokstring += ' ' + str(tok.type)
     
-    
+    tokstring = tokstring.strip()
+    h = getHTML(actstring,tokstring.split(' '),enc)
+    H += h
+    H += '</body></html>'
+    with open(output_file, "w") as out:
+        out.write(H)
+
+if error_list : 
+    print  ("=====ERRORS=====")
+    print ('\n'.join(error_list), )
