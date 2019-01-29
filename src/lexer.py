@@ -1,7 +1,7 @@
 import sys,re
 from ply import lex
 from Tokens import *
-from colour import *
+from Colour import *
 
 cfg_file = sys.argv[1][6:]
 prog_name = sys.argv[2]
