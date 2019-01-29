@@ -37,6 +37,8 @@ t_RR = r'>>'
 t_BOX = r'<>'
 t_TICK = r'\''
 
+literals = "&()*+,-./:;<=>" # Simple literals
+
 def t_IDENTIFIER(t):
     r'[A-Za-z](_?[A-Za-z0-9])*'
     t.type = reserved.get(t.value.lower(),'IDENTIFIER') # If reserved keyword, then it is given priority. Default is identifier!
@@ -59,8 +61,6 @@ def t_INT(t):
     r'[-+]?\d+' # Definition of Int
     t.value = int(float(t.value))
     return t
-
-literals = "&()*+,-./:;<=>" # Simple literals
 
 t_ignore  = ' \t' # Ignore spaces and tabs
 
