@@ -1,5 +1,5 @@
 import sys,re
-from ply import lex
+import lex
 from Tokens import *
 from Colour import *
 
