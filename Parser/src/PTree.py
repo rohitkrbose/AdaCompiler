@@ -1,21 +1,21 @@
-def clean(word) :
-	return { 
-        '&': "ampersand",
-        '(': "open_bracket",
-	')': "close_bracket",
-	'*': "star",
-	'+': "plus",
-	',': "comma",
-	'-': "hyphen",
-	'.': "dot",
-	'/': "forward_slash",
-	':': "colon",
-	';': "semi_colon",
-	'<': "less",
-	'=': "equal",
-	'>': "more",
-    "<empty>" : "empty",
-	}.get(word,word)
+def wordRep(w) :
+	D = { '&': 'ampersand',
+	'(': 'open_bracket',
+	')': 'close_bracket',
+	'*': 'star',
+	'+': 'plus',
+	',': 'comma',
+	'-': 'hyphen',
+	'.': 'dot',
+	'/': 'forward_slash',
+	':': 'colon',
+	';': 'semi_colon',
+	'<': 'less',
+	'=': 'equal',
+	'>': 'more',
+    '<empty>' : 'empty',
+	}
+	return (D.get(w,w))
 
 
 def constructTree(file_name, log_file_name) :
@@ -33,18 +33,18 @@ def constructTree(file_name, log_file_name) :
 	for line in imp_info:
 		L = line.split('->')[0].replace(' ','')
 		R = line.split('->')[1].split(' ')
-		L_token =  clean(L) +  str(U[L]['List'][-1])
+		L_token =  wordRep(L) +  str(U[L]['List'][-1])
 		del U[L]['List'][-1]
 		dot_file.write('\t' + L_token + '[ label =' + '\"' + L  + '\"''];\n')
 		for R_word in R:
 			if (R_word != ''):
 				if R_word not in U : 
 					U[R_word] = {'List':[0] , 'count':1}
-					R_token = clean(R_word) + '0'
+					R_token = wordRep(R_word) + '0'
 				else: 
 					count = int(U[R_word]['count']) 
 					U[R_word]['List'].append(count)
-					R_token =  clean(R_word) + str(count)
+					R_token =  wordRep(R_word) + str(count)
 					U[R_word]['count'] = count + 1
 				dot_file.write('\t' + R_token + '[ label =' + '\"' + R_word  + '\"''];\n')
 				dot_file.write('\t' + L_token  + '->' + R_token + ';\n')
