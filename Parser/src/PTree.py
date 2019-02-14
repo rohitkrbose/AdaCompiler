@@ -33,8 +33,15 @@ def constructTree(file_name, log_file_name) :
 	for line in imp_info:
 		L = line.split('->')[0].replace(' ','')
 		R = line.split('->')[1].split(' ')
+		# print(L)
+		# print(R)
 		L_token =  wordRep(L) +  str(U[L]['List'][-1])
+		# print(U[L]['List'][-1])
+		# print(L_token)
 		del U[L]['List'][-1]
+		# print("bjdbvh")
+		# exit()
+		# break
 		dot_file.write('\t' + L_token + '[ label =' + '\"' + L  + '\"''];\n')
 		for R_word in R:
 			if (R_word != ''):

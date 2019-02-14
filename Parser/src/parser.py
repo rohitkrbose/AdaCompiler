@@ -49,6 +49,7 @@ def p_decl(p):
 
 def p_object_decl(p):
 	'''object_decl : def_id_s ':' object_qualifier_opt object_subtype_def init_opt ';'
+				  |  def_id_s ':' LAMBDA def_id_s ASSIGN simple_expression ';'   
 	'''
 
 def p_def_id_s(p):
@@ -530,6 +531,7 @@ def p_multiplying(p):
 	   | '/'
 	   | MOD
 	   | REM
+	   | STARSTAR
 	'''
 	
 def p_factor(p):
@@ -1219,10 +1221,11 @@ def p_address_spec(p):
 def p_code_stmt(p):
 	'''code_stmt : qualified ';'
 	'''
-    
 def p_error(p):
 	print ('line :',p.lineno,'-parse issue at token:',p.type)
 	parser.errok()
+
+
 
 prog_name = sys.argv[1]
 with open(prog_name) as fp:
@@ -1241,5 +1244,5 @@ result = parser.parse(code, debug = log)
 PTree.constructTree(prog_name, log_file_name)
 
 # Remove temporary files
-os.remove(log_file_name)
-os.remove('./src/parsetab.py')
+#os.remove(log_file_name)
+#os.remove('./src/parsetab.py')

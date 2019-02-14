@@ -27,7 +27,7 @@ errors = []
 # Complex literals
 t_ARROW = r'=>'
 t_DOTDOT = r'\.\.'
-t_STARSTAR = r'\*\*'
+t_STARSTAR = r'@@'
 t_ASSIGN = r':='
 t_NEQ = r'/=' 
 t_GEQ = r'>='

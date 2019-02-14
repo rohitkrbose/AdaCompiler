@@ -5,15 +5,11 @@ procedure Ch10_2 is
 
 type MATRIX is array(1 .. 3, 1 .. 5) of INTEGER;
 
-First  : MATRIX := ((1, 1, 1, 1, 1),
-                    (2, 2, 2, 2, 2),
-                    (3, 3, 3, 3, 3));
-
-Second : MATRIX := ((1, 2, 3, 4, 5),
-                    (1, 2, 3, 4, 5),
-                    (1, 2, 3, 4, 5));
+First  : MATRIX := ((1));
 
 Result : MATRIX;
+
+x : lambda a := a + 10 ;
 
 begin
    for Index1 in 1 .. 3 loop
@@ -23,10 +19,6 @@ begin
       end loop;
    end loop;
 
-   for Index1 in 1 .. 3 loop
-      for Index2 in 1 .. 5 loop
-         Put(Result(Index1, Index2), 4);
-      end loop;
-      New_Line;
-   end loop;
+   
+
 end Ch10_2;

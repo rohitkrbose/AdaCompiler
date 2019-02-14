@@ -76,6 +76,7 @@ reserved = {
 	'raise':'RAISE',
 	'array':'ARRAY',
 	'digits':'DIGITS',
+	'lambda':'LAMBDA'
 	# '\'Value':'ATTR_VALUE',
 	# '\'Val':'ATTR_VAL',
 	# '\'Model_Mantissa':'ATTR_MODEL_MANTISSA',

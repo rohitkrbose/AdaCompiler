@@ -1,0 +1,717 @@
+INFO:root:PLY: PARSE DEBUG START
+INFO:root:Action : Reduce rule [compilation -> <empty>] with [] and goto state 2
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Ada'] and goto state 39
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [None] and goto state 38
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Text_IO'] and goto state 202
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_name -> compound_name . simple_name] with [None,'.',None] and goto state 38
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [c_name_list -> compound_name] with [None] and goto state 37
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Ada'] and goto state 39
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [None] and goto state 201
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with [<str @ 0x1046280b0>] and goto state 202
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_name -> compound_name . simple_name] with [None,'.',None] and goto state 201
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [c_name_list -> c_name_list , compound_name] with [None,',',None] and goto state 37
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [with_clause -> WITH c_name_list ;] with ['with',None,';'] and goto state 8
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [use_clause_opt -> <empty>] with [] and goto state 36
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [context_spec -> with_clause use_clause_opt] with [None,None] and goto state 6
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [private_opt -> <empty>] with [] and goto state 14
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Fibonacci'] and goto state 39
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [None] and goto state 112
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [formal_part_opt -> <empty>] with [] and goto state 197
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [subprog_spec -> PROCEDURE compound_name formal_part_opt] with ['procedure',None,None] and goto state 28
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [None,'is'] and goto state 30
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [decl_part -> <empty>] with [] and goto state 58
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [label_opt -> <empty>] with [] and goto state 307
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Fib'] and goto state 39
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [None] and goto state 114
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [designator -> compound_name] with [None] and goto state 113
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['N'] and goto state 100
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [def_id_s -> def_id] with [None] and goto state 110
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [mode -> <empty>] with [] and goto state 350
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Integer'] and goto state 185
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [mark -> simple_name] with [None] and goto state 510
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [init_opt -> <empty>] with [] and goto state 661
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [param -> def_id_s : mode mark init_opt] with [None,':',None,None,None] and goto state 355
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [param_s -> param] with [None] and goto state 354
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [formal_part -> ( param_s )] with ['(',None,')'] and goto state 198
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [formal_part_opt -> formal_part] with [None] and goto state 200
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Integer'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 514
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [subprog_spec -> FUNCTION designator formal_part_opt RETURN name] with ['function',None,None,'return',None] and goto state 93
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [None,'is'] and goto state 56
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [decl_part -> <empty>] with [] and goto state 58
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['N'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 127
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relational -> <] with ['<'] and goto state 224
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [literal -> INT] with [3] and goto state 136
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> literal] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 377
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression relational simple_expression] with [None,None,None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 436
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [condition -> expression] with [None] and goto state 435
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [cond_part -> condition THEN] with [None,'then'] and goto state 434
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [literal -> INT] with [1] and goto state 136
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> literal] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 424
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [return_stmt -> RETURN expression ;] with ['return',None,';'] and goto state 279
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_stmt -> return_stmt] with [None] and goto state 271
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 268
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [None] and goto state 556
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [cond_clause -> cond_part statement_s] with [None,None] and goto state 433
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [cond_clause_s -> cond_clause] with [None] and goto state 432
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Fib'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 127
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['N'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 212
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 393
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [adding -> -] with ['-'] and goto state 226
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [literal -> INT] with [1] and goto state 136
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> literal] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 381
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> simple_expression adding term] with [None,None,None] and goto state 393
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 391
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value -> expression] with [None] and goto state 390
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value_s -> value] with [None] and goto state 389
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [None,'(',None,')'] and goto state 144
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> indexed_comp] with [None] and goto state 127
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [adding -> +] with ['+'] and goto state 226
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Fib'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 127
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['N'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 212
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 393
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [adding -> -] with ['-'] and goto state 226
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [literal -> INT] with [2] and goto state 136
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> literal] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 381
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> simple_expression adding term] with [None,None,None] and goto state 393
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 391
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value -> expression] with [None] and goto state 390
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value_s -> value] with [None] and goto state 389
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [None,'(',None,')'] and goto state 144
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> indexed_comp] with [None] and goto state 127
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 381
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> simple_expression adding term] with [None,None,None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 424
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [return_stmt -> RETURN expression ;] with ['return',None,';'] and goto state 279
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_stmt -> return_stmt] with [None] and goto state 271
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 268
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [None] and goto state 685
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [else_opt -> ELSE statement_s] with ['else',None] and goto state 553
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [if_stmt -> IF cond_clause_s else_opt END IF ;] with ['if',None,None,'end','if',';'] and goto state 288
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_stmt -> if_stmt] with [None] and goto state 272
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> compound_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 268
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [None] and goto state 267
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [except_handler_part_opt -> <empty>] with [] and goto state 410
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [handled_stmt_s -> statement_s except_handler_part_opt] with [None,None] and goto state 266
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [block_body -> BEGIN handled_stmt_s] with ['begin',None] and goto state 162
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Fib'] and goto state 39
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [None] and goto state 114
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [designator -> compound_name] with [None] and goto state 409
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [id_opt -> designator] with [None] and goto state 408
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END id_opt ;] with [None,None,None,'end',None,';'] and goto state 63
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [body -> subprog_body] with [None] and goto state 61
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body -> body] with [None] and goto state 60
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body_s1 -> decl_item_or_body] with [None] and goto state 59
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['i'] and goto state 100
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [def_id_s -> def_id] with [None] and goto state 94
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [object_qualifier_opt -> <empty>] with [] and goto state 331
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Integer'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 480
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [subtype_ind -> name] with [None] and goto state 478
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [object_subtype_def -> subtype_ind] with [None] and goto state 477
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [literal -> INT] with [1] and goto state 136
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> literal] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 744
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [init_opt -> ASSIGN expression] with [':=',None] and goto state 624
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_qualifier_opt object_subtype_def init_opt ;] with [None,':',None,None,None,';'] and goto state 74
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [decl -> object_decl] with [None] and goto state 67
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [decl_item -> decl] with [None] and goto state 62
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [None] and goto state 164
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body_s1 -> decl_item_or_body_s1 decl_item_or_body] with [None,None] and goto state 59
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [decl_part -> decl_item_or_body_s1] with [None] and goto state 566
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [block_decl -> DECLARE decl_part] with ['declare',None] and goto state 440
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [label_opt -> <empty>] with [] and goto state 307
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [iteration -> <empty>] with [] and goto state 439
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Ada'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with [<str @ 0x1046280b0>] and goto state 394
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [selected_comp -> name . simple_name] with [None,'.',None] and goto state 145
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> selected_comp] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Put'] and goto state 394
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [selected_comp -> name . simple_name] with [None,'.',None] and goto state 145
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> selected_comp] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Item'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 212
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 393
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 391
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [choice -> expression] with [None] and goto state 213
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [choice_s -> choice] with [None] and goto state 208
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Fib'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 127
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['i'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 212
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 393
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 391
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value -> expression] with [None] and goto state 390
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value_s -> value] with [None] and goto state 389
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [None,'(',None,')'] and goto state 144
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> indexed_comp] with [None] and goto state 127
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 519
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [comp_assoc -> choice_s ARROW expression] with [None,'=>',None] and goto state 392
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value -> comp_assoc] with [None] and goto state 390
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value_s -> value] with [None] and goto state 389
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Width'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 212
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 393
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 391
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [choice -> expression] with [None] and goto state 213
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [choice_s -> choice] with [None] and goto state 208
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [literal -> INT] with [1] and goto state 136
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> literal] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 519
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [comp_assoc -> choice_s ARROW expression] with [None,'=>',None] and goto state 392
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value -> comp_assoc] with [None] and goto state 666
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value_s -> value_s , value] with [None,',',None] and goto state 389
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [None,'(',None,')'] and goto state 144
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> indexed_comp] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [None,';'] and goto state 281
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [None] and goto state 271
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 268
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [None] and goto state 690
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Ada'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Text_IO'] and goto state 394
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [selected_comp -> name . simple_name] with [None,'.',None] and goto state 145
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> selected_comp] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Put'] and goto state 394
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [selected_comp -> name . simple_name] with [None,'.',None] and goto state 145
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> selected_comp] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [operator_symbol -> STRING] with ['", "'] and goto state 147
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> operator_symbol] with [None] and goto state 212
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 393
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 391
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value -> expression] with [None] and goto state 390
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value_s -> value] with [None] and goto state 389
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [None,'(',None,')'] and goto state 144
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> indexed_comp] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [None,';'] and goto state 281
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [None] and goto state 271
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 411
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement_s statement] with [None,None] and goto state 690
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['i'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['i'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 127
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [adding -> +] with ['+'] and goto state 226
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [literal -> INT] with [1] and goto state 136
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> literal] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 381
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> simple_expression adding term] with [None,None,None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 542
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [assign_stmt -> name ASSIGN expression ;] with [None,':=',None,';'] and goto state 277
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_stmt -> assign_stmt] with [None] and goto state 271
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 411
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement_s statement] with [None,None] and goto state 690
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name_opt -> <empty>] with [] and goto state 421
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['i'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 127
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 126
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relational -> =] with ['='] and goto state 224
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [literal -> INT] with [17] and goto state 136
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> literal] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 377
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression relational simple_expression] with [None,None,None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 436
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [condition -> expression] with [None] and goto state 680
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [when_opt -> WHEN condition] with ['when',None] and goto state 543
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [exit_stmt -> EXIT name_opt when_opt ;] with ['exit',None,None,';'] and goto state 278
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_stmt -> exit_stmt] with [None] and goto state 271
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 411
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement_s statement] with [None,None] and goto state 690
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [basic_loop -> LOOP statement_s END LOOP] with ['loop',None,'end','loop'] and goto state 560
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [id_opt -> <empty>] with [] and goto state 689
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [loop_stmt -> label_opt iteration basic_loop id_opt ;] with [None,None,None,None,';'] and goto state 290
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_stmt -> loop_stmt] with [None] and goto state 272
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> compound_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 268
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [None] and goto state 267
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Ada'] and goto state 160
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> simple_name] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Text_IO'] and goto state 394
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [selected_comp -> name . simple_name] with [None,'.',None] and goto state 145
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> selected_comp] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Put'] and goto state 394
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [selected_comp -> name . simple_name] with [None,'.',None] and goto state 145
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> selected_comp] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [operator_symbol -> STRING] with ['"..."'] and goto state 147
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> operator_symbol] with [None] and goto state 212
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [primary -> name] with [None] and goto state 133
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [factor -> primary] with [None] and goto state 132
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [term -> factor] with [None] and goto state 129
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [None] and goto state 393
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [None] and goto state 125
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [expression -> relation] with [None] and goto state 391
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value -> expression] with [None] and goto state 390
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [value_s -> value] with [None] and goto state 389
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [None,'(',None,')'] and goto state 144
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [name -> indexed_comp] with [None] and goto state 295
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [None,';'] and goto state 281
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [None] and goto state 271
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 411
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement_s statement] with [None,None] and goto state 267
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [except_handler_part_opt -> <empty>] with [] and goto state 410
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [handled_stmt_s -> statement_s except_handler_part_opt] with [None,None] and goto state 266
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [block_body -> BEGIN handled_stmt_s] with ['begin',None] and goto state 562
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [id_opt -> <empty>] with [] and goto state 785
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [block -> label_opt block_decl block_body END id_opt ;] with [None,None,None,'end',None,';'] and goto state 291
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_stmt -> block] with [None] and goto state 272
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unlabeled -> compound_stmt] with [None] and goto state 269
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [None] and goto state 268
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [None] and goto state 267
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [except_handler_part_opt -> <empty>] with [] and goto state 410
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [handled_stmt_s -> statement_s except_handler_part_opt] with [None,None] and goto state 266
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [block_body -> BEGIN handled_stmt_s] with ['begin',None] and goto state 162
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Fibonacci'] and goto state 39
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [None] and goto state 114
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [designator -> compound_name] with [None] and goto state 409
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [id_opt -> designator] with [None] and goto state 408
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END id_opt ;] with [None,None,None,'end',None,';'] and goto state 21
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [unit -> subprog_body] with [None] and goto state 44
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [pragma_s -> <empty>] with [] and goto state 152
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [comp_unit -> context_spec private_opt unit pragma_s] with [None,None,None,None] and goto state 5
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [compilation -> compilation comp_unit] with [None,None] and goto state 2
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Action : Reduce rule [goal_symbol -> compilation] with [None] and goto state 1
+INFO:root:Result : <NoneType @ 0x10098f770> (None)
+INFO:root:Done   : Returning <NoneType @ 0x10098f770> (None)
+INFO:root:PLY: PARSE DEBUG END
