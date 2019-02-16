@@ -1,3 +1,0 @@
-object_decl : def_id_s ':' object_qualifier_opt object_subtype_def init_opt ';'
-	;
-x : <empty> LAMBDA ASSIGN simple_expression ';' 
