@@ -1,0 +1,345 @@
+INFO:root:PLY: PARSE DEBUG START
+INFO:root:Action : Reduce rule [compilation -> <empty>] with [] and goto state 3
+INFO:root:Result : <Node @ 0x7f26233e80b8> (<grammar.Node object at 0x7f26233e80b8>)
+INFO:root:Action : Reduce rule [private_opt -> <empty>] with [] and goto state 6
+INFO:root:Result : <Node @ 0x7f2624e10b70> (<grammar.Node object at 0x7f2624e10b70>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['func'] and goto state 36
+INFO:root:Result : <Node @ 0x7f26233e82b0> (<grammar.Node object at 0x7f26233e82b0>)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [<Node @ 0x7f26233e82b0>] and goto state 45
+INFO:root:Result : <Node @ 0x7f26233e80f0> (<grammar.Node object at 0x7f26233e80f0>)
+INFO:root:Action : Reduce rule [formal_part_opt -> <empty>] with [] and goto state 152
+INFO:root:Result : <Node @ 0x7f2623901d30> (<grammar.Node object at 0x7f2623901d30>)
+INFO:root:Action : Reduce rule [subprog_spec -> PROCEDURE compound_name formal_part_opt] with ['procedure',<Node @ 0x7f26233e80f0>,<Node @ 0x7f2623901d30>] and goto state 25
+INFO:root:Result : <Node @ 0x7f26233e8390> (<grammar.Node object at 0x7f26233e8390>)
+INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [<Node @ 0x7f26233e8390>,'is'] and goto state 32
+INFO:root:Result : <Node @ 0x7f26233e8080> (<grammar.Node object at 0x7f26233e8080>)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['i'] and goto state 61
+INFO:root:Result : <Node @ 0x7f26233e8358> (<grammar.Node object at 0x7f26233e8358>)
+INFO:root:Action : Reduce rule [def_id_s -> def_id] with [<Node @ 0x7f26233e8358>] and goto state 106
+INFO:root:Result : <Node @ 0x7f26233e8358> (<grammar.Node object at 0x7f26233e8358>)
+INFO:root:Action : Reduce rule [object_qualifier_opt -> <empty>] with [] and goto state 341
+INFO:root:Result : <Node @ 0x7f26233e8320> (<grammar.Node object at 0x7f26233e8320>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['integer'] and goto state 157
+INFO:root:Result : <Node @ 0x7f26233e8518> (<grammar.Node object at 0x7f26233e8518>)
+INFO:root:Action : Reduce rule [name -> simple_name] with [<Node @ 0x7f26233e8518>] and goto state 483
+INFO:root:Result : <Node @ 0x7f26233e8518> (<grammar.Node object at 0x7f26233e8518>)
+INFO:root:Action : Reduce rule [subtype_ind -> name] with [<Node @ 0x7f26233e8518>] and goto state 487
+INFO:root:Result : <Node @ 0x7f26233e8518> (<grammar.Node object at 0x7f26233e8518>)
+INFO:root:Action : Reduce rule [object_subtype_def -> subtype_ind] with [<Node @ 0x7f26233e8518>] and goto state 486
+INFO:root:Result : <Node @ 0x7f26233e8518> (<grammar.Node object at 0x7f26233e8518>)
+INFO:root:Action : Reduce rule [literal -> INT] with [2] and goto state 139
+INFO:root:Result : <Node @ 0x7f26233e8278> (<grammar.Node object at 0x7f26233e8278>)
+INFO:root:Action : Reduce rule [primary -> literal] with [<Node @ 0x7f26233e8278>] and goto state 136
+INFO:root:Result : <Node @ 0x7f26233e8278> (<grammar.Node object at 0x7f26233e8278>)
+INFO:root:Action : Reduce rule [factor -> primary] with [<Node @ 0x7f26233e8278>] and goto state 145
+INFO:root:Result : <Node @ 0x7f26233e8278> (<grammar.Node object at 0x7f26233e8278>)
+INFO:root:Action : Reduce rule [term -> factor] with [<Node @ 0x7f26233e8278>] and goto state 120
+INFO:root:Result : <Node @ 0x7f26233e8278> (<grammar.Node object at 0x7f26233e8278>)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<Node @ 0x7f26233e8278>] and goto state 146
+INFO:root:Result : <Node @ 0x7f26233e8278> (<grammar.Node object at 0x7f26233e8278>)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [<Node @ 0x7f26233e8278>] and goto state 147
+INFO:root:Result : <Node @ 0x7f26233e8278> (<grammar.Node object at 0x7f26233e8278>)
+INFO:root:Action : Reduce rule [expression -> relation] with [<Node @ 0x7f26233e8278>] and goto state 673
+INFO:root:Result : <Node @ 0x7f26233e8278> (<grammar.Node object at 0x7f26233e8278>)
+INFO:root:Action : Reduce rule [init_opt -> ASSIGN expression] with [':=',<Node @ 0x7f26233e8278>] and goto state 639
+INFO:root:Result : <Node @ 0x7f26233e8588> (<grammar.Node object at 0x7f26233e8588>)
+INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_qualifier_opt object_subtype_def init_opt ;] with [<Node @ 0x7f26233e8358>,':',<Node @ 0x7f26233e8320>,<Node @ 0x7f26233e8518>,<Node @ 0x7f26233e8588>,';'] and goto state 85
+INFO:root:Result : <Node @ 0x7f26233e84a8> (<grammar.Node object at 0x7f26233e84a8>)
+INFO:root:Action : Reduce rule [decl -> object_decl] with [<Node @ 0x7f26233e84a8>] and goto state 84
+INFO:root:Result : <Node @ 0x7f26233e84a8> (<grammar.Node object at 0x7f26233e84a8>)
+INFO:root:Action : Reduce rule [decl_item -> decl] with [<Node @ 0x7f26233e84a8>] and goto state 82
+INFO:root:Result : <Node @ 0x7f26233e84a8> (<grammar.Node object at 0x7f26233e84a8>)
+INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [<Node @ 0x7f26233e84a8>] and goto state 96
+INFO:root:Result : <Node @ 0x7f26233e84a8> (<grammar.Node object at 0x7f26233e84a8>)
+INFO:root:Action : Reduce rule [decl_item_or_body_s1 -> decl_item_or_body] with [<Node @ 0x7f26233e84a8>] and goto state 101
+INFO:root:Result : <Node @ 0x7f26233e84a8> (<grammar.Node object at 0x7f26233e84a8>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['foo'] and goto state 36
+INFO:root:Result : <Node @ 0x7f26233e8668> (<grammar.Node object at 0x7f26233e8668>)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [<Node @ 0x7f26233e8668>] and goto state 45
+INFO:root:Result : <Node @ 0x7f26233e82e8> (<grammar.Node object at 0x7f26233e82e8>)
+INFO:root:Action : Reduce rule [formal_part_opt -> <empty>] with [] and goto state 152
+INFO:root:Result : <Node @ 0x7f26233e8240> (<grammar.Node object at 0x7f26233e8240>)
+INFO:root:Action : Reduce rule [subprog_spec -> PROCEDURE compound_name formal_part_opt] with ['procedure',<Node @ 0x7f26233e82e8>,<Node @ 0x7f26233e8240>] and goto state 108
+INFO:root:Result : <Node @ 0x7f26233e8710> (<grammar.Node object at 0x7f26233e8710>)
+INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [<Node @ 0x7f26233e8710>,'is'] and goto state 93
+INFO:root:Result : <Node @ 0x7f26233e86a0> (<grammar.Node object at 0x7f26233e86a0>)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['i'] and goto state 61
+INFO:root:Result : <Node @ 0x7f26233e86d8> (<grammar.Node object at 0x7f26233e86d8>)
+INFO:root:Action : Reduce rule [def_id_s -> def_id] with [<Node @ 0x7f26233e86d8>] and goto state 106
+INFO:root:Result : <Node @ 0x7f26233e86d8> (<grammar.Node object at 0x7f26233e86d8>)
+INFO:root:Action : Reduce rule [object_qualifier_opt -> <empty>] with [] and goto state 341
+INFO:root:Result : <Node @ 0x7f26233e85c0> (<grammar.Node object at 0x7f26233e85c0>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['integer'] and goto state 157
+INFO:root:Result : <Node @ 0x7f26233e8860> (<grammar.Node object at 0x7f26233e8860>)
+INFO:root:Action : Reduce rule [name -> simple_name] with [<Node @ 0x7f26233e8860>] and goto state 483
+INFO:root:Result : <Node @ 0x7f26233e8860> (<grammar.Node object at 0x7f26233e8860>)
+INFO:root:Action : Reduce rule [subtype_ind -> name] with [<Node @ 0x7f26233e8860>] and goto state 487
+INFO:root:Result : <Node @ 0x7f26233e8860> (<grammar.Node object at 0x7f26233e8860>)
+INFO:root:Action : Reduce rule [object_subtype_def -> subtype_ind] with [<Node @ 0x7f26233e8860>] and goto state 486
+INFO:root:Result : <Node @ 0x7f26233e8860> (<grammar.Node object at 0x7f26233e8860>)
+INFO:root:Action : Reduce rule [literal -> INT] with [1] and goto state 139
+INFO:root:Result : <Node @ 0x7f26233e85f8> (<grammar.Node object at 0x7f26233e85f8>)
+INFO:root:Action : Reduce rule [primary -> literal] with [<Node @ 0x7f26233e85f8>] and goto state 136
+INFO:root:Result : <Node @ 0x7f26233e85f8> (<grammar.Node object at 0x7f26233e85f8>)
+INFO:root:Action : Reduce rule [factor -> primary] with [<Node @ 0x7f26233e85f8>] and goto state 145
+INFO:root:Result : <Node @ 0x7f26233e85f8> (<grammar.Node object at 0x7f26233e85f8>)
+INFO:root:Action : Reduce rule [term -> factor] with [<Node @ 0x7f26233e85f8>] and goto state 120
+INFO:root:Result : <Node @ 0x7f26233e85f8> (<grammar.Node object at 0x7f26233e85f8>)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<Node @ 0x7f26233e85f8>] and goto state 146
+INFO:root:Result : <Node @ 0x7f26233e85f8> (<grammar.Node object at 0x7f26233e85f8>)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [<Node @ 0x7f26233e85f8>] and goto state 147
+INFO:root:Result : <Node @ 0x7f26233e85f8> (<grammar.Node object at 0x7f26233e85f8>)
+INFO:root:Action : Reduce rule [expression -> relation] with [<Node @ 0x7f26233e85f8>] and goto state 673
+INFO:root:Result : <Node @ 0x7f26233e85f8> (<grammar.Node object at 0x7f26233e85f8>)
+INFO:root:Action : Reduce rule [init_opt -> ASSIGN expression] with [':=',<Node @ 0x7f26233e85f8>] and goto state 639
+INFO:root:Result : <Node @ 0x7f26233e88d0> (<grammar.Node object at 0x7f26233e88d0>)
+INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_qualifier_opt object_subtype_def init_opt ;] with [<Node @ 0x7f26233e86d8>,':',<Node @ 0x7f26233e85c0>,<Node @ 0x7f26233e8860>,<Node @ 0x7f26233e88d0>,';'] and goto state 85
+INFO:root:Result : <Node @ 0x7f26233e87f0> (<grammar.Node object at 0x7f26233e87f0>)
+INFO:root:Action : Reduce rule [decl -> object_decl] with [<Node @ 0x7f26233e87f0>] and goto state 84
+INFO:root:Result : <Node @ 0x7f26233e87f0> (<grammar.Node object at 0x7f26233e87f0>)
+INFO:root:Action : Reduce rule [decl_item -> decl] with [<Node @ 0x7f26233e87f0>] and goto state 82
+INFO:root:Result : <Node @ 0x7f26233e87f0> (<grammar.Node object at 0x7f26233e87f0>)
+INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [<Node @ 0x7f26233e87f0>] and goto state 96
+INFO:root:Result : <Node @ 0x7f26233e87f0> (<grammar.Node object at 0x7f26233e87f0>)
+INFO:root:Action : Reduce rule [decl_item_or_body_s1 -> decl_item_or_body] with [<Node @ 0x7f26233e87f0>] and goto state 101
+INFO:root:Result : <Node @ 0x7f26233e87f0> (<grammar.Node object at 0x7f26233e87f0>)
+INFO:root:Action : Reduce rule [decl_part -> decl_item_or_body_s1] with [<Node @ 0x7f26233e87f0>] and goto state 90
+INFO:root:Result : <Node @ 0x7f26233e87f0> (<grammar.Node object at 0x7f26233e87f0>)
+INFO:root:Action : Reduce rule [null_stmt -> NuLL ;] with ['null',';'] and goto state 315
+INFO:root:Result : <Node @ 0x7f26233e8828> (<grammar.Node object at 0x7f26233e8828>)
+INFO:root:Action : Reduce rule [simple_stmt -> null_stmt] with [<Node @ 0x7f26233e8828>] and goto state 329
+INFO:root:Result : <Node @ 0x7f26233e8828> (<grammar.Node object at 0x7f26233e8828>)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [<Node @ 0x7f26233e8828>] and goto state 319
+INFO:root:Result : <Node @ 0x7f26233e8828> (<grammar.Node object at 0x7f26233e8828>)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [<Node @ 0x7f26233e8828>] and goto state 324
+INFO:root:Result : <Node @ 0x7f26233e8828> (<grammar.Node object at 0x7f26233e8828>)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [<Node @ 0x7f26233e8828>] and goto state 316
+INFO:root:Result : <Node @ 0x7f26233e8828> (<grammar.Node object at 0x7f26233e8828>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['printi'] and goto state 157
+INFO:root:Result : <Node @ 0x7f26233e8748> (<grammar.Node object at 0x7f26233e8748>)
+INFO:root:Action : Reduce rule [name -> simple_name] with [<Node @ 0x7f26233e8748>] and goto state 327
+INFO:root:Result : <Node @ 0x7f26233e8748> (<grammar.Node object at 0x7f26233e8748>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['i'] and goto state 157
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [name -> simple_name] with [<Node @ 0x7f26233e89b0>] and goto state 382
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [primary -> name] with [<Node @ 0x7f26233e89b0>] and goto state 136
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [factor -> primary] with [<Node @ 0x7f26233e89b0>] and goto state 145
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [term -> factor] with [<Node @ 0x7f26233e89b0>] and goto state 120
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<Node @ 0x7f26233e89b0>] and goto state 383
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [<Node @ 0x7f26233e89b0>] and goto state 147
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [expression -> relation] with [<Node @ 0x7f26233e89b0>] and goto state 379
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [value -> expression] with [<Node @ 0x7f26233e89b0>] and goto state 384
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [value_s -> value] with [<Node @ 0x7f26233e89b0>] and goto state 380
+INFO:root:Result : <Node @ 0x7f26233e89b0> (<grammar.Node object at 0x7f26233e89b0>)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [<Node @ 0x7f26233e8748>,'(',<Node @ 0x7f26233e89b0>,')'] and goto state 133
+INFO:root:Result : <Node @ 0x7f26233e8908> (<grammar.Node object at 0x7f26233e8908>)
+INFO:root:Action : Reduce rule [name -> indexed_comp] with [<Node @ 0x7f26233e8908>] and goto state 327
+INFO:root:Result : <Node @ 0x7f26233e8908> (<grammar.Node object at 0x7f26233e8908>)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<Node @ 0x7f26233e8908>,';'] and goto state 317
+INFO:root:Result : <Node @ 0x7f26233e8908> (<grammar.Node object at 0x7f26233e8908>)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<Node @ 0x7f26233e8908>] and goto state 329
+INFO:root:Result : <Node @ 0x7f26233e8908> (<grammar.Node object at 0x7f26233e8908>)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [<Node @ 0x7f26233e8908>] and goto state 319
+INFO:root:Result : <Node @ 0x7f26233e8908> (<grammar.Node object at 0x7f26233e8908>)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [<Node @ 0x7f26233e8908>] and goto state 459
+INFO:root:Result : <Node @ 0x7f26233e8908> (<grammar.Node object at 0x7f26233e8908>)
+INFO:root:Action : Reduce rule [statement_s -> statement_s statement] with [<Node @ 0x7f26233e8828>,<Node @ 0x7f26233e8908>] and goto state 316
+INFO:root:Result : <Node @ 0x7f26233e8b70> (<grammar.Node object at 0x7f26233e8b70>)
+INFO:root:Action : Reduce rule [label_opt -> <empty>] with [] and goto state 332
+INFO:root:Result : <Node @ 0x7f26233e8a58> (<grammar.Node object at 0x7f26233e8a58>)
+INFO:root:Action : Reduce rule [iter_part -> FOR IDENTIFIER IN] with ['for','j','in'] and goto state 474
+INFO:root:Result : <Node @ 0x7f26233e8c88> (<grammar.Node object at 0x7f26233e8c88>)
+INFO:root:Action : Reduce rule [reverse_opt -> <empty>] with [] and goto state 604
+INFO:root:Result : <Node @ 0x7f26233e8a20> (<grammar.Node object at 0x7f26233e8a20>)
+INFO:root:Action : Reduce rule [literal -> INT] with [1] and goto state 139
+INFO:root:Result : <Node @ 0x7f26233e8b38> (<grammar.Node object at 0x7f26233e8b38>)
+INFO:root:Action : Reduce rule [primary -> literal] with [<Node @ 0x7f26233e8b38>] and goto state 136
+INFO:root:Result : <Node @ 0x7f26233e8b38> (<grammar.Node object at 0x7f26233e8b38>)
+INFO:root:Action : Reduce rule [factor -> primary] with [<Node @ 0x7f26233e8b38>] and goto state 145
+INFO:root:Result : <Node @ 0x7f26233e8b38> (<grammar.Node object at 0x7f26233e8b38>)
+INFO:root:Action : Reduce rule [term -> factor] with [<Node @ 0x7f26233e8b38>] and goto state 120
+INFO:root:Result : <Node @ 0x7f26233e8b38> (<grammar.Node object at 0x7f26233e8b38>)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<Node @ 0x7f26233e8b38>] and goto state 389
+INFO:root:Result : <Node @ 0x7f26233e8b38> (<grammar.Node object at 0x7f26233e8b38>)
+INFO:root:Action : Reduce rule [literal -> INT] with [5] and goto state 139
+INFO:root:Result : <Node @ 0x7f26233e8780> (<grammar.Node object at 0x7f26233e8780>)
+INFO:root:Action : Reduce rule [primary -> literal] with [<Node @ 0x7f26233e8780>] and goto state 136
+INFO:root:Result : <Node @ 0x7f26233e8780> (<grammar.Node object at 0x7f26233e8780>)
+INFO:root:Action : Reduce rule [factor -> primary] with [<Node @ 0x7f26233e8780>] and goto state 145
+INFO:root:Result : <Node @ 0x7f26233e8780> (<grammar.Node object at 0x7f26233e8780>)
+INFO:root:Action : Reduce rule [term -> factor] with [<Node @ 0x7f26233e8780>] and goto state 120
+INFO:root:Result : <Node @ 0x7f26233e8780> (<grammar.Node object at 0x7f26233e8780>)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<Node @ 0x7f26233e8780>] and goto state 513
+INFO:root:Result : <Node @ 0x7f26233e8780> (<grammar.Node object at 0x7f26233e8780>)
+INFO:root:Action : Reduce rule [range -> simple_expression DOTDOT simple_expression] with [<Node @ 0x7f26233e8b38>,'..',<Node @ 0x7f26233e8780>] and goto state 723
+INFO:root:Result : <Node @ 0x7f26233e8be0> (<grammar.Node object at 0x7f26233e8be0>)
+INFO:root:Action : Reduce rule [discrete_range -> range] with [<Node @ 0x7f26233e8be0>] and goto state 725
+INFO:root:Result : <Node @ 0x7f26233e8be0> (<grammar.Node object at 0x7f26233e8be0>)
+INFO:root:Action : Reduce rule [iteration -> iter_part reverse_opt discrete_range] with [<Node @ 0x7f26233e8c88>,<Node @ 0x7f26233e8a20>,<Node @ 0x7f26233e8be0>] and goto state 470
+INFO:root:Result : <Node @ 0x7f26233e8cf8> (<grammar.Node object at 0x7f26233e8cf8>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['prints'] and goto state 157
+INFO:root:Result : <Node @ 0x7f26233e8a90> (<grammar.Node object at 0x7f26233e8a90>)
+INFO:root:Action : Reduce rule [name -> simple_name] with [<Node @ 0x7f26233e8a90>] and goto state 327
+INFO:root:Result : <Node @ 0x7f26233e8a90> (<grammar.Node object at 0x7f26233e8a90>)
+INFO:root:Action : Reduce rule [operator_symbol -> STRING] with [<str @ 0x7f26233f6030>] and goto state 134
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [name -> operator_symbol] with [<Node @ 0x7f26233e8dd8>] and goto state 382
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [primary -> name] with [<Node @ 0x7f26233e8dd8>] and goto state 136
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [factor -> primary] with [<Node @ 0x7f26233e8dd8>] and goto state 145
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [term -> factor] with [<Node @ 0x7f26233e8dd8>] and goto state 120
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<Node @ 0x7f26233e8dd8>] and goto state 383
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [<Node @ 0x7f26233e8dd8>] and goto state 147
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [expression -> relation] with [<Node @ 0x7f26233e8dd8>] and goto state 379
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [value -> expression] with [<Node @ 0x7f26233e8dd8>] and goto state 384
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [value_s -> value] with [<Node @ 0x7f26233e8dd8>] and goto state 380
+INFO:root:Result : <Node @ 0x7f26233e8dd8> (<grammar.Node object at 0x7f26233e8dd8>)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [<Node @ 0x7f26233e8a90>,'(',<Node @ 0x7f26233e8dd8>,')'] and goto state 133
+INFO:root:Result : <Node @ 0x7f26233e8e10> (<grammar.Node object at 0x7f26233e8e10>)
+INFO:root:Action : Reduce rule [name -> indexed_comp] with [<Node @ 0x7f26233e8e10>] and goto state 327
+INFO:root:Result : <Node @ 0x7f26233e8e10> (<grammar.Node object at 0x7f26233e8e10>)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<Node @ 0x7f26233e8e10>,';'] and goto state 317
+INFO:root:Result : <Node @ 0x7f26233e8e10> (<grammar.Node object at 0x7f26233e8e10>)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<Node @ 0x7f26233e8e10>] and goto state 329
+INFO:root:Result : <Node @ 0x7f26233e8e10> (<grammar.Node object at 0x7f26233e8e10>)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [<Node @ 0x7f26233e8e10>] and goto state 319
+INFO:root:Result : <Node @ 0x7f26233e8e10> (<grammar.Node object at 0x7f26233e8e10>)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [<Node @ 0x7f26233e8e10>] and goto state 324
+INFO:root:Result : <Node @ 0x7f26233e8e10> (<grammar.Node object at 0x7f26233e8e10>)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [<Node @ 0x7f26233e8e10>] and goto state 720
+INFO:root:Result : <Node @ 0x7f26233e8e10> (<grammar.Node object at 0x7f26233e8e10>)
+INFO:root:Action : Reduce rule [basic_loop -> LOOP statement_s END LOOP] with ['loop',<Node @ 0x7f26233e8e10>,'end','loop'] and goto state 600
+INFO:root:Result : <Node @ 0x7f26233e8cc0> (<grammar.Node object at 0x7f26233e8cc0>)
+INFO:root:Action : Reduce rule [id_opt -> <empty>] with [] and goto state 721
+INFO:root:Result : <Node @ 0x7f26233e8d30> (<grammar.Node object at 0x7f26233e8d30>)
+INFO:root:Action : Reduce rule [loop_stmt -> label_opt iteration basic_loop id_opt ;] with [<Node @ 0x7f26233e8a58>,<Node @ 0x7f26233e8cf8>,<Node @ 0x7f26233e8cc0>,<Node @ 0x7f26233e8d30>,';'] and goto state 297
+INFO:root:Result : <Node @ 0x7f26233e8f60> (<grammar.Node object at 0x7f26233e8f60>)
+INFO:root:Action : Reduce rule [compound_stmt -> loop_stmt] with [<Node @ 0x7f26233e8f60>] and goto state 299
+INFO:root:Result : <Node @ 0x7f26233e8f60> (<grammar.Node object at 0x7f26233e8f60>)
+INFO:root:Action : Reduce rule [unlabeled -> compound_stmt] with [<Node @ 0x7f26233e8f60>] and goto state 319
+INFO:root:Result : <Node @ 0x7f26233e8f60> (<grammar.Node object at 0x7f26233e8f60>)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [<Node @ 0x7f26233e8f60>] and goto state 459
+INFO:root:Result : <Node @ 0x7f26233e8f60> (<grammar.Node object at 0x7f26233e8f60>)
+INFO:root:Action : Reduce rule [statement_s -> statement_s statement] with [<Node @ 0x7f26233e8b70>,<Node @ 0x7f26233e8f60>] and goto state 316
+INFO:root:Result : <Node @ 0x7f26233e8ac8> (<grammar.Node object at 0x7f26233e8ac8>)
+INFO:root:Action : Reduce rule [except_handler_part_opt -> <empty>] with [] and goto state 456
+INFO:root:Result : <Node @ 0x7f26233e8b00> (<grammar.Node object at 0x7f26233e8b00>)
+INFO:root:Action : Reduce rule [handled_stmt_s -> statement_s except_handler_part_opt] with [<Node @ 0x7f26233e8ac8>,<Node @ 0x7f26233e8b00>] and goto state 314
+INFO:root:Result : <Node @ 0x7f26233e8da0> (<grammar.Node object at 0x7f26233e8da0>)
+INFO:root:Action : Reduce rule [block_body -> BEGIN handled_stmt_s] with ['begin',<Node @ 0x7f26233e8da0>] and goto state 183
+INFO:root:Result : <Node @ 0x7f26233e8e80> (<grammar.Node object at 0x7f26233e8e80>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['foo'] and goto state 36
+INFO:root:Result : <Node @ 0x7f26233e89e8> (<grammar.Node object at 0x7f26233e89e8>)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [<Node @ 0x7f26233e89e8>] and goto state 68
+INFO:root:Result : <Node @ 0x7f26233e8fd0> (<grammar.Node object at 0x7f26233e8fd0>)
+INFO:root:Action : Reduce rule [designator -> compound_name] with [<Node @ 0x7f26233e8fd0>] and goto state 425
+INFO:root:Result : <Node @ 0x7f26233e8fd0> (<grammar.Node object at 0x7f26233e8fd0>)
+INFO:root:Action : Reduce rule [id_opt -> designator] with [<Node @ 0x7f26233e8fd0>] and goto state 426
+INFO:root:Result : <Node @ 0x7f26233e8eb8> (<grammar.Node object at 0x7f26233e8eb8>)
+INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END id_opt ;] with [<Node @ 0x7f26233e86a0>,<Node @ 0x7f26233e87f0>,<Node @ 0x7f26233e8e80>,'end',<Node @ 0x7f26233e8eb8>,';'] and goto state 110
+INFO:root:Result : <Node @ 0x7f26233e8fd0> (<grammar.Node object at 0x7f26233e8fd0>)
+INFO:root:Action : Reduce rule [body -> subprog_body] with [<Node @ 0x7f26233e8fd0>] and goto state 89
+INFO:root:Result : <Node @ 0x7f26233e8fd0> (<grammar.Node object at 0x7f26233e8fd0>)
+INFO:root:Action : Reduce rule [decl_item_or_body -> body] with [<Node @ 0x7f26233e8fd0>] and goto state 191
+INFO:root:Result : <Node @ 0x7f26233e8fd0> (<grammar.Node object at 0x7f26233e8fd0>)
+INFO:root:Action : Reduce rule [decl_item_or_body_s1 -> decl_item_or_body_s1 decl_item_or_body] with [<Node @ 0x7f26233e84a8>,<Node @ 0x7f26233e8fd0>] and goto state 101
+INFO:root:Result : <Node @ 0x7f26233e89e8> (<grammar.Node object at 0x7f26233e89e8>)
+INFO:root:Action : Reduce rule [decl_part -> decl_item_or_body_s1] with [<Node @ 0x7f26233e89e8>] and goto state 90
+INFO:root:Result : <Node @ 0x7f26233e89e8> (<grammar.Node object at 0x7f26233e89e8>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['foo'] and goto state 157
+INFO:root:Result : <Node @ 0x7f26233e8400> (<grammar.Node object at 0x7f26233e8400>)
+INFO:root:Action : Reduce rule [name -> simple_name] with [<Node @ 0x7f26233e8400>] and goto state 327
+INFO:root:Result : <Node @ 0x7f26233e8400> (<grammar.Node object at 0x7f26233e8400>)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<Node @ 0x7f26233e8400>,';'] and goto state 317
+INFO:root:Result : <Node @ 0x7f26233e8400> (<grammar.Node object at 0x7f26233e8400>)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<Node @ 0x7f26233e8400>] and goto state 329
+INFO:root:Result : <Node @ 0x7f26233e8400> (<grammar.Node object at 0x7f26233e8400>)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [<Node @ 0x7f26233e8400>] and goto state 319
+INFO:root:Result : <Node @ 0x7f26233e8400> (<grammar.Node object at 0x7f26233e8400>)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [<Node @ 0x7f26233e8400>] and goto state 324
+INFO:root:Result : <Node @ 0x7f26233e8400> (<grammar.Node object at 0x7f26233e8400>)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [<Node @ 0x7f26233e8400>] and goto state 316
+INFO:root:Result : <Node @ 0x7f26233e8400> (<grammar.Node object at 0x7f26233e8400>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['i'] and goto state 157
+INFO:root:Result : <Node @ 0x7f26233e8ba8> (<grammar.Node object at 0x7f26233e8ba8>)
+INFO:root:Action : Reduce rule [name -> simple_name] with [<Node @ 0x7f26233e8ba8>] and goto state 327
+INFO:root:Result : <Node @ 0x7f26233e8ba8> (<grammar.Node object at 0x7f26233e8ba8>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['i'] and goto state 157
+INFO:root:Result : <Node @ 0x7f26233e8ef0> (<grammar.Node object at 0x7f26233e8ef0>)
+INFO:root:Action : Reduce rule [name -> simple_name] with [<Node @ 0x7f26233e8ef0>] and goto state 138
+INFO:root:Result : <Node @ 0x7f26233e8ef0> (<grammar.Node object at 0x7f26233e8ef0>)
+INFO:root:Action : Reduce rule [primary -> name] with [<Node @ 0x7f26233e8ef0>] and goto state 136
+INFO:root:Result : <Node @ 0x7f26233e8ef0> (<grammar.Node object at 0x7f26233e8ef0>)
+INFO:root:Action : Reduce rule [factor -> primary] with [<Node @ 0x7f26233e8ef0>] and goto state 145
+INFO:root:Result : <Node @ 0x7f26233e8ef0> (<grammar.Node object at 0x7f26233e8ef0>)
+INFO:root:Action : Reduce rule [term -> factor] with [<Node @ 0x7f26233e8ef0>] and goto state 120
+INFO:root:Result : <Node @ 0x7f26233e8ef0> (<grammar.Node object at 0x7f26233e8ef0>)
+INFO:root:Action : Reduce rule [multiplying -> *] with ['*'] and goto state 203
+INFO:root:Result : <Node @ 0x7f26233f9198> (<grammar.Node object at 0x7f26233f9198>)
+INFO:root:Action : Reduce rule [literal -> INT] with [2] and goto state 139
+INFO:root:Result : <Node @ 0x7f26233f9080> (<grammar.Node object at 0x7f26233f9080>)
+INFO:root:Action : Reduce rule [primary -> literal] with [<Node @ 0x7f26233f9080>] and goto state 136
+INFO:root:Result : <Node @ 0x7f26233f9080> (<grammar.Node object at 0x7f26233f9080>)
+INFO:root:Action : Reduce rule [factor -> primary] with [<Node @ 0x7f26233f9080>] and goto state 349
+INFO:root:Result : <Node @ 0x7f26233f9080> (<grammar.Node object at 0x7f26233f9080>)
+INFO:root:Action : Reduce rule [term -> term multiplying factor] with [<Node @ 0x7f26233e8ef0>,<Node @ 0x7f26233f9198>,<Node @ 0x7f26233f9080>] and goto state 120
+INFO:root:Result : <Node @ 0x7f26233f9278> (<grammar.Node object at 0x7f26233f9278>)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<Node @ 0x7f26233f9278>] and goto state 146
+INFO:root:Result : <Node @ 0x7f26233f9278> (<grammar.Node object at 0x7f26233f9278>)
+INFO:root:Action : Reduce rule [relation -> simple_expression] with [<Node @ 0x7f26233f9278>] and goto state 147
+INFO:root:Result : <Node @ 0x7f26233f9278> (<grammar.Node object at 0x7f26233f9278>)
+INFO:root:Action : Reduce rule [expression -> relation] with [<Node @ 0x7f26233f9278>] and goto state 595
+INFO:root:Result : <Node @ 0x7f26233f9278> (<grammar.Node object at 0x7f26233f9278>)
+INFO:root:Action : Reduce rule [assign_stmt -> name ASSIGN expression ;] with [<Node @ 0x7f26233e8ba8>,':=',<Node @ 0x7f26233f9278>,';'] and goto state 308
+INFO:root:Result : <Node @ 0x7f26233f9128> (<grammar.Node object at 0x7f26233f9128>)
+INFO:root:Action : Reduce rule [simple_stmt -> assign_stmt] with [<Node @ 0x7f26233f9128>] and goto state 329
+INFO:root:Result : <Node @ 0x7f26233f9128> (<grammar.Node object at 0x7f26233f9128>)
+INFO:root:Action : Reduce rule [unlabeled -> simple_stmt] with [<Node @ 0x7f26233f9128>] and goto state 319
+INFO:root:Result : <Node @ 0x7f26233f9128> (<grammar.Node object at 0x7f26233f9128>)
+INFO:root:Action : Reduce rule [statement -> unlabeled] with [<Node @ 0x7f26233f9128>] and goto state 459
+INFO:root:Result : <Node @ 0x7f26233f9128> (<grammar.Node object at 0x7f26233f9128>)
+INFO:root:Action : Reduce rule [statement_s -> statement_s statement] with [<Node @ 0x7f26233e8400>,<Node @ 0x7f26233f9128>] and goto state 316
+INFO:root:Result : <Node @ 0x7f26233e84e0> (<grammar.Node object at 0x7f26233e84e0>)
+INFO:root:Action : Reduce rule [except_handler_part_opt -> <empty>] with [] and goto state 456
+INFO:root:Result : <Node @ 0x7f26233e8e48> (<grammar.Node object at 0x7f26233e8e48>)
+INFO:root:Action : Reduce rule [handled_stmt_s -> statement_s except_handler_part_opt] with [<Node @ 0x7f26233e84e0>,<Node @ 0x7f26233e8e48>] and goto state 314
+INFO:root:Result : <Node @ 0x7f26233f9240> (<grammar.Node object at 0x7f26233f9240>)
+INFO:root:Action : Reduce rule [block_body -> BEGIN handled_stmt_s] with ['begin',<Node @ 0x7f26233f9240>] and goto state 183
+INFO:root:Result : <Node @ 0x7f26233f92e8> (<grammar.Node object at 0x7f26233f92e8>)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['func'] and goto state 36
+INFO:root:Result : <Node @ 0x7f26233f90f0> (<grammar.Node object at 0x7f26233f90f0>)
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with [<Node @ 0x7f26233f90f0>] and goto state 68
+INFO:root:Result : <Node @ 0x7f26233f91d0> (<grammar.Node object at 0x7f26233f91d0>)
+INFO:root:Action : Reduce rule [designator -> compound_name] with [<Node @ 0x7f26233f91d0>] and goto state 425
+INFO:root:Result : <Node @ 0x7f26233f91d0> (<grammar.Node object at 0x7f26233f91d0>)
+INFO:root:Action : Reduce rule [id_opt -> designator] with [<Node @ 0x7f26233f91d0>] and goto state 426
+INFO:root:Result : <Node @ 0x7f26233f92b0> (<grammar.Node object at 0x7f26233f92b0>)
+INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END id_opt ;] with [<Node @ 0x7f26233e8080>,<Node @ 0x7f26233e89e8>,<Node @ 0x7f26233f92e8>,'end',<Node @ 0x7f26233f92b0>,';'] and goto state 28
+INFO:root:Result : <Node @ 0x7f26233f9390> (<grammar.Node object at 0x7f26233f9390>)
+INFO:root:Action : Reduce rule [unit -> subprog_body] with [<Node @ 0x7f26233f9390>] and goto state 22
+INFO:root:Result : <Node @ 0x7f26233e83c8> (<grammar.Node object at 0x7f26233e83c8>)
+INFO:root:Action : Reduce rule [pragma_s -> <empty>] with [] and goto state 47
+INFO:root:Result : <Node @ 0x7f26233f9438> (<grammar.Node object at 0x7f26233f9438>)
+INFO:root:Action : Reduce rule [comp_unit -> private_opt unit pragma_s] with [<Node @ 0x7f2624e10b70>,<Node @ 0x7f26233e83c8>,<Node @ 0x7f26233f9438>] and goto state 10
+INFO:root:Result : <Node @ 0x7f26233f9198> (<grammar.Node object at 0x7f26233f9198>)
+INFO:root:Action : Reduce rule [compilation -> compilation comp_unit] with [<Node @ 0x7f26233e80b8>,<Node @ 0x7f26233f9198>] and goto state 3
+INFO:root:Result : <Node @ 0x7f2624e10320> (<grammar.Node object at 0x7f2624e10320>)
+INFO:root:Action : Reduce rule [goal_symbol -> compilation] with [<Node @ 0x7f2624e10320>] and goto state 1
+INFO:root:Result : <Node @ 0x7f26234d8588> (<grammar.Node object at 0x7f26234d8588>)
+INFO:root:Done   : Returning <Node @ 0x7f26234d8588> (<grammar.Node object at 0x7f26234d8588>)
+INFO:root:PLY: PARSE DEBUG END

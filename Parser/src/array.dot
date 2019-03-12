@@ -1,0 +1,100 @@
+// Abstract Syntax Tree
+digraph {
+	"0x7f4bf1e81f28" [label=START]
+	"0x7f4bf1ffd710" [label=compilation]
+	"0x7f4bf1e81f28" -> "0x7f4bf1ffd710"
+	"0x7f4bf1ffd5c0" [label=compilation]
+	"0x7f4bf1ffd710" -> "0x7f4bf1ffd5c0"
+	"0x7f4bf1ffdeb8" [label=comp_unit]
+	"0x7f4bf1ffd710" -> "0x7f4bf1ffdeb8"
+	"0x7f4bf1ffd780" [label=context_spec]
+	"0x7f4bf1ffdeb8" -> "0x7f4bf1ffd780"
+	"0x7f4bf1ffd6d8" [label=with]
+	"0x7f4bf1ffd780" -> "0x7f4bf1ffd6d8"
+	"0x7f4bf2443d30" [label="Ada.Text_IO"]
+	"0x7f4bf1ffd6d8" -> "0x7f4bf2443d30"
+	"0x7f4bf3952320" [label=use_clause_opt]
+	"0x7f4bf1ffd780" -> "0x7f4bf3952320"
+	"0x7f4bf1ffd9b0" [label=USE]
+	"0x7f4bf3952320" -> "0x7f4bf1ffd9b0"
+	"0x7f4bf1ffd898" [label="Ada.Text_IO"]
+	"0x7f4bf1ffd9b0" -> "0x7f4bf1ffd898"
+	"0x7f4bf200b438" [label=unit]
+	"0x7f4bf1ffdeb8" -> "0x7f4bf200b438"
+	"0x7f4bf1ffd860" [label=IS]
+	"0x7f4bf200b438" -> "0x7f4bf1ffd860"
+	"0x7f4bf1ffd8d0" [label=procedure]
+	"0x7f4bf1ffd860" -> "0x7f4bf1ffd8d0"
+	"0x7f4bf1ffd828" [label=demo]
+	"0x7f4bf1ffd8d0" -> "0x7f4bf1ffd828"
+	"0x7f4bf1ffd7f0" [label=decl_part]
+	"0x7f4bf200b438" -> "0x7f4bf1ffd7f0"
+	"0x7f4bf1ffdcc0" [label=":"]
+	"0x7f4bf1ffd7f0" -> "0x7f4bf1ffdcc0"
+	"0x7f4bf1ffd940" [label=squares]
+	"0x7f4bf1ffdcc0" -> "0x7f4bf1ffd940"
+	"0x7f4bf1ffdb00" [label=array]
+	"0x7f4bf1ffdcc0" -> "0x7f4bf1ffdb00"
+	"0x7f4bf1ffdbe0" [label=".."]
+	"0x7f4bf1ffdb00" -> "0x7f4bf1ffdbe0"
+	"0x7f4bf1ffd7b8" [label=1]
+	"0x7f4bf1ffdbe0" -> "0x7f4bf1ffd7b8"
+	"0x7f4bf1ffda58" [label=10]
+	"0x7f4bf1ffdbe0" -> "0x7f4bf1ffda58"
+	"0x7f4bf1ffda20" [label=integer]
+	"0x7f4bf1ffdb00" -> "0x7f4bf1ffda20"
+	"0x7f4bf1ffde48" [label=":"]
+	"0x7f4bf1ffd7f0" -> "0x7f4bf1ffde48"
+	"0x7f4bf1ffdba8" [label=i]
+	"0x7f4bf1ffde48" -> "0x7f4bf1ffdba8"
+	"0x7f4bf1ffd5f8" [label=Integer]
+	"0x7f4bf1ffde48" -> "0x7f4bf1ffd5f8"
+	"0x7f4bf1ffdfd0" [label=begin]
+	"0x7f4bf200b438" -> "0x7f4bf1ffdfd0"
+	"0x7f4bf1ffdc18" [label=statement_s]
+	"0x7f4bf1ffdfd0" -> "0x7f4bf1ffdc18"
+	"0x7f4bf1ffde10" [label=":="]
+	"0x7f4bf1ffdc18" -> "0x7f4bf1ffde10"
+	"0x7f4bf1ffde80" [label=i]
+	"0x7f4bf1ffde10" -> "0x7f4bf1ffde80"
+	"0x7f4bf1ffdd30" [label=1]
+	"0x7f4bf1ffde10" -> "0x7f4bf1ffdd30"
+	"0x7f4bf200b4e0" [label=LOOP_STMT]
+	"0x7f4bf1ffdc18" -> "0x7f4bf200b4e0"
+	"0x7f4bf1ffdf98" [label=while]
+	"0x7f4bf200b4e0" -> "0x7f4bf1ffdf98"
+	"0x7f4bf200b080" [label="<"]
+	"0x7f4bf1ffdf98" -> "0x7f4bf200b080"
+	"0x7f4bf1ffdb38" [label=i]
+	"0x7f4bf200b080" -> "0x7f4bf1ffdb38"
+	"0x7f4bf1ffdef0" [label=10]
+	"0x7f4bf200b080" -> "0x7f4bf1ffdef0"
+	"0x7f4bf200b358" [label=loop]
+	"0x7f4bf200b4e0" -> "0x7f4bf200b358"
+	"0x7f4bf200b2e8" [label=statement_s]
+	"0x7f4bf200b358" -> "0x7f4bf200b2e8"
+	"0x7f4bf200b128" [label=":="]
+	"0x7f4bf200b2e8" -> "0x7f4bf200b128"
+	"0x7f4bf200b1d0" [label="squares(i)"]
+	"0x7f4bf200b128" -> "0x7f4bf200b1d0"
+	"0x7f4bf200b3c8" [label="*"]
+	"0x7f4bf200b128" -> "0x7f4bf200b3c8"
+	"0x7f4bf200b240" [label=i]
+	"0x7f4bf200b3c8" -> "0x7f4bf200b240"
+	"0x7f4bf1ffdd68" [label=2]
+	"0x7f4bf200b3c8" -> "0x7f4bf1ffdd68"
+	"0x7f4bf200b588" [label=":="]
+	"0x7f4bf200b2e8" -> "0x7f4bf200b588"
+	"0x7f4bf200b400" [label=i]
+	"0x7f4bf200b588" -> "0x7f4bf200b400"
+	"0x7f4bf200b4a8" [label="+"]
+	"0x7f4bf200b588" -> "0x7f4bf200b4a8"
+	"0x7f4bf200b320" [label=i]
+	"0x7f4bf200b4a8" -> "0x7f4bf200b320"
+	"0x7f4bf200b208" [label=5]
+	"0x7f4bf200b4a8" -> "0x7f4bf200b208"
+	"0x7f4bf200b630" [label=demo]
+	"0x7f4bf200b438" -> "0x7f4bf200b630"
+	"0x7f4bf1ffd908" [label=pragma_s]
+	"0x7f4bf1ffdeb8" -> "0x7f4bf1ffd908"
+}

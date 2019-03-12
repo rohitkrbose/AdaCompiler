@@ -1,0 +1,44 @@
+// Abstract Syntax Tree
+digraph {
+	"0x7f2bcb2a4400" [label=START]
+	"0x7f2bcb2c2ef0" [label=compilation]
+	"0x7f2bcb2a4400" -> "0x7f2bcb2c2ef0"
+	"0x7f2bcb2aa320" [label=comp_unit]
+	"0x7f2bcb2c2ef0" -> "0x7f2bcb2aa320"
+	"0x7f2bcb2a4080" [label=context_spec]
+	"0x7f2bcb2aa320" -> "0x7f2bcb2a4080"
+	"0x7f2bcb2c2ba8" [label=with]
+	"0x7f2bcb2a4080" -> "0x7f2bcb2c2ba8"
+	"0x7f2bcb2c2dd8" [label="Text_IO.X.Y.A"]
+	"0x7f2bcb2c2ba8" -> "0x7f2bcb2c2dd8"
+	"0x7f2bcb53eb38" [label=use_clause_opt]
+	"0x7f2bcb2a4080" -> "0x7f2bcb53eb38"
+	"0x7f2bcb53ea20" [label=USE]
+	"0x7f2bcb53eb38" -> "0x7f2bcb53ea20"
+	"0x7f2bcb53ee80" [label="Text_IO, CoolIO, HotIO"]
+	"0x7f2bcb53ea20" -> "0x7f2bcb53ee80"
+	"0x7f2bcb2c2f60" [label=UNIT]
+	"0x7f2bcb2aa320" -> "0x7f2bcb2c2f60"
+	"0x7f2bcb2aa3c8" [label=subprog_body]
+	"0x7f2bcb2c2f60" -> "0x7f2bcb2aa3c8"
+	"0x7f2bcb2c2fd0" [label=IS]
+	"0x7f2bcb2aa3c8" -> "0x7f2bcb2c2fd0"
+	"0x7f2bcb2aa080" [label=procedure]
+	"0x7f2bcb2c2fd0" -> "0x7f2bcb2aa080"
+	"0x7f2bcb2c2f28" [label=Hello]
+	"0x7f2bcb2aa080" -> "0x7f2bcb2c2f28"
+	"0x7f2bcb2c2f98" [label=decl_part]
+	"0x7f2bcb2aa3c8" -> "0x7f2bcb2c2f98"
+	"0x7f2bcb2aa358" [label=begin]
+	"0x7f2bcb2aa3c8" -> "0x7f2bcb2aa358"
+	"0x7f2bcb2aa208" [label=":="]
+	"0x7f2bcb2aa358" -> "0x7f2bcb2aa208"
+	"0x7f2bcb2aa128" [label=a]
+	"0x7f2bcb2aa208" -> "0x7f2bcb2aa128"
+	"0x7f2bcb2c2c18" [label=5]
+	"0x7f2bcb2aa208" -> "0x7f2bcb2c2c18"
+	"0x7f2bcb2aa198" [label=Hello]
+	"0x7f2bcb2aa3c8" -> "0x7f2bcb2aa198"
+	"0x7f2bcb2aa400" [label=pragma_s]
+	"0x7f2bcb2aa320" -> "0x7f2bcb2aa400"
+}

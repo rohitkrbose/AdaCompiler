@@ -1,0 +1,106 @@
+// Abstract Syntax Tree
+digraph {
+	"0x7f52b9c37fd0" [label=START]
+	"0x7f52b9c40a20" [label=compilation]
+	"0x7f52b9c37fd0" -> "0x7f52b9c40a20"
+	"0x7f52b9c407b8" [label=compilation]
+	"0x7f52b9c40a20" -> "0x7f52b9c407b8"
+	"0x7f52b9c40048" [label=comp_unit]
+	"0x7f52b9c40a20" -> "0x7f52b9c40048"
+	"0x7f52b9c40a58" [label=context_spec]
+	"0x7f52b9c40048" -> "0x7f52b9c40a58"
+	"0x7f52b9c409b0" [label=with]
+	"0x7f52b9c40a58" -> "0x7f52b9c409b0"
+	"0x7f52b9c400b8" [label="Ada.Text_IO, Ada.Integer_Text_IO"]
+	"0x7f52b9c409b0" -> "0x7f52b9c400b8"
+	"0x7f52b9c44748" [label=unit]
+	"0x7f52b9c40048" -> "0x7f52b9c44748"
+	"0x7f52b9c40ac8" [label=IS]
+	"0x7f52b9c44748" -> "0x7f52b9c40ac8"
+	"0x7f52b9c40c50" [label=procedure]
+	"0x7f52b9c40ac8" -> "0x7f52b9c40c50"
+	"0x7f52b9c40128" [label=Fibonacci]
+	"0x7f52b9c40c50" -> "0x7f52b9c40128"
+	"0x7f52b9c40780" [label=decl_part]
+	"0x7f52b9c44748" -> "0x7f52b9c40780"
+	"0x7f52b9c40fd0" [label=begin]
+	"0x7f52b9c44748" -> "0x7f52b9c40fd0"
+	"0x7f52b9c44b00" [label=BLOCK]
+	"0x7f52b9c40fd0" -> "0x7f52b9c44b00"
+	"0x7f52b9c447b8" [label=declare]
+	"0x7f52b9c44b00" -> "0x7f52b9c447b8"
+	"0x7f52b9c40da0" [label=decl_part]
+	"0x7f52b9c447b8" -> "0x7f52b9c40da0"
+	"0x7f52b9c44668" [label=decl_item_or_body_s]
+	"0x7f52b9c40da0" -> "0x7f52b9c44668"
+	"0x7f52b9c40b70" [label=IS]
+	"0x7f52b9c44668" -> "0x7f52b9c40b70"
+	"0x7f52b9c40c18" [label=function]
+	"0x7f52b9c40b70" -> "0x7f52b9c40c18"
+	"0x7f52b9c409e8" [label=Fib]
+	"0x7f52b9c40c18" -> "0x7f52b9c409e8"
+	"0x7f52b9c40ef0" [label=None]
+	"0x7f52b9c40c18" -> "0x7f52b9c40ef0"
+	"0x7f52b9c40cc0" [label=N]
+	"0x7f52b9c40ef0" -> "0x7f52b9c40cc0"
+	"0x7f52b9c40c88" [label=Integer]
+	"0x7f52b9c40ef0" -> "0x7f52b9c40c88"
+	"0x7f52b9c40d30" [label=Integer]
+	"0x7f52b9c40c18" -> "0x7f52b9c40d30"
+	"0x7f52b9c40cf8" [label=decl_part]
+	"0x7f52b9c44668" -> "0x7f52b9c40cf8"
+	"0x7f52b9c40dd8" [label=begin]
+	"0x7f52b9c44668" -> "0x7f52b9c40dd8"
+	"0x7f52b9c446a0" [label=return]
+	"0x7f52b9c40dd8" -> "0x7f52b9c446a0"
+	"0x7f52b9c442e8" [label="+"]
+	"0x7f52b9c446a0" -> "0x7f52b9c442e8"
+	"0x7f52b9c442b0" [label="Fib(-)"]
+	"0x7f52b9c442e8" -> "0x7f52b9c442b0"
+	"0x7f52b9c44048" [label=Fib]
+	"0x7f52b9c442b0" -> "0x7f52b9c44048"
+	"0x7f52b9c44160" [label="-"]
+	"0x7f52b9c442b0" -> "0x7f52b9c44160"
+	"0x7f52b9c40f98" [label=N]
+	"0x7f52b9c44160" -> "0x7f52b9c40f98"
+	"0x7f52b9c40b38" [label=1]
+	"0x7f52b9c44160" -> "0x7f52b9c40b38"
+	"0x7f52b9c445c0" [label="Fib(-)"]
+	"0x7f52b9c442e8" -> "0x7f52b9c445c0"
+	"0x7f52b9c44128" [label=Fib]
+	"0x7f52b9c445c0" -> "0x7f52b9c44128"
+	"0x7f52b9c44470" [label="-"]
+	"0x7f52b9c445c0" -> "0x7f52b9c44470"
+	"0x7f52b9c44240" [label=N]
+	"0x7f52b9c44470" -> "0x7f52b9c44240"
+	"0x7f52b9c44198" [label=2]
+	"0x7f52b9c44470" -> "0x7f52b9c44198"
+	"0x7f52b9c44080" [label=Fib]
+	"0x7f52b9c44668" -> "0x7f52b9c44080"
+	"0x7f52b9c447f0" [label=":"]
+	"0x7f52b9c40da0" -> "0x7f52b9c447f0"
+	"0x7f52b9c40940" [label=i]
+	"0x7f52b9c447f0" -> "0x7f52b9c40940"
+	"0x7f52b9c44710" [label=Integer]
+	"0x7f52b9c447f0" -> "0x7f52b9c44710"
+	"0x7f52b9c44978" [label=begin]
+	"0x7f52b9c44b00" -> "0x7f52b9c44978"
+	"0x7f52b9c44ac8" [label=statement_s]
+	"0x7f52b9c44978" -> "0x7f52b9c44ac8"
+	"0x7f52b9c44898" [label=":="]
+	"0x7f52b9c44ac8" -> "0x7f52b9c44898"
+	"0x7f52b9c40588" [label=i]
+	"0x7f52b9c44898" -> "0x7f52b9c40588"
+	"0x7f52b9c44400" [label=1]
+	"0x7f52b9c44898" -> "0x7f52b9c44400"
+	"0x7f52b9c44828" [label="Ada.Text_IO.Put(\"...\")"]
+	"0x7f52b9c44ac8" -> "0x7f52b9c44828"
+	"0x7f52b9c44940" [label="Ada.Text_IO.Put"]
+	"0x7f52b9c44828" -> "0x7f52b9c44940"
+	"0x7f52b9c445f8" [label="\"...\""]
+	"0x7f52b9c44828" -> "0x7f52b9c445f8"
+	"0x7f52b9c44b70" [label=Fibonacci]
+	"0x7f52b9c44748" -> "0x7f52b9c44b70"
+	"0x7f52b9c407f0" [label=pragma_s]
+	"0x7f52b9c40048" -> "0x7f52b9c407f0"
+}
