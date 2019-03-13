@@ -6,6 +6,9 @@ begin
    	if Temperature < 50 then
    		k := 4;
    		k := k*k;
-   	end if;
+      else
+         k := 3;
+      end if;
    end if;
+   k := 2;
 end ;

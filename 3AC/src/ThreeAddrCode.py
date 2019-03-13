@@ -33,11 +33,7 @@ class ThreeAddrCode:
 
 	def output (self):
 		for line in self.code_list:
-			if (line[1][:4] == 'goto' and line[2] == None):
-				line[2] = 0
 			print (line)
-		end_line = [0,'end_prog',None,None,None]
-		print (end_line)
 
 	def makeList (self, i):
 		return ([i])

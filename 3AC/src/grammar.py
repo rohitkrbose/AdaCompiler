@@ -1,4 +1,5 @@
 # http://www.adaic.org/resources/add_content/standards/95lrm/grammar9x.y
+# TO DO... break statement, print statements, string handling, error handling, extra features
 
 import sys, re, os, logging
 from ply import lex, yacc
@@ -43,6 +44,7 @@ def p_decl(p):
 	   | type_decl
 	   | subtype_decl
 	   | subprog_decl
+	   | lambda_stmt
 	'''
 
 def p_object_decl(p):
@@ -261,38 +263,43 @@ def p_operator_symbol(p):
 	'''
 
 def p_indexed_comp(p):
-    '''indexed_comp : name '(' value_s ')'
-    '''
-    p[0] = deepcopy(p[1])
-    if (p[1]['what'] == 'array'):
-        array_dims = [x-y+1 for x,y in zip(p[1]['r_end_s'],p[1]['r_start_s'])]
-        ind_s = p[3]
-        dim = len(ind_s)
-        off = 0
-        tp = None
-        for d in range (dim-1):
-            t1 = TAC.newTemp('Integer', ST)
-            t2 = TAC.newTemp('Integer', ST)
-            TAC.emit(op='-',lhs=t1,op1=p[3][d],op2=p[1]['r_start_s'][d])
-            TAC.emit(op='*',lhs=t2,op1=t1,op2=array_dims[d])
-            if(tp==None):
-                tp = t2
-            else:
-                t3 = TAC.newTemp('Integer',ST)
-                TAC.emit(op='+',lhs=t3,op1=t2,op2=tp)
-                tp = t3
-        if(tp==None):
-            t5 = TAC.newTemp('Integer',ST)
-            TAC.emit(op='-',lhs=t5,op1=p[3][dim-1],op2=p[1]['r_start_s'][dim-1])
-        else:
-            t4 = TAC.newTemp('Integer',ST)
-            TAC.emit(op='-',lhs=t4,op1=p[3][dim-1],op2=p[1]['r_start_s'][dim-1])
-            t5 = TAC.newTemp('Integer',ST)
-            TAC.emit(op='+',lhs=t5,op1=t4,op2=tp)
-        t6 = TAC.newTemp('Integer',ST)
-        TAC.emit(op='*',lhs=t6,op1=t5,op2=ST.table[p[1]['type']]['width'])
-        # Need to care about base address later on
-        p[0]['tag'] = p[1]['tag'] + '+' + t6
+	'''indexed_comp : name '(' value_s ')'
+	'''
+	p[0] = deepcopy(p[1])
+	if (p[1]['what'] == 'array'):
+		array_dims = [x-y+1 for x,y in zip(p[1]['r_end_s'],p[1]['r_start_s'])]
+		ind_s = p[3]
+		dim = len(ind_s)
+		off = 0
+		tp = None
+		for d in range (dim-1):
+			t1 = TAC.newTemp('Integer', ST)
+			t2 = TAC.newTemp('Integer', ST)
+			TAC.emit(op='-',lhs=t1,op1=p[3][d],op2=p[1]['r_start_s'][d])
+			TAC.emit(op='*',lhs=t2,op1=t1,op2=array_dims[d])
+			if(tp==None):
+				tp = t2
+			else:
+				t3 = TAC.newTemp('Integer',ST)
+				TAC.emit(op='+',lhs=t3,op1=t2,op2=tp)
+				tp = t3
+		if(tp==None):
+			t5 = TAC.newTemp('Integer',ST)
+			TAC.emit(op='-',lhs=t5,op1=p[3][dim-1],op2=p[1]['r_start_s'][dim-1])
+		else:
+			t4 = TAC.newTemp('Integer',ST)
+			TAC.emit(op='-',lhs=t4,op1=p[3][dim-1],op2=p[1]['r_start_s'][dim-1])
+			t5 = TAC.newTemp('Integer',ST)
+			TAC.emit(op='+',lhs=t5,op1=t4,op2=tp)
+		t6 = TAC.newTemp('Integer',ST)
+		TAC.emit(op='*',lhs=t6,op1=t5,op2=ST.table[p[1]['type']]['width'])
+		# Need to care about base address later on
+		p[0]['tag'] = p[1]['tag'] + '+' + t6
+	elif (p[1]['what'] == 'function' or p[1]['what'] == 'procedure'):
+		param_s = ''
+		for param in p[3]:
+			param_s += str(param['tag'] if TAC.isDict(param) else param)
+		TAC.emit(op="call", lhs=p[1]['tag'], op1=param_s)
 
 def p_value_s(p):
 	'''value_s : value
@@ -314,10 +321,19 @@ def p_selected_comp(p):
 	'''
 
 def p_literal(p):
-	'''literal : INT
-	   | NuLL
+	'''literal : numeric_lit
+	'''
+	p[0] = p[1]
+
+def p_numeric_lit1 (p):
+	'''numeric_lit : INT
 	'''
 	p[0] = {'tag' : p[1], 'type': 'Integer'}
+
+def p_numeric_lit2 (p):
+	'''numeric_lit : FLOAT
+	'''
+	p[0] = {'tag' : p[1], 'type': 'Float'}
 
 def p_M (p):
 	''' M : 
@@ -460,13 +476,36 @@ def p_compound_stmt(p):
 	   | block
 	'''
 	p[0] = deepcopy(p[1])
-	
+
+def p_lambda_stmt (p):
+	'''lambda_stmt : lambda_begin simple_expression ';'
+	'''
+	global ST
+	ST.printTable()
+	ST = ST.endScope();
+	print ('$$$$$$$$$$$$$$$$$$$$$$$$')
+	ST.printTable()
+	p[0] = deepcopy(p[1])
+	p[0]['next_list'] = []
+
+def p_lambda_begin (p):
+	'''lambda_begin : def_id ASSIGN LAMBDA param ':'
+	'''
+	global ST
+	f_name = p[1]
+	attr_dict = {'tag': f_name, 'what': 'l_function', 'param_dict': p[4]}
+	ST.insert(f_name, attr_dict)
+	ST = ST.beginScope()
+	for k,v in attr_dict['param_dict'].items():
+		ST.insert(k, v)
+	p[0] = ST.parentTable.table[f_name]
+
 # Changed grammar from # assign_stmt : name ASSIGN expression ';'
 def p_assign_stmt(p):
 	'''assign_stmt : name ASSIGN simple_expression ';'
 	'''
 	p[0] = {}
-	p[0]['type'] = 'assign_statement'
+	p[0]['type'] = 'assign_stmt'
 	p[0]['next_list'] = []
 	TAC.emit(lhs=p[1]['tag'],op1=p[3],op='=')
 	
@@ -540,8 +579,8 @@ def p_block_decl(p):
 def p_block_body(p):
 	'''block_body : BEGIN statement_s
 	'''
+	p[0] = p[2]
 
-# Changed grammar from return_stmt : RETURN ';' | RETURN expression ';'
 def p_return_stmt(p):
 	'''return_stmt : RETURN ';'
 	   | RETURN simple_expression ';'
@@ -549,7 +588,9 @@ def p_return_stmt(p):
 	p[0] = {}
 	p[0]['what'] = 'statement'
 	p[0]['type'] = 'return_stmt'
-	p[0]['return'] = p[2] if len(p) > 2 else {}
+	p[0]['return_what'] = p[2] if len(p) > 2 else {}
+	p[0]['next_list'] = []
+	TAC.emit (op='return',op1=p[2])
 
 def p_subprog_decl(p):
 	'''subprog_decl : subprog_spec ';'
@@ -566,7 +607,7 @@ def p_subprog_spec(p):
 	if (len(p) == 4):
 		attr_dict = {'tag': sp_name, 'param_dict': p[3], 'what': 'procedure'}
 	else:
-		attr_dict = {'tag': sp_name, 'param_dict': p[3], 'what': 'function', 'return_type': p[5]}
+		attr_dict = {'tag': sp_name, 'param_dict': p[3], 'what': 'function', 'type': p[5]}
 	ST.insert(sp_name, attr_dict)
 	p[0] = ST.getAttrDict(sp_name)
 	
@@ -606,8 +647,10 @@ def p_subprog_spec_is_push(p):
 	'''
 	global ST
 	p[0] = deepcopy (p[1])
-	p[0]['next_list'] = [] if ST.parentTable == None else [TAC.getline()]
+	p[0]['next_list'] = [] if ST.parentTable == None else [TAC.getLine()]
 	ST = ST.beginScope()
+	for param, param_attr_dict in p[1]['param_dict'].items():
+		ST.insert(param, param_attr_dict)
 
 def p_subprog_body(p):
 	'''subprog_body : subprog_spec_is_push decl_part block_body END ';'
