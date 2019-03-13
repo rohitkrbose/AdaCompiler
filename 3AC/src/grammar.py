@@ -546,6 +546,10 @@ def p_return_stmt(p):
 	'''return_stmt : RETURN ';'
 	   | RETURN simple_expression ';'
 	'''
+	p[0] = {}
+	p[0]['what'] = 'statement'
+	p[0]['type'] = 'return_stmt'
+	p[0]['return'] = p[2] if len(p) > 2 else {}
 
 def p_subprog_decl(p):
 	'''subprog_decl : subprog_spec ';'
@@ -557,13 +561,14 @@ def p_subprog_decl(p):
 def p_subprog_spec(p):
 	'''subprog_spec : PROCEDURE def_id formal_part_opt
 	   | FUNCTION def_id formal_part_opt RETURN name
-	   | FUNCTION def_id
 	'''
+	sp_name = p[2]
 	if (len(p) == 4):
-		proc_name = p[2]
-		attr_dict = {'tag': proc_name, 'param_dict': p[3], 'what': 'procedure'}
-		ST.insert(proc_name, attr_dict)
-		p[0] = ST.getAttrDict(proc_name)
+		attr_dict = {'tag': sp_name, 'param_dict': p[3], 'what': 'procedure'}
+	else:
+		attr_dict = {'tag': sp_name, 'param_dict': p[3], 'what': 'function', 'return_type': p[5]}
+	ST.insert(sp_name, attr_dict)
+	p[0] = ST.getAttrDict(sp_name)
 	
 def p_formal_part_opt(p):
 	'''formal_part_opt : 
@@ -589,6 +594,7 @@ def p_param_s(p):
 def p_param(p):
 	'''param : def_id_s ':' mark
 	'''
+	def_id_s = p[1]
 	p[0] = {}
 	for id in def_id_s:
 		dtype = p[3]['tag']
@@ -598,10 +604,17 @@ def p_param(p):
 def p_subprog_spec_is_push(p):
 	'''subprog_spec_is_push : subprog_spec IS
 	'''
-	
+	global ST
+	p[0] = deepcopy (p[1])
+	p[0]['next_list'] = [] if ST.parentTable == None else [TAC.getline()]
+	ST = ST.beginScope()
+
 def p_subprog_body(p):
 	'''subprog_body : subprog_spec_is_push decl_part block_body END ';'
 	'''
+	global ST
+	p[0] = deepcopy(p[3])
+	ST = ST.endScope()
 	
 def p_procedure_call(p):
 	'''procedure_call : name ';'

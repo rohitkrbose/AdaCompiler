@@ -1,5 +1,3 @@
-with Ada.Text_IO, Ada.Integer_Text_IO;
-
 procedure Fibonacci is
 begin
    declare 

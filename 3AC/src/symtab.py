@@ -12,9 +12,11 @@ class SymbolTable:
 
 	def __init__ (self, parentTable = None):
 		self.parentTable = parentTable
-		if (self.parentTable == None):
+		if parentTable == None :
 			self.table = {'Integer': {'tag': 'Integer', 'what': 'type', 'width': 4},
 						'Float': {'tag': 'Float', 'what': 'type', 'width': 8}	}
+		else:
+			self.table = {}
 
 	def insert (self, var, attr_dict):
 		if var in self.table.keys():
@@ -67,9 +69,9 @@ class SymbolTable:
 
 # parameter pass by reference may need to be handled differently
 
-	def funcDeclare (self, var, attr_dict):
+	def spDeclare (self, var, attr_dict):
 		if var in self.parentTable.table.keys():
-			print ('ERROR: Entity already exists')
+			print (var, 'ERROR: Entity already exists')
 			return False
 		else:
 			self.parentTable.insert(var, attr_dict)

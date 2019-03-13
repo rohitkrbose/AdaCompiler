@@ -7,7 +7,5 @@ begin
    		k := 4;
    		k := k*k;
    	end if;
-   else
-   	k := 4+k;
    end if;
 end ;

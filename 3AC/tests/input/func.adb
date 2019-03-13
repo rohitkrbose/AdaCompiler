@@ -1,8 +1,8 @@
-procedure func is
-    i,j,k,l : Integer;
+function Minimum (A, B: Integer) return Integer is
 begin
-    i := 1;
-    j := 2;
-    i := i * j;
-end func;
-
+   if A <= B then
+      A := 5;
+   else
+      A := 6;
+   end if;
+end Minimum;

@@ -8,9 +8,6 @@ prog_name = sys.argv[1]
 with open(prog_name) as fp:
 	code = fp.read()
 	code = re.sub(re.compile("--.*?\n" ) ,"" ,code) 
-
-# code += '\nFIN;'
-# print (code)
 	
 log_file_name = 'parselog.txt'
 logging.basicConfig(level = logging.INFO, filename = log_file_name, filemode = 'w')
