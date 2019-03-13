@@ -14,7 +14,7 @@ TAC = ThreeAddrCode()
 def p_goal_symbol(p):
 	'''goal_symbol : compilation
 	'''
-	ST.printTable()
+	# ST.printTable()
 	TAC.output()
 
 def p_pragma(p):
@@ -29,8 +29,8 @@ def p_pragma_arg_s(p):
 	p[0] = [p[1]] if len(p) == 2 else p[1] + [p[3]]
 
 def p_pragma_arg(p):
-	'''pragma_arg : expression
-	   | simple_name ARROW expression
+	'''pragma_arg : simple_expression
+	   | simple_name ARROW simple_expression
 	'''	
 
 def p_pragma_s(p):
@@ -331,8 +331,8 @@ def p_expression(p):
 	if (len(p) == 2):
 		p[0] = p[1]
 	else:
-		p[0] = deepcopy(p[4])
-		temp_var = TAC.newTemp(p[1]['type'], ST)
+		p[0] = {}
+		temp_var = TAC.newTemp('bool', ST)
 		p[0]['tag'] = temp_var
 		if (p[2] == 'OR'):
 			TAC.backpatch(p[1]['false_list'],p[3]['quad'])
@@ -354,11 +354,11 @@ def p_relation(p):
 	'''relation : simple_expression relational simple_expression
 	'''
 	p[0] = {}
-	p[0]['type'] = 'relation'
+	p[0]['type'] = 'bool'
 	p[0]['true_list'] = TAC.makeList(TAC.getLine())
 	p[0]['false_list'] = TAC.makeList(TAC.getLine() + 1)
 	TAC.emit(op='goto_' + p[2], op1=p[1], op2=p[3], lhs=None)
-	TAC.emit(op='goto_', lhs = None)
+	TAC.emit(op='goto', lhs=None)
 	
 def p_relational(p):
 	'''relational : '='
@@ -409,10 +409,13 @@ def p_multiplying(p):
 	'''
 	p[0] = p[1]
 
+# need to handle NOT
 def p_factor(p):
 	'''factor : primary
+			| NOT primary
 	'''
-	p[0] = p[1]
+	if (len(p) == 2):
+		p[0] = p[1]
 
 def p_primary(p):
 	'''primary : literal
@@ -433,20 +436,16 @@ def p_statement_s(p):
 	'''
 	p[0] = deepcopy(p[1])
 	if (len(p) > 2):
-		p[0] = deepcopy(p[3])
+		p[0] = deepcopy(p[1])
 		TAC.backpatch(p[1]['next_list'], p[2]['quad'])
 		p[0]['next_list'] = p[3]['next_list']
 	
 def p_statement(p):
-	'''statement : unlabeled
+	'''statement : simple_stmt
+		| compound_stmt
 	'''
 	p[0] = p[1]
-	
-def p_unlabeled(p):
-	'''unlabeled : simple_stmt
-	   | compound_stmt
-	'''
-	p[0] = p[1]
+	p[0]['type'] = 'statement'
 
 def p_simple_stmt(p):
 	'''simple_stmt : assign_stmt
@@ -454,8 +453,6 @@ def p_simple_stmt(p):
 	   | procedure_call
 	'''
 	p[0] = p[1]
-	if p[0] == None or not 'next_list' in p[0]:
-		p[0] = {'next_list': []}
 
 def p_compound_stmt(p):
 	'''compound_stmt : if_stmt
@@ -463,49 +460,37 @@ def p_compound_stmt(p):
 	   | block
 	'''
 	p[0] = deepcopy(p[1])
-	p[0]['next_list'] = []
 	
 # Changed grammar from # assign_stmt : name ASSIGN expression ';'
 def p_assign_stmt(p):
 	'''assign_stmt : name ASSIGN simple_expression ';'
 	'''
-	print ('zzzzz', p[1], p[3])
-	TAC.emit(lhs=p[1]['tag'],op1=p[3],op='ASSIGN')
-	# TAC.resetTemp(ST)
+	p[0] = {}
+	p[0]['type'] = 'assign_statement'
+	p[0]['next_list'] = []
+	TAC.emit(lhs=p[1]['tag'],op1=p[3],op='=')
 	
 def p_if_stmt(p):
-	'''if_stmt : IF cond_clause_s else_opt END IF ';'
+	'''if_stmt : IF cond_clause else_opt END IF ';'
 	'''
-	p[0] = deepcopy(p[2])
+	p[0] = {}
+	p[0]['type'] = 'if_stmt'
 	p[0]['next_list'] = TAC.merge(p[2]['next_list'], p[3]['next_list'])
 	TAC.backpatch(p[2]['false_list'], p[3]['quad'])
-	
-def p_cond_clause_s(p):
-	'''cond_clause_s : cond_clause
-	   | cond_clause_s ELSIF M cond_clause
-	'''
-	p[0] = deepcopy(p[1])
-	if (len(p) > 2):
-		p[0]['next_list'] = TAC.merge(p[1]['next_list'], p[4]['next_list'])
-		TAC.backpatch(p[1]['false_list'], p[3]['quad'])
-		p[0]['false_list'] = p[4]['false_list']
 
 def p_N (p):
-	''' N : 
+	'''N :
 	'''
-	p[0] = {'next_list': [TAC.getLine()]}
+	p[0] = {'quad': TAC.getLine()}
+	TAC.emit(op='goto',lhs=None)
 
+# Changed the last statement, it was buggy # p[0]['next_list'] = merge([p[2]["quad"]], p[4]["nextlist"])
 def p_cond_clause(p):
-	'''cond_clause : cond_part M statement_s N
+	'''cond_clause : condition THEN M statement_s N
 	'''
-	TAC.backpatch(p[1]['true_list'], p[2]['quad'])
+	TAC.backpatch(p[1]['true_list'], p[3]['quad'])
 	p[0] = deepcopy(p[1])
-	p[0]['next_list'] = TAC.merge(p[3]['next_list'], p[4]['next_list'])
-	
-def p_cond_part(p):
-	'''cond_part : condition THEN
-	'''
-	p[0] = deepcopy(p[1])
+	p[0]['next_list'] = [p[5]['quad']]
 	
 def p_condition(p):
 	'''condition : expression
@@ -516,33 +501,35 @@ def p_else_opt(p):
 	'''else_opt :
 	   | ELSE M statement_s
 	'''
-	p[0] = {'next_list': []}
 	if len(p) == 1:
+		p[0] = {'next_list': []}
 		p[0]['quad'] = TAC.getLine()
 	else:
 		p[0] = deepcopy(p[3])
 		p[0]['quad'] = p[2]['quad']
 	
 def p_loop_stmt(p):
-	'''loop_stmt : label_opt iteration basic_loop ';'
+	'''loop_stmt : iteration M basic_loop ';'
 	'''
-	
-def p_label_opt(p):
-	'''label_opt :
-	   | IDENTIFIER ':'
-	'''
+	p[0] = deepcopy(p[3])
+	TAC.backpatch(p[3]['next_list'], p[1]['quad'])
+	TAC.emit(op='goto', lhs=p[1]['quad'])
+	TAC.backpatch(p[1]['true_list'], p[2]['quad'])
+	p[0]['next_list'] = p[1]['false_list']
 
 def p_iteration(p):
-	'''iteration :
-	   | WHILE condition
+	'''iteration : WHILE M condition
 	'''
+	p[0] = deepcopy(p[3])
+	p[0]['quad'] = p[2]['quad']
 	
 def p_basic_loop(p):
 	'''basic_loop : LOOP statement_s END LOOP
 	'''
-
+	p[0] = deepcopy(p[2])
+	
 def p_block(p):
-	'''block : label_opt block_decl block_body END ';'
+	'''block : block_decl block_body END ';'
 	'''
 	
 def p_block_decl(p):

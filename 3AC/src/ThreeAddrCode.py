@@ -33,7 +33,8 @@ class ThreeAddrCode:
 
 	def output (self):
 		for line in self.code_list:
-			print (line)
+			if not (line[1][:4] == 'goto' and line[2] == None):
+				print (line)
 
 	def makeList (self, i):
 		return ([i])
@@ -43,5 +44,4 @@ class ThreeAddrCode:
 
 	def backpatch (self, p, i):
 		for l in p:
-			ac = self.code_list[l]
-			ac[2] = i # LHS placeholder contains jump label
+			self.code_list[l-1][2] = i # line numbers are indexed from 1, LHS placeholder contains jump label
