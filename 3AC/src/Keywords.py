@@ -76,7 +76,8 @@ reserved = {
 	'raise':'RAISE',
 	'array':'ARRAY',
 	'digits':'DIGITS',
-	'lambda':'LAMBDA'
+	'lambda':'LAMBDA',
+	'what' : 'WHAT'
 	# 'storage_element':'STORAGE_ELEMENT_TYPE',
  #    'storage_array':'STORAGE_ARRAY_TYPE',
  #    'storage_offset':'STORAGE_OFFSET_TYPE',
