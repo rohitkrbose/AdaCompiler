@@ -49,6 +49,7 @@ def p_decl(p):
 	   | subprog_decl
 	   | lambda_decl
 	'''
+	p[0] = p[1]
 
 def p_object_decl(p):
 	'''object_decl : def_id_s ':' object_type_def ';'   
@@ -178,6 +179,7 @@ def p_decl_item(p):
 	   | use_clause
 	   | pragma
 	'''
+	p[0] = p[1]
 
 def p_decl_item_or_body_s(p):
 	'''decl_item_or_body_s : decl_item_or_body
@@ -272,8 +274,8 @@ def p_indexed_comp(p):
 			# Need to care about base address later on
 			p[0]['tag'] = p[1]['tag'] + '+' + t6
 	elif (p[1]['what'] == 'function' or p[1]['what'] == 'procedure'):
-		if len(p[3])!=len(ST.getAttrVal(p[1]['tag'],'param_dict')):
-			print('ERROR: different number of arguments needed !')
+		if len(p[3]) != len(ST.getAttrVal(p[1]['tag'],'param_dict')):
+			print('ERROR: Different number of arguments needed !')
 			p_error(p)
 		else:		
 			param_s = ''
@@ -281,6 +283,20 @@ def p_indexed_comp(p):
 			for param in p[3]:
 				param_s += str(param['tag'] if TAC.isDict(param) else param)	
 			TAC.emit(op="call", lhs=p[1]['tag'], op1=param_s)
+	else:
+		p[0] = p[1]['tag']
+		if p[1]['tag'] == 'print':
+			for item in p[3]:
+				TAC.emit(op='print', op1=item)
+		elif p[1]['tag'] == 'scan':
+			if len(p[3]) > 1:
+				print('ERROR. Only one variable can be scanned at a time.')
+				p_error(p)
+			for item in p[3]:
+				TAC.emit(op='scan', op1=item)
+		else:
+			print("ERROR. Function not defined.")
+			p_error(p)
 
 def p_value_s(p):
 	'''value_s : value
@@ -697,7 +713,7 @@ def p_procedure_call(p):
 	p[0]['type'] = 'procedure_call'
 	p[0]['call_what'] = p[1]['tag']
 	p[0]['next_list'] = []
-	TAC.emit(op="call", lhs=p[1]['tag'])
+	TAC.emit(op='call', lhs=p[1]['tag'])
 	
 def p_use_clause(p):
 	'''use_clause : USE name_s ';'

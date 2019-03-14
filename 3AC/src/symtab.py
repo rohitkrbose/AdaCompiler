@@ -14,7 +14,9 @@ class SymbolTable:
 		self.parentTable = parentTable
 		if parentTable == None :
 			self.table = {'Integer': {'tag': 'Integer', 'what': 'type', 'width': 4},
-						'Float': {'tag': 'Float', 'what': 'type', 'width': 8}	}
+						'Float': {'tag': 'Float', 'what': 'type', 'width': 8},
+						'print': {'tag': 'print', 'what': 'default_function'},
+						'scan' : {'tag': 'scan', 'what': 'default_function'}	}
 		else:
 			self.table = {}
 
