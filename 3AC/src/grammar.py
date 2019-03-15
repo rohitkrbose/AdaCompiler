@@ -1,5 +1,5 @@
 # http://www.adaic.org/resources/add_content/standards/95lrm/grammar9x.y
-# TO DO... switch statement, string handling
+# TO DO... switch statement
 
 import sys, re, os, logging
 from ply import lex, yacc
@@ -49,7 +49,7 @@ def p_decl(p):
 	   | subprog_decl
 	   | lambda_decl
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 def p_object_decl(p):
 	'''object_decl : def_id_s ':' object_type_def ';'   
@@ -101,7 +101,7 @@ def p_object_type_def(p):
 	'''object_type_def : type_ind
 	   | array_type
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 def p_record_decl(p):
 	'''record_decl : TYPE IDENTIFIER IS record_def ';'
@@ -122,7 +122,7 @@ def p_record_decl(p):
 def p_type_ind(p):
 	'''type_ind : name
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 def p_range(p):
 	'''range : simple_expression DOTDOT simple_expression
@@ -203,7 +203,10 @@ def p_name(p):
 	'''name : compound_name
 	   | indexed_comp
 	'''
-	p[0] = ST.getAttrDict(p[1])
+	if not isinstance(p[1], dict):
+		p[0] = ST.getAttrDict(p[1])
+	else:
+		p[0] = deepcopy(p[1])
 	
 def p_mark(p):
 	'''mark : name
@@ -232,6 +235,7 @@ def p_c_name_list(p):
 
 def p_indexed_comp(p):
 	'''indexed_comp : name '(' value_s ')'
+		| name '(' STRING ')'
 	'''
 
 	p[0] = deepcopy(p[1])
@@ -241,7 +245,7 @@ def p_indexed_comp(p):
 			p_error(p)
 		else:
 			for i,x in enumerate(p[3]):
-				if x['type']!='Integer' :
+				if x['type'] != 'Integer' :
 					print('ERROR: Array Index not of Integer type !')
 					p_error(p)
 					return						
@@ -261,7 +265,7 @@ def p_indexed_comp(p):
 					t3 = TAC.newTemp('Integer',ST)
 					TAC.emit(op='+',lhs=t3,op1=t2,op2=tp)
 					tp = t3
-			if(tp==None):
+			if (tp == None):
 				t5 = TAC.newTemp('Integer',ST)
 				TAC.emit(op='-',lhs=t5,op1=p[3][dim-1],op2=p[1]['r_start_s'][dim-1])
 			else:
@@ -270,7 +274,7 @@ def p_indexed_comp(p):
 				t5 = TAC.newTemp('Integer',ST)
 				TAC.emit(op='+',lhs=t5,op1=t4,op2=tp)
 			t6 = TAC.newTemp('Integer',ST)
-			TAC.emit(op='*',lhs=t6,op1=t5,op2=ST.table[p[1]['type']]['width'])
+			TAC.emit(op='*',lhs=t6,op1=t5,op2=ST.getWidth(p[1]['type']))
 			# Need to care about base address later on
 			p[0]['tag'] = p[1]['tag'] + '+' + t6
 	elif (p[1]['what'] == 'function' or p[1]['what'] == 'procedure'):
@@ -279,23 +283,25 @@ def p_indexed_comp(p):
 			p_error(p)
 		else:		
 			param_s = ''
-			# arguments= ST.getAttrVal(p[1]['tag'],'param_dict')
 			for param in p[3]:
 				param_s += str(param['tag'] if TAC.isDict(param) else param)	
-			TAC.emit(op="call", lhs=p[1]['tag'], op1=param_s)
+			TAC.emit(op='call', lhs=p[1]['tag'], op1=param_s)
 	else:
 		p[0] = p[1]['tag']
 		if p[1]['tag'] == 'print':
-			for item in p[3]:
-				TAC.emit(op='print', op1=item)
+			if not isinstance(p[3],str):
+				for item in p[3]:
+					TAC.emit(op='print', op1=item)
+			else:
+				TAC.emit(op='print', op1=p[3])
 		elif p[1]['tag'] == 'scan':
 			if len(p[3]) > 1:
-				print('ERROR. Only one variable can be scanned at a time.')
+				print('ERROR: Only one variable can be scanned at a time !')
 				p_error(p)
 			for item in p[3]:
 				TAC.emit(op='scan', op1=item)
 		else:
-			print("ERROR. Function not defined.")
+			print("ERROR: Function not defined !")
 			p_error(p)
 
 def p_value_s(p):
@@ -337,8 +343,8 @@ def p_expression(p):
 	if (len(p) == 2):
 		p[0] = p[1]
 	else:
-		if (p[1]['type']!='bool' or p[4]['type']!='bool'):
-			print('ERROR: one or more expression is not of boolean type !')
+		if (p[1]['type'] != 'bool' or p[4]['type'] != 'bool'):
+			print('ERROR: One or more expression is not of boolean type !')
 			p_error(p)
 		else:	
 			p[0] = deepcopy(p[4])
@@ -364,7 +370,7 @@ def p_relation(p):
 	'''relation : simple_expression relational simple_expression
 	'''
 	if p[1]['type'] != p[3]['type']:
-		print("ERROR: comparision among different types")
+		print("ERROR: Comparison among different types !")
 		p_error(p)
 		p[0]={'type': None, 'true_list':[], 'false_list':[]}
 	else:	
@@ -392,22 +398,36 @@ def p_simple_expression(p):
 	if (len(p) == 2):
 		p[0] = p[1]
 	else:
-		if(p[1]['type']!='Integer' or p[3]['type']!='Integer'):
-			print("ERROR: expression terms are not integers !")
+		op_type = ''
+		if ((p[1]['type'] != 'Integer' and p[1]['type'] != 'Float') or (p[3]['type'] != 'Integer' and p[3]['type'] != 'Float')):
+			print (p[1], p[3])
+			print("ERROR: Expression terms are not numbers !")
 			p_error(p)
-		elif(p[1]['type']!=p[3]['type']):
-			print("ERROR: operand type mismatch !")
-			p_error(p)
-		else:		
-			temp_var = TAC.newTemp(p[1]['type'], ST)
-			p[0] = deepcopy(p[1])
-			TAC.emit(op=p[2],lhs=temp_var,op1=p[1],op2=p[3])
+		else:
+			if (p[1]['type'] != p[3]['type']):
+				op_type = 'float'
+				temp_var = TAC.newTemp('Float', ST)
+				x = {}
+				if (p[1]['type'] == 'Integer'):
+					TAC.emit(op='typecast', op1=p[1]['tag'], op2='Float', lhs=temp_var)
+					p[1]['type'] = 'Float'
+					p[1]['tag'] = temp_var
+					p[0] = deepcopy(p[1])
+				elif (p[3]['type'] == 'Integer'):
+					TAC.emit(op='typecast', op1=p[3]['tag'], op2='Float', lhs=temp_var)
+					p[3]['type'] = 'Float'
+					p[3]['tag'] = temp_var
+					p[0] = deepcopy(p[3])
+			if (op_type != 'float'):
+				p[0] = deepcopy(p[1])
+			temp_var = TAC.newTemp('Integer', ST) if op_type == '' else TAC.newTemp('Float', ST) 
+			op = p[2]+'_float' if op_type == 'float' else p[2]
+			TAC.emit(op=op,lhs=temp_var,op1=p[1],op2=p[3])
 			p[0]['tag'] = temp_var
 
 def p_adding(p):
 	'''adding  : '+'
 	   | '-'
-	   | '&'
 	'''
 	p[0] = p[1]
 	
@@ -418,16 +438,34 @@ def p_term(p):
 	if (len(p) == 2):
 		p[0] = p[1]
 	else:
-		if (p[1]['type'] != 'Integer' or p[3]['type'] != 'Integer'):
-			print("ERROR: Expression terms are not integers !")
+		op_type = ''
+		if ((p[1]['type'] != 'Integer' and p[1]['type'] != 'Float') or (p[3]['type'] != 'Integer' and p[3]['type'] != 'Float')):
+			print (p[1], p[3])
+			print('ERROR: Expression terms are not numbers !')
 			p_error(p)
-		elif (p[1]['type'] != p[3]['type']):
-			print("ERROR: operand type mismatch !")
+		elif (p[2] == 'mod' and p[1]['type'] != 'Integer'):
+			print ('ERROR: Modulo supports integers only !')
 			p_error(p)
-		else:	
-			temp_var = TAC.newTemp(p[1]['type'], ST)
-			p[0] = deepcopy(p[1])
-			TAC.emit(op=p[2],lhs=temp_var,op1=p[1],op2=p[3])
+		else:
+			if (p[1]['type'] != p[3]['type']):
+				op_type = 'float'
+				temp_var = TAC.newTemp('Float', ST)
+				x = {}
+				if (p[1]['type'] == 'Integer'):
+					TAC.emit(op='typecast', op1=p[1]['tag'], op2='Float', lhs=temp_var)
+					p[1]['type'] = 'Float'
+					p[1]['tag'] = temp_var
+					p[0] = deepcopy(p[1])
+				elif (p[3]['type'] == 'Integer'):
+					TAC.emit(op='typecast', op1=p[3]['tag'], op2='Float', lhs=temp_var)
+					p[3]['type'] = 'Float'
+					p[3]['tag'] = temp_var
+					p[0] = deepcopy(p[3])
+			if (op_type != 'float'):
+				p[0] = deepcopy(p[1])
+			temp_var = TAC.newTemp('Integer', ST) if op_type == '' else TAC.newTemp('Float', ST) 
+			op = p[2]+'_float' if op_type == 'float' else p[2]
+			TAC.emit(op=op,lhs=temp_var,op1=p[1],op2=p[3])
 			p[0]['tag'] = temp_var
 
 def p_multiplying(p):
@@ -442,21 +480,20 @@ def p_multiplying(p):
 def p_factor(p):
 	'''factor : primary
 	'''
-	if (len(p) == 2):
-		p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 def p_primary(p):
 	'''primary : literal
 	   | name
 	   | parenthesized_primary
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 # Changed grammar from # parenthesized_primary : '(' expression ')'
 def p_parenthesized_primary(p):
 	'''parenthesized_primary : '(' simple_expression ')'
 	'''
-	p[0] = p[2]
+	p[0] = deepcopy(p[2])
 	
 def p_statement_s(p):
 	'''statement_s : statement
@@ -473,7 +510,7 @@ def p_statement(p):
 		| compound_stmt
 	'''
 	p[0] = p[1]
-	p[0]['type'] = 'statement'
+	p[0]['what'] = 'statement'
 
 def p_simple_stmt(p):
 	'''simple_stmt : assign_stmt
@@ -485,7 +522,6 @@ def p_simple_stmt(p):
 def p_compound_stmt(p):
 	'''compound_stmt : if_stmt
 	   | loop_stmt
-	   | block
 	'''
 	p[0] = deepcopy(p[1])
 
@@ -513,16 +549,16 @@ def p_lambda_begin (p):
 def p_assign_stmt(p):
 	'''assign_stmt : name ASSIGN simple_expression ';'
 	'''
+	p[0] = {}
+	p[0]['type'] = 'assign_stmt'
+	p[0]['next_list'] = []
 	if p[1] == None :
 		p_error(p)
 	else:
-		if(p[1]['type']!=p[3]['type']):
-			print('ERROR: variables not of same type !')
+		if (p[1]['type'] == 'Integer' and p[3]['type'] == 'Float'):
+			print('ERROR: Variables not of same type !')
 			p_error(p)
 		else:		
-			p[0] = {}
-			p[0]['type'] = 'assign_stmt'
-			p[0]['next_list'] = []
 			TAC.emit(lhs=p[1]['tag'],op1=p[3],op='=')
 	
 def p_if_stmt(p):
@@ -551,7 +587,7 @@ def p_condition(p):
 	'''condition : expression
 	'''
 	if(p[1]['type']!='bool'):
-		print('ERROR: condition not boolean !')
+		print('ERROR: Condition not boolean !')
 		p_error(p)
 		p[0]={'false_list':[],'true_list':[],'tag':None , 'type':None}
 	else:	
@@ -602,15 +638,6 @@ def p_basic_loop(p):
 	'''
 	p[0] = deepcopy(p[2])
 	
-def p_block(p):
-	'''block : block_decl block_body END ';'
-	'''
-	
-def p_block_decl(p):
-	'''block_decl :
-	   | DECLARE decl_part
-	'''
-	
 def p_block_body(p):
 	'''block_body : BEGIN statement_s
 	'''
@@ -621,7 +648,6 @@ def p_return_stmt(p):
 	   | RETURN simple_expression ';'
 	'''
 	p[0] = {}
-	p[0]['what'] = 'statement'
 	p[0]['type'] = 'return_stmt'
 	p[0]['return_what'] = p[2] if len(p) > 2 else {}
 	p[0]['next_list'] = []
@@ -679,6 +705,7 @@ def p_param(p):
 	if(p[3] == None):
 		print('ERROR: Parameter type missing !')
 		p_error(p)
+		p[0] = {}
 	else:	
 		def_id_s = p[1]
 		p[0] = {}
@@ -709,7 +736,6 @@ def p_procedure_call(p):
 	'''procedure_call : name ';'
 	'''
 	p[0] = {}
-	p[0]['what'] = 'statement'
 	p[0]['type'] = 'procedure_call'
 	p[0]['call_what'] = p[1]['tag']
 	p[0]['next_list'] = []
@@ -717,8 +743,8 @@ def p_procedure_call(p):
 	
 def p_use_clause(p):
 	'''use_clause : USE name_s ';'
-	   | USE TYPE name_s ';'
 	'''
+	p[0] = deepcopy(p[2])
 	
 def p_name_s(p):
 	'''name_s : name
@@ -761,5 +787,4 @@ def p_unit(p):
 def p_error(p):
 	global err
 	err = True
-	print("Error in input program!", p.lineno,'\n')
-	sys.exit(0)
+	print("Error in input program!", str(p.lineno),'\n')

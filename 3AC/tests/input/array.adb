@@ -1,7 +1,8 @@
 procedure demo is
-	squares: array (1 .. 10 , 1 .. 20) of Integer;
+	squares: array (1 .. 10, 1 .. 5) of Integer;
 	i : Integer;
 	begin
 		i := 1;
-		squares ( i , i ) := i * 2;
-	end demo;
+		squares ( i , 5 ) := i * 2;
+		i := squares ( i , 5 );
+	end;

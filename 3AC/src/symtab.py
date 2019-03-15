@@ -16,7 +16,9 @@ class SymbolTable:
 			self.table = {'Integer': {'tag': 'Integer', 'what': 'type', 'width': 4},
 						'Float': {'tag': 'Float', 'what': 'type', 'width': 8},
 						'print': {'tag': 'print', 'what': 'default_function'},
-						'scan' : {'tag': 'scan', 'what': 'default_function'}	}
+						'scan' : {'tag': 'scan', 'what': 'default_function'},
+						'Ada.Text_IO' : {'tag': 'Ada.Text_IO', 'what': 'default_lib'},
+						'Ada.Gnat_IO' : {'tag': 'Ada.Gnat_IO', 'what': 'default_lib'}	}
 		else:
 			self.table = {}
 
@@ -47,7 +49,7 @@ class SymbolTable:
 				currTable = currTable.parentTable
 			else:
 				return currTable.table[var][attr]
-		print ('ERROR: GetAttrVal. Entity does not exist.')
+		print ('ERROR: GetAttrVal.', var, 'does not exist.')
 		return None
 
 	def getAttrDict (self, var):
@@ -61,9 +63,12 @@ class SymbolTable:
 		return None
 
 	def getWidth (self, dtype):
-		for k in self.table.keys():
-			if (self.table[k]['what'] == 'type' and self.table[k]['tag'] == dtype):
-				return (self.table[k]['width'])
+		currTable = self
+		while (currTable != None):
+			for k in currTable.table.keys():
+				if (currTable.table[k]['what'] == 'type' and currTable.table[k]['tag'] == dtype):
+					return (currTable.table[k]['width'])
+			currTable = currTable.parentTable
 		return (None)
 
 	def doesExist (self, var):

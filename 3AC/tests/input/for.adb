@@ -8,6 +8,6 @@ begin
       Count := Count + 1;
    end loop;
    k := Count + 6*k;
-   scan (Count);
+   print (Count);
 end ;
    

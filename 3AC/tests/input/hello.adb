@@ -4,7 +4,7 @@ procedure Hello is
 	a,b,c : Integer;
 	p,q : Float;
 begin
-	b := 3;
-	a := b*b + 2;
+	b := b;
+	a := b*b + 2.0;
 	a := a + b + a*b;
-end Hello;
+end ;
