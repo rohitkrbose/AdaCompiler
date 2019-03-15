@@ -18,8 +18,9 @@ def p_goal_symbol(p):
 	'''goal_symbol : compilation
 	'''
 	global err
-	# ST.printTable()
-	if(err == False):
+	ST.printTable()
+	ST.dumpTable()
+	if (err == False):
 		TAC.output()	
 
 def p_pragma(p):
@@ -95,7 +96,7 @@ def p_def_id_s(p):
 def p_def_id(p):
 	'''def_id  : IDENTIFIER
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 def p_object_type_def(p):
 	'''object_type_def : type_ind
@@ -134,14 +135,9 @@ def p_range(p):
 		r_start = p[1]['tag'] if TAC.isDict(p[1]) else p[1]
 		r_end = p[3]['tag'] if TAC.isDict(p[3]) else p[3]
 		p[0] = {'r_start': r_start, 'r_end': r_end}
-
-def p_array_type(p):
-	'''array_type : constr_array_type
-	'''
-	p[0] = p[1]
 	
-def p_constr_array_type(p):
-	'''constr_array_type : ARRAY iter_index_constraint OF type_ind
+def p_array_type(p):
+	'''array_type : ARRAY iter_index_constraint OF type_ind
 	'''
 	b_type = p[4]['tag']
 	p[0] = {'r_start_s': [], 'r_end_s': [], 'what': 'array', 'type': b_type}
@@ -156,7 +152,7 @@ def p_constr_array_type(p):
 def p_iter_index_constraint(p):
 	'''iter_index_constraint : '(' range_s ')'
 	'''
-	p[0] = p[2]
+	p[0] = deepcopy(p[2])
 	
 def p_range_s(p):
 	'''range_s : range
@@ -167,7 +163,7 @@ def p_range_s(p):
 def p_record_def(p):
 	'''record_def : RECORD param_s ';' END RECORD
 	'''
-	p[0] = p[2]
+	p[0] = deepcopy(p[2])
 
 def p_decl_part(p):
 	'''decl_part :
@@ -179,7 +175,7 @@ def p_decl_item(p):
 	   | use_clause
 	   | pragma
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 def p_decl_item_or_body_s(p):
 	'''decl_item_or_body_s : decl_item_or_body
@@ -191,12 +187,12 @@ def p_decl_item_or_body(p):
 	'''decl_item_or_body : body
 	   | decl_item
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 	
 def p_body(p):
 	'''body : subprog_body
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 # assumes that this identifier has been seen previously
 def p_name(p):
@@ -310,16 +306,15 @@ def p_value_s(p):
 	'''
 	p[0] = [p[1]] if len(p) == 2 else p[1] + [p[3]]
 
-# Changed grammar from value : expression
 def p_value(p):
 	'''value : simple_expression
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 def p_literal(p):
 	'''literal : numeric_lit
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 def p_numeric_lit1 (p):
 	'''numeric_lit : INT
@@ -365,7 +360,6 @@ def p_logical(p):
 	'''
 	p[0] = p[1]
 
-# Changed grammar from relation : simple_expression | simple_expression relational simple_expression
 def p_relation(p):
 	'''relation : simple_expression relational simple_expression
 	'''
@@ -396,7 +390,7 @@ def p_simple_expression(p):
 	   | simple_expression adding term
 	'''
 	if (len(p) == 2):
-		p[0] = p[1]
+		p[0] = deepcopy(p[1])
 	else:
 		op_type = ''
 		if ((p[1]['type'] != 'Integer' and p[1]['type'] != 'Float') or (p[3]['type'] != 'Integer' and p[3]['type'] != 'Float')):
@@ -436,7 +430,7 @@ def p_term(p):
 	   | term multiplying factor
 	'''
 	if (len(p) == 2):
-		p[0] = p[1]
+		p[0] = deepcopy(p[1])
 	else:
 		op_type = ''
 		if ((p[1]['type'] != 'Integer' and p[1]['type'] != 'Float') or (p[3]['type'] != 'Integer' and p[3]['type'] != 'Float')):
@@ -489,7 +483,6 @@ def p_primary(p):
 	'''
 	p[0] = deepcopy(p[1])
 
-# Changed grammar from # parenthesized_primary : '(' expression ')'
 def p_parenthesized_primary(p):
 	'''parenthesized_primary : '(' simple_expression ')'
 	'''
@@ -509,7 +502,7 @@ def p_statement(p):
 	'''statement : simple_stmt
 		| compound_stmt
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 	p[0]['what'] = 'statement'
 
 def p_simple_stmt(p):
@@ -517,7 +510,7 @@ def p_simple_stmt(p):
 	   | return_stmt
 	   | procedure_call
 	'''
-	p[0] = p[1]
+	p[0] = deepcopy(p[1])
 
 def p_compound_stmt(p):
 	'''compound_stmt : if_stmt
@@ -538,14 +531,13 @@ def p_lambda_begin (p):
 	'''
 	global ST
 	f_name = p[1]
-	attr_dict = {'tag': f_name, 'what': 'l_function', 'param_dict': p[4]}
+	attr_dict = {'tag': f_name, 'what': 'lambda_function', 'param_dict': p[4]}
 	ST.insert(f_name, attr_dict)
 	ST = ST.beginScope()
 	for k,v in attr_dict['param_dict'].items():
 		ST.insert(k, v)
 	p[0] = ST.parentTable.table[f_name]
 
-# Changed grammar from # assign_stmt : name ASSIGN expression ';'
 def p_assign_stmt(p):
 	'''assign_stmt : name ASSIGN simple_expression ';'
 	'''
@@ -579,9 +571,9 @@ def p_N (p):
 def p_cond_clause(p):
 	'''cond_clause : condition THEN M statement_s N
 	'''
-	TAC.backpatch(p[1]['true_list'], p[3]['quad'])
 	p[0] = deepcopy(p[1])
 	p[0]['next_list'] = [p[5]['quad']]
+	TAC.backpatch(p[1]['true_list'], p[3]['quad'])
 	
 def p_condition(p):
 	'''condition : expression
@@ -589,9 +581,9 @@ def p_condition(p):
 	if(p[1]['type']!='bool'):
 		print('ERROR: Condition not boolean !')
 		p_error(p)
-		p[0]={'false_list':[],'true_list':[],'tag':None , 'type':None}
+		p[0] = {'false_list':[],'true_list':[],'tag':None , 'type':None}
 	else:	
-		p[0] = p[1]
+		p[0] = deepcopy(p[1])
 	
 	
 def p_else_opt(p):
@@ -641,7 +633,7 @@ def p_basic_loop(p):
 def p_block_body(p):
 	'''block_body : BEGIN statement_s
 	'''
-	p[0] = p[2]
+	p[0] = deepcopy(p[2])
 
 def p_return_stmt(p):
 	'''return_stmt : RETURN ';'
@@ -658,8 +650,6 @@ def p_subprog_decl(p):
 	'''
 	p[0] = deepcopy(p[1])
 
-# functions to be handled	
-# grammar of procedure changed # compound name to def_id
 def p_subprog_spec(p):
 	'''subprog_spec : PROCEDURE def_id formal_part_opt
 	   | FUNCTION def_id formal_part_opt RETURN name
@@ -705,7 +695,6 @@ def p_param(p):
 	if(p[3] == None):
 		print('ERROR: Parameter type missing !')
 		p_error(p)
-		p[0] = {}
 	else:	
 		def_id_s = p[1]
 		p[0] = {}
@@ -729,7 +718,7 @@ def p_subprog_body(p):
 	'''
 	global ST
 	p[0] = deepcopy(p[3])
-	# ST.printTable();
+	ST.printTable();
 	ST = ST.endScope()
 	
 def p_procedure_call(p):

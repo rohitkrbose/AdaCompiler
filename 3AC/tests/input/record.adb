@@ -9,8 +9,8 @@ procedure LoopDemo is
 begin
    Count := 1;
    	while Count < 5 loop
-      Count := Count * Independence_Day.Consumption;
-      Independence_Day.Identity := 24*Count*k;
+      Count := Count * Independence_Day.Identity;
+      Independence_Day.Consumption := 24*Count*k;
    end loop;
    k := 7;
 end;
