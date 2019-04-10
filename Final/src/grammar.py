@@ -8,20 +8,21 @@ from Tokens import *
 
 from symtab import SymbolTable
 from ThreeAddrCode import ThreeAddrCode
+from CodeGen import CodeGen
 
 err = False
 
 ST = SymbolTable()
 TAC = ThreeAddrCode()
+CG = CodeGen()
 
 def p_goal_symbol(p):
 	'''goal_symbol : compilation
 	'''
-	global err
-	ST.printTable()
-	ST.dumpTable()
-	if (err == False):
-		TAC.output()	
+	# ST.printTable()
+	if err == False:
+		TAC.output()
+	# CG.generateCode(ST,TAC.code_list,'character')
 
 def p_pragma(p):
 	'''pragma : PRAGMA IDENTIFIER ';'
@@ -218,7 +219,7 @@ def p_compound_name(p):
 	'''compound_name : simple_name
 	   | compound_name '.' simple_name
 	'''
-	if (len(p) == 2):
+	if len(p) == 2:
 		p[0] = p[1]
 	else:
 		p[0] = p[1] + '.' + p[3]
@@ -235,7 +236,7 @@ def p_indexed_comp(p):
 	'''
 
 	p[0] = deepcopy(p[1])
-	if (p[1]['what'] == 'array'):
+	if p[1]['what'] == 'array':
 		if len(p[3]) != len(ST.getAttrVal(p[1]['tag'],'r_end_s')) :
 			print('ERROR: Number of dimensions entered incorrectly !')
 			p_error(p)
@@ -253,52 +254,112 @@ def p_indexed_comp(p):
 			for d in range (dim-1):
 				t1 = TAC.newTemp('Integer', ST)
 				t2 = TAC.newTemp('Integer', ST)
-				TAC.emit(op='-',lhs=t1,op1=p[3][d],op2=p[1]['r_start_s'][d])
-				TAC.emit(op='*',lhs=t2,op1=t1,op2=array_dims[d])
-				if(tp==None):
+				TAC.emit(op='-', lhs=t1, op1=p[3][d], op2=p[1]['r_start_s'][d])
+				TAC.emit(op='*', lhs=t2, op1=t1, op2=array_dims[d])
+				if tp == None:
 					tp = t2
 				else:
 					t3 = TAC.newTemp('Integer',ST)
 					TAC.emit(op='+',lhs=t3,op1=t2,op2=tp)
 					tp = t3
-			if (tp == None):
+			if tp == None:
 				t5 = TAC.newTemp('Integer',ST)
-				TAC.emit(op='-',lhs=t5,op1=p[3][dim-1],op2=p[1]['r_start_s'][dim-1])
+				TAC.emit(op='-', lhs=t5, op1=p[3][dim-1], op2=p[1]['r_start_s'][dim-1])
 			else:
 				t4 = TAC.newTemp('Integer',ST)
-				TAC.emit(op='-',lhs=t4,op1=p[3][dim-1],op2=p[1]['r_start_s'][dim-1])
+				TAC.emit(op='-', lhs=t4, op1=p[3][dim-1], op2=p[1]['r_start_s'][dim-1])
 				t5 = TAC.newTemp('Integer',ST)
-				TAC.emit(op='+',lhs=t5,op1=t4,op2=tp)
+				TAC.emit(op='+', lhs=t5, op1=t4, op2=tp)
 			t6 = TAC.newTemp('Integer',ST)
-			TAC.emit(op='*',lhs=t6,op1=t5,op2=ST.getWidth(p[1]['type']))
+			TAC.emit(op='*', lhs=t6, op1=t5, op2=ST.getWidth(p[1]['type']))
 			# Need to care about base address later on
-			p[0]['tag'] = p[1]['tag'] + '+' + t6
-	elif (p[1]['what'] == 'function' or p[1]['what'] == 'procedure'):
+			p[0]['tag'] = p[1]['tag'] + '[' + t6 + ']'
+	elif p[1]['what'] == 'function' or p[1]['what'] == 'procedure':
 		if len(p[3]) != len(ST.getAttrVal(p[1]['tag'],'param_dict')):
 			print('ERROR: Different number of arguments needed !')
 			p_error(p)
-		else:		
-			param_s = ''
+		else:
+			temp_var = None
+			if p[1]['what'] == 'function':
+				temp_var = TAC.newTemp(p[0]['type']['tag'], ST)
+				p[0] = ST.getAttrDict(temp_var)
+			param_s = []
 			for param in p[3]:
-				param_s += str(param['tag'] if TAC.isDict(param) else param)	
-			TAC.emit(op='call', lhs=p[1]['tag'], op1=param_s)
-	else:
+				TAC.emit(op='param',lhs=param['tag'])
+			TAC.emit(op='call', lhs=p[1]['tag'], op1=len(p[3]), op2=temp_var)
+	elif p[1]['what'] == 'default_function':
+		if len(p[3]) > 1:
+			print ('ERROR: This function takes only one argument!')
+			p_error(p)
+		elif p[3][0]['type'] not in ['Integer','Float']:
+			print ('ERROR: This function can handle numeric arguments only!');
+			p_error(p)
+		else:
+			x = p[3][0]['tag']
+			temp_var = TAC.newTemp('Float', ST)
+			if p[1]['tag'] == 'sin':
+				TAC.emit(lhs=temp_var,op='*_float',op1=x,op2=x)
+				TAC.emit(lhs=temp_var,op='*_float',op1=temp_var,op2=x)
+				TAC.emit(lhs=temp_var,op='/_float',op1=temp_var,op2=6)
+				TAC.emit(lhs=temp_var,op='-_float',op1=x,op2=temp_var)
+			elif p[1]['tag'] == 'cos':
+				TAC.emit(lhs=temp_var,op='*_float',op1=x,op2=x)
+				TAC.emit(lhs=temp_var,op='/_float',op1=temp_var,op2=2)
+				TAC.emit(lhs=temp_var,op='-_float',op1=1,op2=temp_var)
+			elif p[1]['tag'] == 'tan':
+				TAC.emit(lhs=temp_var,op='*_float',op1=x,op2=x)
+				TAC.emit(lhs=temp_var,op='*_float',op1=temp_var,op2=x)
+				TAC.emit(lhs=temp_var,op='/_float',op1=temp_var,op2=3)
+				TAC.emit(lhs=temp_var,op='+_float',op1=x,op2=temp_var)
+			elif p[1]['tag'] == 'exp':
+				TAC.emit(lhs=temp_var,op='*_float',op1=x,op2=x)
+				TAC.emit(lhs=temp_var,op='/_float',op1=temp_var,op2=2)
+				TAC.emit(lhs=temp_var,op='+_float',op1=x,op2=temp_var)
+				TAC.emit(lhs=temp_var,op='+_float',op1=1,op2=temp_var)
+			p[0] = ST.getAttrDict(temp_var)
+	elif p[1]['what'] == 'io_function':
 		p[0] = p[1]['tag']
-		if p[1]['tag'] == 'print':
-			if not isinstance(p[3],str):
-				for item in p[3]:
-					TAC.emit(op='print', op1=item)
-			else:
-				TAC.emit(op='print', op1=p[3])
-		elif p[1]['tag'] == 'scan':
+		if p[1]['tag'] == 'print_int':
+			for item in p[3]:
+				if item['type'] != 'Integer':
+					print ('ERROR: Incompatible type in print statement!')
+					p_error(p)
+				TAC.emit(op='io', lhs=p[1]['tag'], op1=item)
+		elif p[1]['tag'] == 'print_char':
+			for item in p[3]:
+				if item['type'] != 'Char':
+					print ('ERROR: Incompatible type in print statement!')
+					p_error(p)
+				TAC.emit(op='io', lhs=p[1]['tag'], op1=item)
+		if p[1]['tag'] == 'print_float':
+			for item in p[3]:
+				if item['type'] != 'Float':
+					print ('ERROR: Incompatible type in print statement!')
+					p_error(p)
+				TAC.emit(op='io', lhs=p[1]['tag'], op1=item)
+		elif p[1]['tag'][:5] == 'scan_':
 			if len(p[3]) > 1:
 				print('ERROR: Only one variable can be scanned at a time !')
 				p_error(p)
-			for item in p[3]:
-				TAC.emit(op='scan', op1=item)
-		else:
-			print('ERROR: Function not defined !')
-			p_error(p)
+			item = p[3][0]
+			if p[1]['tag'] == 'scan_int':
+				if item['type'] != 'Integer':
+					print ('ERROR: Incompatible type in scan statement!')
+					p_error(p)
+				TAC.emit(op='io', lhs=p[1]['tag'], op1=item)
+			elif p[1]['tag'] == 'scan_char':
+				if item['type'] != 'Char':
+					print ('ERROR: Incompatible type in scan statement!')
+					p_error(p)
+				TAC.emit(op='io', lhs=p[1]['tag'], op1=item)
+			elif p[1]['tag'] == 'scan_float':
+				if item['type'] != 'Float':
+					print ('ERROR: Incompatible type in scan statement!')
+					p_error(p)
+				TAC.emit(op='io', lhs=p[1]['tag'], op1=item)
+	else:
+		print('ERROR: Function not defined !')
+		p_error(p)
 
 def p_value_s(p):
 	'''value_s : value
@@ -313,8 +374,14 @@ def p_value(p):
 
 def p_literal(p):
 	'''literal : numeric_lit
+				| char_lit
 	'''
 	p[0] = deepcopy(p[1])
+
+def p_char_lit (p):
+	'''char_lit : CHAR
+	'''
+	p[0] = {'tag' : ord(p[1][1:-1]), 'type': 'Char'}
 
 def p_numeric_lit1 (p):
 	'''numeric_lit : INT
@@ -335,21 +402,21 @@ def p_expression(p):
 	'''expression : relation
 	   | expression logical M relation
 	'''
-	if (len(p) == 2):
+	if len(p) == 2:
 		p[0] = p[1]
 	else:
-		if (p[1]['type'] != 'bool' or p[4]['type'] != 'bool'):
+		if p[1]['type'] != 'bool' or p[4]['type'] != 'bool':
 			print('ERROR: One or more expression is not of boolean type !')
 			p_error(p)
 		else:	
 			p[0] = deepcopy(p[4])
 			temp_var = TAC.newTemp('bool', ST)
 			p[0]['tag'] = temp_var
-			if (p[2] == 'OR'):
+			if p[2] == 'OR':
 				TAC.backpatch(p[1]['false_list'],p[3]['quad'])
 				p[0]['true_list'] = TAC.merge(p[1]['true_list'],p[4]['true_list'])
 				p[0]['false_list'] = p[4]['false_list']
-			elif (p[2] == 'AND'):
+			elif p[2] == 'AND':
 				TAC.backpatch(p[1]['true_list'],p[3]['quad'])
 				p[0]['true_list'] = p[4]['true_list']
 				p[0]['false_list'] = TAC.merge(p[1]['false_list'], p[4]['false_list'])
@@ -389,30 +456,44 @@ def p_simple_expression(p):
 	'''simple_expression : term
 	   | simple_expression adding term
 	'''
-	if (len(p) == 2):
+	if len(p) == 2:
 		p[0] = deepcopy(p[1])
 	else:
 		op_type = ''
-		if ((p[1]['type'] != 'Integer' and p[1]['type'] != 'Float') or (p[3]['type'] != 'Integer' and p[3]['type'] != 'Float')):
-			print (p[1], p[3])
-			print('ERROR: Expression terms are not numbers !')
+		if (p[1]['type'] != 'Integer' and p[1]['type'] != 'Float' and p[1]['type'] != 'Char') or (p[3]['type'] != 'Integer' and p[3]['type'] != 'Float' and p[3]['type'] != 'Char'):
+			print('ERROR: Expression terms are not numbers/characters !')
 			p_error(p)
 		else:
-			if (p[1]['type'] != p[3]['type']):
-				op_type = 'float'
-				temp_var = TAC.newTemp('Float', ST)
-				x = {}
-				if (p[1]['type'] == 'Integer'):
-					TAC.emit(op='typecast', op1=p[1]['tag'], op2='Float', lhs=temp_var)
-					p[1]['type'] = 'Float'
-					p[1]['tag'] = temp_var
-					p[0] = deepcopy(p[1])
-				elif (p[3]['type'] == 'Integer'):
-					TAC.emit(op='typecast', op1=p[3]['tag'], op2='Float', lhs=temp_var)
-					p[3]['type'] = 'Float'
-					p[3]['tag'] = temp_var
-					p[0] = deepcopy(p[3])
-			if (op_type != 'float'):
+			# If two data types are not same
+			if p[1]['type'] != p[3]['type']:
+				# If either of them are floats. One character/integer, other is float.
+				if p[1]['type'] == 'Float' or p[3]['type'] == 'Float':
+					op_type = 'float'
+					temp_var = TAC.newTemp('Float', ST)
+					if p[1]['type'] != 'Float':
+						TAC.emit(op='typecast', op1=p[1]['tag'], op2='Integer2Float', lhs=temp_var)
+						p[1]['type'] = 'Float'
+						p[1]['tag'] = temp_var
+						p[0] = deepcopy(p[1])
+					elif p[3]['type'] != 'Float':
+						TAC.emit(op='typecast', op1=p[3]['tag'], op2='Integer2Float', lhs=temp_var)
+						p[3]['type'] = 'Float'
+						p[3]['tag'] = temp_var
+						p[0] = deepcopy(p[3])
+				else:
+					# One character, other integer
+					temp_var = TAC.newTemp('Integer', ST)
+					if p[1]['type'] == 'Char':
+						TAC.emit(op='typecast', op1=p[1]['tag'], op2='Char2Integer', lhs=temp_var)
+						p[1]['type'] = 'Integer'
+						p[1]['tag'] = temp_var
+						p[0] = deepcopy(p[1])
+					elif p[3]['type'] == 'Char':
+						TAC.emit(op='typecast', op1=p[3]['tag'], op2='Char2Integer', lhs=temp_var)
+						p[3]['type'] = 'Integer'
+						p[3]['tag'] = temp_var
+						p[0] = deepcopy(p[3])
+			if op_type != 'float':
 				p[0] = deepcopy(p[1])
 			temp_var = TAC.newTemp('Integer', ST) if op_type == '' else TAC.newTemp('Float', ST) 
 			op = p[2]+'_float' if op_type == 'float' else p[2]
@@ -547,11 +628,22 @@ def p_assign_stmt(p):
 	if p[1] == None :
 		p_error(p)
 	else:
-		if (p[1]['type'] == 'Integer' and p[3]['type'] == 'Float'):
-			print('ERROR: Variables not of same type !')
+		if p[1]['type'] == p[3]['type']:
+			op = '='
+			if p[1]['type'] == 'Float':
+				op = '=_float'
+			TAC.emit(lhs=p[1]['tag'],op1=p[3],op=op)
+		elif p[1]['type'] == 'Char' and p[3]['type'] == 'Integer':
+			temp_var = TAC.newTemp('Char', ST)
+			TAC.emit(op='typecast', op1=p[3]['tag'], op2='Integer2Char', lhs=temp_var)
+			TAC.emit(lhs=p[1]['tag'],op1=temp_var,op='=')
+		elif p[1]['type'] == 'Float' and p[3]['type'] == 'Integer':
+			temp_var = TAC.newTemp('Float', ST)
+			TAC.emit(op='typecast', op1=p[3]['tag'], op2='Integer2Float', lhs=temp_var)
+			TAC.emit(lhs=p[1]['tag'],op1=temp_var,op='=')
+		else:
+			print ('ERROR: Incompatible data types!')
 			p_error(p)
-		else:		
-			TAC.emit(lhs=p[1]['tag'],op1=p[3],op='=')
 	
 def p_if_stmt(p):
 	'''if_stmt : IF cond_clause else_opt END IF ';'
@@ -656,10 +748,10 @@ def p_subprog_spec(p):
 	'''
 	sp_name = p[2]
 	if (len(p) == 4):
-		if (p[2] in reserved):
+		if p[2] in reserved:
 			print('ERROR: Procedure name is reserved keyword !')
 			p_error(p)
-		elif (ST.doesExist(p[2])):
+		elif ST.doesExist(p[2]):
 			print('ERROR: Procedure name already used !')
 			p_error(p)
 		else:		
@@ -687,12 +779,12 @@ def p_param_s(p):
 	if (len(p) == 2):
 		p[0] = deepcopy(p[1])
 	else:
-		p[0] = {**p[1], **p[3]}
+		p[0] = {**p[1], **p[3]} # merge dictionaries
 
 def p_param(p):
 	'''param : def_id_s ':' mark
 	'''
-	if(p[3] == None):
+	if p[3] == None:
 		print('ERROR: Parameter type missing !')
 		p_error(p)
 	else:	
@@ -709,16 +801,23 @@ def p_subprog_spec_is_push(p):
 	global ST
 	p[0] = deepcopy (p[1])
 	p[0]['next_list'] = [] if ST.parentTable == None else [TAC.getLine()]
-	ST = ST.beginScope()
+	ST = ST.beginScope(p[0]['tag'])
+	ST.beginLine = TAC.getLine()
+	TAC.emit(op='label',lhs=ST.scope+'_BEGIN')
 	for param, param_attr_dict in p[1]['param_dict'].items():
-		ST.insert(param, param_attr_dict)
+		ST.insert_param(param, param_attr_dict)
 
 def p_subprog_body(p):
 	'''subprog_body : subprog_spec_is_push decl_part block_body END ';'
 	'''
 	global ST
 	p[0] = deepcopy(p[3])
-	ST.printTable();
+	# ST.printTable();
+	# ST.printActRec()
+	TAC.emit(op='label', lhs=ST.scope+'_END')
+	ST.endLine = TAC.getLine() - 1;
+	if ST.parentTable != None:
+		ST.parentTable.table[ST.scope]['ST'] = deepcopy(ST) # To access symTab of a function later on from parent
 	ST = ST.endScope()
 	
 def p_procedure_call(p):
@@ -728,7 +827,6 @@ def p_procedure_call(p):
 	p[0]['type'] = 'procedure_call'
 	p[0]['call_what'] = p[1]['tag']
 	p[0]['next_list'] = []
-	TAC.emit(op='call', lhs=p[1]['tag'])
 	
 def p_use_clause(p):
 	'''use_clause : USE name_s ';'

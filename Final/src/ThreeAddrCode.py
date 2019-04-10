@@ -32,14 +32,8 @@ class ThreeAddrCode:
 		return self.line_no
 
 	def output (self):
-		s = ''
 		for line in self.code_list:
-			for ele in line:
-				ele = str(ele) if ele != None else '~'
-				s += ele + ' , '
-			s += '\n'
-		with open ('../output/3_AC_dump.csv', 'w') as f:
-			f.write(s)
+			print (line)
 
 	def makeList (self, i):
 		return ([i])

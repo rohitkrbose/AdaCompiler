@@ -1,0 +1,5 @@
+1 , = , i , 4 , ~ , 
+2 , = , u , 50 , ~ , 
+3 , typecast , _temp1 , u , Integer , 
+4 , + , _temp2 , i , _temp1 , 
+5 , = , k , _temp2 , ~ , 
