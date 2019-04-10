@@ -72,6 +72,7 @@ class CodeGen:
 		global ST
 		ST = symTab.table[main_method]['ST']
 
+		num_float = 0
 		# DATA section
 
 		self.ac('.data', False)
@@ -140,4 +141,101 @@ class CodeGen:
 					self.ac('syscall')
 					self.regToMem('v0', op1, 'Integer')
 
+			# and and or
+			if op == 'and':
+				reg_lhs = loadIntoReg(lhs, 2, 'Integer')
+				reg_op1 = loadIntoReg(op1, 0, 'Integer')
+				reg_op2 = loadIntoReg(op2, 1, 'Integer')
+				#why \t ?
+				self.ac('\tand $' + reg_lhs + ', $' + reg_op1 + ', $' + reg_op2)
+				regToMem(reg_lhs, lhs, 'Integer')
+
+			if op == 'or':
+				reg_lhs = loadIntoReg(lhs, 2, 'Integer')
+				reg_op1 = loadIntoReg(op1, 0, 'Integer')
+				reg_op2 = loadIntoReg(op2, 1, 'Integer')
+				#why \t ?
+				self.ac('\tor $' + reg_lhs + ', $' + reg_op1 + ', $' + reg_op2)
+				regToMem(reg_lhs, lhs, 'Integer')
+
+			#comparison operators
+
+			if len(op.split("_")) >=2 and op.split("_")[1] in ['/=','=','>','<','<=','>=']:
+				typ = op.split("_")[0]
+				sym = op.split("_")[1]
+
+				if(typ == 'Float'):
+					reg_lhs = loadIntoReg(lhs, 2, 'Integer')
+					reg_op1 = loadIntoReg(op1, 0, 'Float')
+					reg_op2 = loadIntoReg(op2, 1, 'Float')
+
+				else:
+					reg_lhs = loadIntoReg(lhs, 2, 'Integer')
+					reg_op1 = loadIntoReg(op1, 0, 'Integer')
+					reg_op2 = loadIntoReg(op2, 1, 'Integer')
+
+				if(typ == 'Integer'):
+					if sym == '/=':
+						ins = 'sne'
+					elif sym == '=':
+						ins = 'seq'
+					elif sym == '>':
+						ins = 'sgt'
+					elif sym == '<':
+						ins = 'slt'
+					elif sym == '<=':
+						ins = 'sle'
+					elif sym == '>=':
+						ins = 'sge'
+
+					self.ac('\t' + ins + ' $' + reg_lhs + ', $' + reg_op1 + ', $' + reg_op2)
+				else:
+					if sym == '/=':
+						self.ac('\tc.eq.s $' + reg_op1 + ', $' + reg_op2)
+						self.ac('\tbc1t ' + 'Float' + str(count))
+						self.ac('\tnop')
+						self.ac('\tbc1f ' + 'Float' + str(count+1))
+						self.ac('\tnop')
+						self.ac('Float' + str(count) + ':')
+						self.ac('\tli $' + reg_lhs + ', 0')
+						self.ac('\tj Float' + str(count+2))
+						self.ac('Float' + str(count+1) + ':')
+						self.ac('\tli $' + reg_lhs + ', 1')
+						self.ac('\tj Float' + str(count+2))
+						self.ac('Float' + str(count+2) + ':')
+
+						num_float += 3
+						num += 3 # initalized to zero in handling procedures not yet done
+						regToMem(reg_lhs, lhs, 'Integer')
+						continue
+					elif sym == '=':
+						self.ac('\tc.eq.s $' + reg_op1 + ', $' + reg_op2)
+					elif sym == '>':
+						self.ac('\tc.le.s $' + reg_op2 + ', $' + reg_op1)
+					elif sym == '<':
+						self.ac('\tc.lt.s $' + reg_op1 + ', $' + reg_op2)
+					elif sym == '<=':
+						self.ac('\tc.le.s $' + reg_op1 + ', $' + reg_op2)
+					elif sym == '>=':
+						self.ac('\tc.lt.s $' + reg_op2 + ', $' + reg_op1)
+
+				if(typ == 'Float'):
+					self.ac('\tbc1t ' + 'Float' + str(count))
+					self.ac('\tnop')
+					self.ac('\tbc1f ' + 'Float' + str(count+1))
+					self.ac('\tnop')
+					self.ac('Float' + str(count) + ':')
+
+					self.ac('\tli $' + reg_lhs + ', 1')
+					self.ac('\tj Float' + str(count+2))
+					self.ac('Float' + str(count+1) + ':')
+					self.ac('\tli $' + reg_lhs + ', 0')
+					self.ac('\tj Float' + str(count+2))
+					self.ac('Float' + str(count+2) + ':')
+
+					num_float += 3
+					num +=3
+				regToMem(reg_lhs, lhs, 'Integer')
+
+				
 		print (self.code)
