@@ -6,8 +6,8 @@ from ply import lex, yacc
 from copy import *
 from Tokens import *
 
-from symtab import SymbolTable
-from ThreeAddrCode import ThreeAddrCode
+from symtab import *
+from ThreeAddrCode import *
 from CodeGen import CodeGen
 
 err = False
@@ -85,6 +85,7 @@ def p_access_decl (p):
 		attr_dict['tag'] = p[2]
 		attr_dict['what'] = 'access_type'
 		ST.insert(p[2], attr_dict)
+		width_dict[p[2]] = 1 # Pointer width
 		p[0] = ST.getAttrDict(p[2])	
 
 def p_object_decl(p):
@@ -100,11 +101,11 @@ def p_object_decl(p):
 				print('ERROR: Identifier is reserved !')
 				p_error(p)
 				continue
-			if ST.doesExist(idx):
+			elif ST.doesExist(idx):
 				print('ERROR: Identifier already declared !')
 				p_error(p)
 				continue
-			if p[3]['what'] == 'array':
+			elif p[3]['what'] == 'array':
 				attr_dict = deepcopy(p[3])
 				attr_dict['tag'] = idx
 				ST.insert (idx, attr_dict)
@@ -118,6 +119,14 @@ def p_object_decl(p):
 						attr_dict['tag'] = idx_n
 						ST.insert(idx_n, attr_dict)
 			else:
+				if p[3]['what'] == 'access_type':
+					U = ST.parentTable.table[p[3]['access']]
+					for k,v in U.items():
+						if k not in ['what','tag']: 
+							idx_n = idx + '.' + k
+							attr_dict = deepcopy(v)
+							attr_dict['tag'] = idx_n
+							ST.insert(idx_n, attr_dict)
 				dtype = p[3]['tag']
 				attr_dict = {'tag': idx, 'what': 'var', 'type': dtype}
 				ST.insert(idx, attr_dict)
@@ -412,6 +421,7 @@ def p_value(p):
 def p_literal(p):
 	'''literal : numeric_lit
 				| char_lit
+				| NuLL
 	'''
 	p[0] = deepcopy(p[1])
 
@@ -467,10 +477,21 @@ def p_logical(p):
 def p_relation(p):
 	'''relation : simple_expression relational simple_expression
 	'''
-	if p[1]['type'] != p[3]['type']:
+	if p[3] == 'null':
+		if ST.parentTable.table[p[1]['type']]['what'] != 'access_type':
+			print('ERROR: Comparison among different types !')
+			p_error(p)
+		else:
+			p[0] = {}
+			p[0]['type'] = 'bool'
+			p[0]['true_list'] = TAC.makeList(TAC.getLine())
+			p[0]['false_list'] = TAC.makeList(TAC.getLine() + 1)
+			TAC.emit(op='goto_' + p[2], op1=p[1], op2=p[3])
+			TAC.emit(op='goto')
+	elif p[1]['type'] != p[3]['type']:
 		print('ERROR: Comparison among different types !')
 		p_error(p)
-		p[0]={'type': None, 'true_list':[], 'false_list':[]}
+		# p[0]={'type': None, 'true_list':[], 'false_list':[]}
 	else:	
 		p[0] = {}
 		p[0]['type'] = 'bool'
@@ -849,7 +870,7 @@ def p_subprog_body(p):
 	'''
 	global ST
 	p[0] = deepcopy(p[3])
-	ST.printTable();
+	# ST.printTable();
 	# ST.printActRec()
 	TAC.emit(op='label', lhs=ST.scope+'_END')
 	ST.endLine = TAC.getLine() - 1;

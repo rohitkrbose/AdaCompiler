@@ -10,6 +10,7 @@ import csv
 
 Z = {}
 U = []
+width_dict = {'Integer': 4, 'Float': 8, 'Char': 1}
 
 class SymbolTable:
 
@@ -20,7 +21,7 @@ class SymbolTable:
 		self.neg_offset = 0
 		self.pos_offset = 8
 		self.act_rec = {'return_addr': 8}
-		self.width_dict = {'Integer': 4, 'Float': 8, 'Char': 1}
+		
 		if parentTable == None :
 			self.table = {'Integer': {'tag': 'Integer', 'what': 'type', 'width': 4},
 						'Float': {'tag': 'Float', 'what': 'type', 'width': 8},
@@ -48,18 +49,18 @@ class SymbolTable:
 			return False
 		self.table[var] = attr_dict
 		if attr_dict['what'] == 'var':
-			width = self.width_dict[attr_dict['type']]
+			width = width_dict[attr_dict['type']]
 			self.neg_offset += width
 			self.act_rec[var] = -self.neg_offset
 		elif attr_dict['what'] == 'array':
-			width = self.width_dict[attr_dict['type']]
+			width = width_dict[attr_dict['type']]
 			self.neg_offset += attr_dict['width']
 			self.act_rec[var] = -self.neg_offset
 		elif attr_dict['what'] == 'record_type':
 			for k,v in attr_dict.items():
 				if k not in ['what','tag']:
 					rec_ele = var + '.' + v['tag']
-					width = self.width_dict[attr_dict['type']]
+					width = width_dict[v['type']]
 					self.neg_offset += width
 					self.act_rec[rec_ele] = -self.neg_offset
 		return True
@@ -143,7 +144,8 @@ class SymbolTable:
 
 	def printTable (self):
 		for k in self.table:
-			print (self.table[k])
+			print (k, self.table[k])
+		print ('######################################################')
 
 	def printActRec (self):
 		print ('######### ' + self.scope + ' #########')

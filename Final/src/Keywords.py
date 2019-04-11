@@ -8,7 +8,7 @@ reserved = {
 	# 'reverse':'REVERSE',
 	# 'do':'DO',
 	# 'when':'WHEN',
-	# 'null':'NuLL',
+	'null':'NuLL',
 	'and':'AND',
 	# 'constant':'CONSTANT',
 	'mod':'MOD',
