@@ -47,11 +47,45 @@ def p_pragma_s(p):
 
 def p_decl(p):
 	'''decl : object_decl
+	   | type_decl
 	   | record_decl
 	   | subprog_decl
 	   | lambda_decl
+	   | access_decl
 	'''
 	p[0] = deepcopy(p[1])
+
+def p_type_decl (p):
+	'''type_decl : TYPE IDENTIFIER ';'
+	'''
+	if ST.doesExist(p[2]):
+		print('ERROR: Identifier already declared !')
+		p_error(p)
+	elif p[2] in reserved:
+		print('ERROR: Identifier is reserved !')
+		p_error(p)
+	else:
+		attr_dict = {'tag': p[2], 'what': 'unknown_type'}
+		ST.insert(p[2],attr_dict)
+		p[0] = ST.getAttrDict(p[2])		
+
+
+def p_access_decl (p):
+	'''access_decl : TYPE IDENTIFIER IS ACCESS name ';'
+	'''
+	if ST.doesExist(p[2]):
+		print('ERROR: Identifier already declared !')
+		p_error(p)
+	elif p[2] in reserved:
+		print('ERROR: Identifier is reserved !')
+		p_error(p)
+	else:
+		attr_dict = deepcopy(p[5])
+		attr_dict['access'] = attr_dict['tag']
+		attr_dict['tag'] = p[2]
+		attr_dict['what'] = 'access_type'
+		ST.insert(p[2], attr_dict)
+		p[0] = ST.getAttrDict(p[2])	
 
 def p_object_decl(p):
 	'''object_decl : def_id_s ':' object_type_def ';'   
@@ -108,7 +142,7 @@ def p_object_type_def(p):
 def p_record_decl(p):
 	'''record_decl : TYPE IDENTIFIER IS record_def ';'
 	'''
-	if ST.doesExist(p[2]):
+	if ST.doesExist(p[2]) and 'record_type' in ST.table[p[2]].keys():
 		print('ERROR: Identifier already declared !')
 		p_error(p)
 	elif p[2] in reserved:
@@ -118,7 +152,10 @@ def p_record_decl(p):
 		attr_dict = deepcopy(p[4])
 		attr_dict['tag'] = p[2]
 		attr_dict['what'] = 'record_type'
-		ST.insert(p[2],attr_dict)
+		if not ST.doesExist(p[2]):
+			ST.insert(p[2],attr_dict) # insert
+		else:
+			ST.table[p[2]] = attr_dict # update
 		p[0] = ST.getAttrDict(p[2])		
 
 def p_type_ind(p):
@@ -812,7 +849,7 @@ def p_subprog_body(p):
 	'''
 	global ST
 	p[0] = deepcopy(p[3])
-	# ST.printTable();
+	ST.printTable();
 	# ST.printActRec()
 	TAC.emit(op='label', lhs=ST.scope+'_END')
 	ST.endLine = TAC.getLine() - 1;

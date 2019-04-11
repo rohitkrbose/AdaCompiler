@@ -19,7 +19,7 @@ reserved = {
 	# 'private':'PRIVATE',
 	'with':'WITH',
 	# 'subtype':'SUBTYPE',
-	# 'access':'ACCESS',
+	'access':'ACCESS',
 	# 'out':'OUT',
 	# 'abort':'ABORT',
 	# 'until':'UNTIL',
