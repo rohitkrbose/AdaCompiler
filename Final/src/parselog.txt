@@ -1,645 +1,146 @@
 INFO:root:PLY: PARSE DEBUG START
 INFO:root:Action : Reduce rule [compilation -> <empty>] with [] and goto state 1
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Ada'] and goto state 23
-INFO:root:Result : <str @ 0x7f895fabbce0> ('Ada')
+INFO:root:Result : <str @ 0x1032d9110> ('Ada')
 INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Ada'] and goto state 20
-INFO:root:Result : <str @ 0x7f895fabbce0> ('Ada')
+INFO:root:Result : <str @ 0x1032d9110> ('Ada')
 INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Text_IO'] and goto state 96
-INFO:root:Result : <str @ 0x7f895f45d1f0> ('Text_IO')
+INFO:root:Result : <str @ 0x103618068> ('Text_IO')
 INFO:root:Action : Reduce rule [compound_name -> compound_name . simple_name] with ['Ada','.','Text_IO'] and goto state 20
-INFO:root:Result : <str @ 0x7f895f6dbfb0> ('Ada.Text_IO')
+INFO:root:Result : <str @ 0x104828d30> ('Ada.Text_IO')
 INFO:root:Action : Reduce rule [c_name_list -> compound_name] with ['Ada.Text_IO'] and goto state 22
-INFO:root:Result : <list @ 0x7f895f6bce48> (['Ada.Text_IO'])
+INFO:root:Result : <list @ 0x10483e608> (['Ada.Text_IO'])
 INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Ada'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d148> ('Ada')
+INFO:root:Result : <str @ 0x1032d9110> ('Ada')
 INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Ada'] and goto state 97
-INFO:root:Result : <str @ 0x7f895f45d148> ('Ada')
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with [<str @ 0x7f895f45e0b0>] and goto state 96
-INFO:root:Result : <str @ 0x7f895f45e0b0> ('Integer_Text_IO')
-INFO:root:Action : Reduce rule [compound_name -> compound_name . simple_name] with ['Ada','.',<str @ 0x7f895f45e0b0>] and goto state 97
-INFO:root:Result : <str @ 0x7f895f6c8858> ('Ada.Integer_Text_IO')
-INFO:root:Action : Reduce rule [c_name_list -> c_name_list , compound_name] with [['Ada.Text_IO'],',',<str @ 0x7f895f6c8858>] and goto state 22
-INFO:root:Result : <list @ 0x7f8960f8b8c8> (['Ada.Text_IO', 'Ada.Integer_Text_IO'])
-INFO:root:Action : Reduce rule [with_clause -> WITH c_name_list ;] with ['with',<list @ 0x7f8960f8b8c8>,';'] and goto state 12
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <str @ 0x1032d9110> ('Ada')
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with [<str @ 0x104828fb0>] and goto state 96
+INFO:root:Result : <str @ 0x104828fb0> ('Integer_Text_IO')
+INFO:root:Action : Reduce rule [compound_name -> compound_name . simple_name] with ['Ada','.',<str @ 0x104828fb0>] and goto state 97
+INFO:root:Result : <str @ 0x10360eae0> ('Ada.Integer_Text_IO')
+INFO:root:Action : Reduce rule [c_name_list -> c_name_list , compound_name] with [['Ada.Text_IO'],',',<str @ 0x10360eae0>] and goto state 22
+INFO:root:Result : <list @ 0x1032d07c8> (['Ada.Text_IO', 'Ada.Integer_Text_IO'])
+INFO:root:Action : Reduce rule [with_clause -> WITH c_name_list ;] with ['with',<list @ 0x1032d07c8>,';'] and goto state 12
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [use_clause_opt -> <empty>] with [] and goto state 51
-INFO:root:Result : <NoneType @ 0xa40040> (None)
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Ada'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f6dffb8> ('Ada')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Ada'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f6dffb8> ('Ada')
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Text_IO'] and goto state 96
-INFO:root:Result : <str @ 0x7f895f45d298> ('Text_IO')
-INFO:root:Action : Reduce rule [compound_name -> compound_name . simple_name] with ['Ada','.','Text_IO'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f6dbfb0> ('Ada.Text_IO')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['Ada.Text_IO'] and goto state 85
-INFO:root:Result : <dict @ 0x7f895f6b2b48> ({'tag': 'Ada.Text_IO', 'what': 'default_ ...)
-INFO:root:Action : Reduce rule [name_s -> name] with [<dict @ 0x7f895f6b2b48>] and goto state 86
-INFO:root:Result : <list @ 0x7f895f6bf248> ([{'tag': 'Ada.Text_IO', 'what': 'default ...)
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Ada'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d1f0> ('Ada')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Ada'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45d1f0> ('Ada')
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with [<str @ 0x7f895f6dbfb0>] and goto state 96
-INFO:root:Result : <str @ 0x7f895f6dbfb0> ('Integer_Text_IO')
-INFO:root:Action : Reduce rule [compound_name -> compound_name . simple_name] with ['Ada','.',<str @ 0x7f895f6dbfb0>] and goto state 78
-INFO:root:Result : <str @ 0x7f895f6c8858> ('Ada.Integer_Text_IO')
-INFO:root:Action : Reduce rule [name -> compound_name] with [<str @ 0x7f895f6c8858>] and goto state 172
-INFO:root:Result : <dict @ 0x7f895f6b2bc8> ({'tag': 'Ada.Integer_Text_IO', 'what': ' ...)
-INFO:root:Action : Reduce rule [name_s -> name_s , name] with [<list @ 0x7f895f6bf248>,',',<dict @ 0x7f895f6b2bc8>] and goto state 86
-INFO:root:Result : <list @ 0x7f8960fcb808> ([{'tag': 'Ada.Text_IO', 'what': 'default ...)
-INFO:root:Action : Reduce rule [use_clause -> USE name_s ;] with ['use',<list @ 0x7f8960fcb808>,';'] and goto state 87
-INFO:root:Result : <list @ 0x7f895f6bce48> ([{'tag': 'Ada.Text_IO', 'what': 'default ...)
-INFO:root:Action : Reduce rule [use_clause_opt -> use_clause_opt use_clause] with [None,<list @ 0x7f895f6bce48>] and goto state 51
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [context_spec -> with_clause use_clause_opt] with [None,None] and goto state 7
-INFO:root:Result : <NoneType @ 0xa40040> (None)
-INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['LinkList'] and goto state 53
-INFO:root:Result : <str @ 0x7f895f45e170> ('LinkList')
+INFO:root:Result : <NoneType @ 0x100919770> (None)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['Hello'] and goto state 53
+INFO:root:Result : <str @ 0x10360ddf8> ('Hello')
 INFO:root:Action : Reduce rule [formal_part_opt -> <empty>] with [] and goto state 91
-INFO:root:Result : <dict @ 0x7f8960f3dcc8> ({})
-INFO:root:Action : Reduce rule [subprog_spec -> PROCEDURE def_id formal_part_opt] with ['procedure','LinkList',{}] and goto state 10
-INFO:root:Result : <dict @ 0x7f8960f32bc8> ({'param_dict': {}, 'tag': 'LinkList', 'w ...)
-INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [<dict @ 0x7f8960f32bc8>,'is'] and goto state 8
-INFO:root:Result : <dict @ 0x7f895f45e148> ({'param_dict': {}, 'tag': 'LinkList', 'w ...)
+INFO:root:Result : <dict @ 0x10360e900> ({})
+INFO:root:Action : Reduce rule [subprog_spec -> PROCEDURE def_id formal_part_opt] with ['procedure','Hello',{}] and goto state 10
+INFO:root:Result : <dict @ 0x10360e7e0> ({'tag': 'Hello', 'param_dict': {}, 'what ...)
+INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [<dict @ 0x10360e7e0>,'is'] and goto state 8
+INFO:root:Result : <dict @ 0x10360e798> ({'tag': 'Hello', 'param_dict': {}, 'what ...)
 INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['a'] and goto state 38
-INFO:root:Result : <str @ 0x7f8960f95df8> ('a')
+INFO:root:Result : <str @ 0x1031be928> ('a')
 INFO:root:Action : Reduce rule [def_id_s -> def_id] with ['a'] and goto state 42
-INFO:root:Result : <list @ 0x7f8960f8b8c8> (['a'])
+INFO:root:Result : <list @ 0x1031f4148> (['a'])
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['b'] and goto state 128
+INFO:root:Result : <str @ 0x10310f4c8> ('b')
+INFO:root:Action : Reduce rule [def_id_s -> def_id_s , def_id] with [['a'],',','b'] and goto state 42
+INFO:root:Result : <list @ 0x1035df788> (['a', 'b'])
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['c'] and goto state 128
+INFO:root:Result : <str @ 0x101ec9490> ('c')
+INFO:root:Action : Reduce rule [def_id_s -> def_id_s , def_id] with [['a', 'b'],',','c'] and goto state 42
+INFO:root:Result : <list @ 0x1031f4148> (['a', 'b', 'c'])
 INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Integer'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d148> ('Integer')
+INFO:root:Result : <str @ 0x103618110> ('Integer')
 INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Integer'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45d148> ('Integer')
+INFO:root:Result : <str @ 0x103618110> ('Integer')
 INFO:root:Action : Reduce rule [name -> compound_name] with ['Integer'] and goto state 129
-INFO:root:Result : <dict @ 0x7f895f6aaec8> ({'tag': 'Integer', 'width': 4, 'what': ' ...)
-INFO:root:Action : Reduce rule [type_ind -> name] with [<dict @ 0x7f895f6aaec8>] and goto state 132
-INFO:root:Result : <dict @ 0x7f895f6dbf88> ({'tag': 'Integer', 'width': 4, 'what': ' ...)
-INFO:root:Action : Reduce rule [object_type_def -> type_ind] with [<dict @ 0x7f895f6dbf88>] and goto state 131
-INFO:root:Result : <dict @ 0x7f895f45e1c8> ({'tag': 'Integer', 'width': 4, 'what': ' ...)
-INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_type_def ;] with [['a'],':',<dict @ 0x7f895f45e1c8>,';'] and goto state 46
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <dict @ 0x1035eb3a8> ({'tag': 'Integer', 'what': 'type', 'widt ...)
+INFO:root:Action : Reduce rule [type_ind -> name] with [<dict @ 0x1035eb3a8>] and goto state 132
+INFO:root:Result : <dict @ 0x10360ebd0> ({'tag': 'Integer', 'what': 'type', 'widt ...)
+INFO:root:Action : Reduce rule [object_type_def -> type_ind] with [<dict @ 0x10360ebd0>] and goto state 131
+INFO:root:Result : <dict @ 0x10360eab0> ({'tag': 'Integer', 'what': 'type', 'widt ...)
+INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_type_def ;] with [['a', 'b', 'c'],':',<dict @ 0x10360eab0>,';'] and goto state 46
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [decl -> object_decl] with [None] and goto state 35
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [decl_item -> decl] with [None] and goto state 28
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [None] and goto state 41
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body] with [None] and goto state 31
-INFO:root:Result : <list @ 0x7f8960fcb808> ([None])
-INFO:root:Action : Reduce rule [type_decl -> TYPE IDENTIFIER ;] with ['type','CHAR_REC',';'] and goto state 37
-INFO:root:Result : <dict @ 0x7f895f45e288> ({'tag': 'CHAR_REC', 'what': 'unknown_typ ...)
-INFO:root:Action : Reduce rule [decl -> type_decl] with [<dict @ 0x7f895f45e288>] and goto state 35
-INFO:root:Result : <dict @ 0x7f895fac2948> ({'tag': 'CHAR_REC', 'what': 'unknown_typ ...)
-INFO:root:Action : Reduce rule [decl_item -> decl] with [<dict @ 0x7f895fac2948>] and goto state 28
-INFO:root:Result : <dict @ 0x7f895f45e348> ({'tag': 'CHAR_REC', 'what': 'unknown_typ ...)
-INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [<dict @ 0x7f895f45e348>] and goto state 62
-INFO:root:Result : <dict @ 0x7f895fac2948> ({'tag': 'CHAR_REC', 'what': 'unknown_typ ...)
-INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body_s decl_item_or_body] with [[None],<dict @ 0x7f895fac2948>] and goto state 31
-INFO:root:Result : <list @ 0x7f8960f8b8c8> ([None, {'tag': 'CHAR_REC', 'what': 'unkn ...)
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['CHAR_REC'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45e430> ('CHAR_REC')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['CHAR_REC'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45e430> ('CHAR_REC')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['CHAR_REC'] and goto state 182
-INFO:root:Result : <dict @ 0x7f895f45e288> ({'tag': 'CHAR_REC', 'what': 'unknown_typ ...)
-INFO:root:Action : Reduce rule [access_decl -> TYPE IDENTIFIER IS ACCESS name ;] with ['type',<str @ 0x7f895f45e3b0>,'is','access',<dict @ 0x7f895f45e288>,';'] and goto state 32
-INFO:root:Result : <dict @ 0x7f895f45e548> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [decl -> access_decl] with [<dict @ 0x7f895f45e548>] and goto state 35
-INFO:root:Result : <dict @ 0x7f895f6dbf48> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [decl_item -> decl] with [<dict @ 0x7f895f6dbf48>] and goto state 28
-INFO:root:Result : <dict @ 0x7f895f45e348> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [<dict @ 0x7f895f45e348>] and goto state 62
-INFO:root:Result : <dict @ 0x7f895f6dbf48> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body_s decl_item_or_body] with [<list @ 0x7f8960f8b8c8>,<dict @ 0x7f895f6dbf48>] and goto state 31
-INFO:root:Result : <list @ 0x7f8960fc1dc8> ([None, {'tag': 'CHAR_REC', 'what': 'unkn ...)
-INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['One_Letter'] and goto state 138
-INFO:root:Result : <str @ 0x7f895f45e5b0> ('One_Letter')
-INFO:root:Action : Reduce rule [def_id_s -> def_id] with ['One_Letter'] and goto state 136
-INFO:root:Result : <list @ 0x7f895f6c64c8> (['One_Letter'])
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Integer'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d148> ('Integer')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Integer'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45d148> ('Integer')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['Integer'] and goto state 211
-INFO:root:Result : <dict @ 0x7f895f6aaec8> ({'tag': 'Integer', 'width': 4, 'what': ' ...)
-INFO:root:Action : Reduce rule [mark -> name] with [<dict @ 0x7f895f6aaec8>] and goto state 212
-INFO:root:Result : <dict @ 0x7f895f45e1c8> ({'tag': 'Integer', 'width': 4, 'what': ' ...)
-INFO:root:Action : Reduce rule [param -> def_id_s : mark] with [['One_Letter'],':',<dict @ 0x7f895f45e1c8>] and goto state 137
-INFO:root:Result : <dict @ 0x7f895f45e2c8> ({'One_Letter': {'type': 'Integer', 'tag' ...)
-INFO:root:Action : Reduce rule [param_s -> param] with [<dict @ 0x7f895f45e2c8>] and goto state 181
-INFO:root:Result : <dict @ 0x7f895f45e308> ({'One_Letter': {'type': 'Integer', 'tag' ...)
-INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['Next_Rec'] and goto state 138
-INFO:root:Result : <str @ 0x7f895f45e6f0> ('Next_Rec')
-INFO:root:Action : Reduce rule [def_id_s -> def_id] with ['Next_Rec'] and goto state 136
-INFO:root:Result : <list @ 0x7f8960f8b8c8> (['Next_Rec'])
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with [<str @ 0x7f895f45e770>] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45e770> ('CHAR_REC_POINT')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with [<str @ 0x7f895f45e770>] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45e770> ('CHAR_REC_POINT')
-INFO:root:Action : Reduce rule [name -> compound_name] with [<str @ 0x7f895f45e770>] and goto state 211
-INFO:root:Result : <dict @ 0x7f895f45e548> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [mark -> name] with [<dict @ 0x7f895f45e548>] and goto state 212
-INFO:root:Result : <dict @ 0x7f895f45e2c8> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [param -> def_id_s : mark] with [['Next_Rec'],':',<dict @ 0x7f895f45e2c8>] and goto state 213
-INFO:root:Result : <dict @ 0x7f895f45e248> ({'Next_Rec': {'type': 'CHAR_REC_POINT',  ...)
-INFO:root:Action : Reduce rule [param_s -> param_s ; param] with [<dict @ 0x7f895f45e308>,';',<dict @ 0x7f895f45e248>] and goto state 181
-INFO:root:Result : <dict @ 0x7f895f45e488> ({'One_Letter': {'type': 'Integer', 'tag' ...)
-INFO:root:Action : Reduce rule [record_def -> RECORD param_s ; END RECORD] with ['record',<dict @ 0x7f895f45e488>,';','end','record'] and goto state 144
-INFO:root:Result : <dict @ 0x7f895f45e308> ({'One_Letter': {'type': 'Integer', 'tag' ...)
-INFO:root:Action : Reduce rule [record_decl -> TYPE IDENTIFIER IS record_def ;] with ['type','CHAR_REC','is',<dict @ 0x7f895f45e308>,';'] and goto state 34
-INFO:root:Result : <dict @ 0x7f895f45e7c8> ({'One_Letter': {'type': 'Integer', 'tag' ...)
-INFO:root:Action : Reduce rule [decl -> record_decl] with [<dict @ 0x7f895f45e7c8>] and goto state 35
-INFO:root:Result : <dict @ 0x7f895f45e088> ({'One_Letter': {'type': 'Integer', 'tag' ...)
-INFO:root:Action : Reduce rule [decl_item -> decl] with [<dict @ 0x7f895f45e088>] and goto state 28
-INFO:root:Result : <dict @ 0x7f895f45e1c8> ({'One_Letter': {'type': 'Integer', 'tag' ...)
-INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [<dict @ 0x7f895f45e1c8>] and goto state 62
-INFO:root:Result : <dict @ 0x7f895f45e088> ({'One_Letter': {'type': 'Integer', 'tag' ...)
-INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body_s decl_item_or_body] with [<list @ 0x7f8960fc1dc8>,<dict @ 0x7f895f45e088>] and goto state 31
-INFO:root:Result : <list @ 0x7f8960fcb808> ([None, {'tag': 'CHAR_REC', 'what': 'unkn ...)
-INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['Traverse_List'] and goto state 53
-INFO:root:Result : <str @ 0x7f895f45e8f0> ('Traverse_List')
-INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with [<str @ 0x7f895f45e770>] and goto state 138
-INFO:root:Result : <str @ 0x7f895f45e770> ('Starting_Point')
-INFO:root:Action : Reduce rule [def_id_s -> def_id] with [<str @ 0x7f895f45e770>] and goto state 136
-INFO:root:Result : <list @ 0x7f895f6c64c8> (['Starting_Point'])
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with [<str @ 0x7f895f45e930>] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45e930> ('CHAR_REC_POINT')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with [<str @ 0x7f895f45e930>] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45e930> ('CHAR_REC_POINT')
-INFO:root:Action : Reduce rule [name -> compound_name] with [<str @ 0x7f895f45e930>] and goto state 211
-INFO:root:Result : <dict @ 0x7f895f45e548> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [mark -> name] with [<dict @ 0x7f895f45e548>] and goto state 212
-INFO:root:Result : <dict @ 0x7f895f45e608> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [param -> def_id_s : mark] with [<list @ 0x7f895f6c64c8>,':',<dict @ 0x7f895f45e608>] and goto state 137
-INFO:root:Result : <dict @ 0x7f895f6dbf88> ({'Starting_Point': {'type': 'CHAR_REC_PO ...)
-INFO:root:Action : Reduce rule [param_s -> param] with [<dict @ 0x7f895f6dbf88>] and goto state 139
-INFO:root:Result : <dict @ 0x7f895f45e4c8> ({'Starting_Point': {'type': 'CHAR_REC_PO ...)
-INFO:root:Action : Reduce rule [formal_part -> ( param_s )] with ['(',<dict @ 0x7f895f45e4c8>,')'] and goto state 90
-INFO:root:Result : <dict @ 0x7f895f6dbf88> ({'Starting_Point': {'type': 'CHAR_REC_PO ...)
-INFO:root:Action : Reduce rule [formal_part_opt -> formal_part] with [<dict @ 0x7f895f6dbf88>] and goto state 91
-INFO:root:Result : <dict @ 0x7f895f6dbf88> ({'Starting_Point': {'type': 'CHAR_REC_PO ...)
-INFO:root:Action : Reduce rule [subprog_spec -> PROCEDURE def_id formal_part_opt] with ['procedure','Traverse_List',<dict @ 0x7f895f6dbf88>] and goto state 30
-INFO:root:Result : <dict @ 0x7f895f45e648> ({'param_dict': {'Starting_Point': {'type ...)
-INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [<dict @ 0x7f895f45e648>,'is'] and goto state 8
-INFO:root:Result : <dict @ 0x7f895f45e1c8> ({'param_dict': {'Starting_Point': {'type ...)
-INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['Temp'] and goto state 38
-INFO:root:Result : <str @ 0x7f895f45d458> ('Temp')
-INFO:root:Action : Reduce rule [def_id_s -> def_id] with ['Temp'] and goto state 42
-INFO:root:Result : <list @ 0x7f895f6c0348> (['Temp'])
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with [<str @ 0x7f895f45e8b0>] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45e8b0> ('CHAR_REC_POINT')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with [<str @ 0x7f895f45e8b0>] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45e8b0> ('CHAR_REC_POINT')
-INFO:root:Action : Reduce rule [name -> compound_name] with [<str @ 0x7f895f45e8b0>] and goto state 129
-INFO:root:Result : <dict @ 0x7f895f45e548> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [type_ind -> name] with [<dict @ 0x7f895f45e548>] and goto state 132
-INFO:root:Result : <dict @ 0x7f895f45e408> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [object_type_def -> type_ind] with [<dict @ 0x7f895f45e408>] and goto state 131
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'access': 'CHAR_REC', 'tag': 'CHAR_REC_ ...)
-INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_type_def ;] with [['Temp'],':',<dict @ 0x7f895f45e948>,';'] and goto state 46
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <list @ 0x1031f4588> ([None])
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['p'] and goto state 38
+INFO:root:Result : <str @ 0x1031bbdf8> ('p')
+INFO:root:Action : Reduce rule [def_id_s -> def_id] with ['p'] and goto state 42
+INFO:root:Result : <list @ 0x1035df7c8> (['p'])
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['q'] and goto state 128
+INFO:root:Result : <str @ 0x1031aae68> ('q')
+INFO:root:Action : Reduce rule [def_id_s -> def_id_s , def_id] with [['p'],',','q'] and goto state 42
+INFO:root:Result : <list @ 0x10483e548> (['p', 'q'])
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Float'] and goto state 23
+INFO:root:Result : <str @ 0x103618030> ('Float')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Float'] and goto state 78
+INFO:root:Result : <str @ 0x103618030> ('Float')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['Float'] and goto state 129
+INFO:root:Result : <dict @ 0x1035eb360> ({'tag': 'Float', 'what': 'type', 'width' ...)
+INFO:root:Action : Reduce rule [type_ind -> name] with [<dict @ 0x1035eb360>] and goto state 132
+INFO:root:Result : <dict @ 0x10360e8b8> ({'tag': 'Float', 'what': 'type', 'width' ...)
+INFO:root:Action : Reduce rule [object_type_def -> type_ind] with [<dict @ 0x10360e8b8>] and goto state 131
+INFO:root:Result : <dict @ 0x10360eb88> ({'tag': 'Float', 'what': 'type', 'width' ...)
+INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_type_def ;] with [['p', 'q'],':',<dict @ 0x10360eb88>,';'] and goto state 46
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [decl -> object_decl] with [None] and goto state 35
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [decl_item -> decl] with [None] and goto state 28
-INFO:root:Result : <NoneType @ 0xa40040> (None)
-INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [None] and goto state 41
-INFO:root:Result : <NoneType @ 0xa40040> (None)
-INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body] with [None] and goto state 31
-INFO:root:Result : <list @ 0x7f895f6c6508> ([None])
-INFO:root:Action : Reduce rule [decl_part -> decl_item_or_body_s] with [[None]] and goto state 39
-INFO:root:Result : <NoneType @ 0xa40040> (None)
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['a'] and goto state 23
-INFO:root:Result : <str @ 0x7f8960f95df8> ('a')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['a'] and goto state 78
-INFO:root:Result : <str @ 0x7f8960f95df8> ('a')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['a'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f45e0c8> ({'type': 'Integer', 'tag': 'a', 'what':  ...)
+INFO:root:Result : <NoneType @ 0x100919770> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [None] and goto state 62
+INFO:root:Result : <NoneType @ 0x100919770> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body_s decl_item_or_body] with [[None],None] and goto state 31
+INFO:root:Result : <list @ 0x10483e548> ([None, None])
+INFO:root:Action : Reduce rule [decl_part -> decl_item_or_body_s] with [[None, None]] and goto state 39
+INFO:root:Result : <NoneType @ 0x100919770> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['print_int'] and goto state 23
+INFO:root:Result : <str @ 0x1035f4fb0> ('print_int')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['print_int'] and goto state 78
+INFO:root:Result : <str @ 0x1035f4fb0> ('print_int')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['print_int'] and goto state 115
+INFO:root:Result : <dict @ 0x1035eb288> ({'tag': 'print_int', 'what': 'io_functio ...)
 INFO:root:Action : Reduce rule [numeric_lit -> INT] with [4] and goto state 65
-INFO:root:Result : <dict @ 0x7f895f45ea48> ({'type': 'Integer', 'tag': 4})
-INFO:root:Action : Reduce rule [literal -> numeric_lit] with [<dict @ 0x7f895f45ea48>] and goto state 70
-INFO:root:Result : <dict @ 0x7f895f45eb48> ({'type': 'Integer', 'tag': 4})
-INFO:root:Action : Reduce rule [primary -> literal] with [<dict @ 0x7f895f45eb48>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f45ea48> ({'type': 'Integer', 'tag': 4})
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f45ea48>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f45eb48> ({'type': 'Integer', 'tag': 4})
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f45eb48>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f45ea48> ({'type': 'Integer', 'tag': 4})
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f45ea48>] and goto state 200
-INFO:root:Result : <dict @ 0x7f895f45eb48> ({'type': 'Integer', 'tag': 4})
-INFO:root:Action : Reduce rule [assign_stmt -> name ASSIGN simple_expression ;] with [<dict @ 0x7f895f45e0c8>,':=',<dict @ 0x7f895f45eb48>,';'] and goto state 119
-INFO:root:Result : <dict @ 0x7f895f45eb08> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [simple_stmt -> assign_stmt] with [<dict @ 0x7f895f45eb08>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45e948>] and goto state 118
-INFO:root:Result : <dict @ 0x7f895f45eb08> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [statement_s -> statement] with [<dict @ 0x7f895f45eb08>] and goto state 125
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 167
-INFO:root:Result : <dict @ 0x7f895f45e9c8> ({'quad': 4})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Temp'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d1f0> ('Temp')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Temp'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45d1f0> ('Temp')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['Temp'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f45e608> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with [<str @ 0x7f895f45ec30>] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45ec30> ('Starting_Point')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with [<str @ 0x7f895f45ec30>] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45ec30> ('Starting_Point')
-INFO:root:Action : Reduce rule [name -> compound_name] with [<str @ 0x7f895f45ec30>] and goto state 73
-INFO:root:Result : <dict @ 0x7f895f45e348> ({'type': 'CHAR_REC_POINT', 'tag': 'Start ...)
-INFO:root:Action : Reduce rule [primary -> name] with [<dict @ 0x7f895f45e348>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f45e888> ({'type': 'CHAR_REC_POINT', 'tag': 'Start ...)
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f45e888>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f45ea08> ({'type': 'CHAR_REC_POINT', 'tag': 'Start ...)
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f45ea08>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f45e888> ({'type': 'CHAR_REC_POINT', 'tag': 'Start ...)
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f45e888>] and goto state 200
-INFO:root:Result : <dict @ 0x7f895f45ea08> ({'type': 'CHAR_REC_POINT', 'tag': 'Start ...)
-INFO:root:Action : Reduce rule [assign_stmt -> name ASSIGN simple_expression ;] with [<dict @ 0x7f895f45e608>,':=',<dict @ 0x7f895f45ea08>,';'] and goto state 119
-INFO:root:Result : <dict @ 0x7f895f45eb48> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [simple_stmt -> assign_stmt] with [<dict @ 0x7f895f45eb48>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45eb08> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45eb08>] and goto state 206
-INFO:root:Result : <dict @ 0x7f895f45eb48> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [statement_s -> statement_s M statement] with [<dict @ 0x7f895f45e948>,{'quad': 4},<dict @ 0x7f895f45eb48>] and goto state 125
-INFO:root:Result : <dict @ 0x7f895f45ec08> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 167
-INFO:root:Result : <dict @ 0x7f895f45ebc8> ({'quad': 5})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Temp'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d340> ('Temp')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Temp'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45d340> ('Temp')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['Temp'] and goto state 73
-INFO:root:Result : <dict @ 0x7f895f45e608> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [primary -> name] with [<dict @ 0x7f895f45e608>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f45eb88> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f45eb88>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f45ea08> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f45ea08>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f45eb88> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f45eb88>] and goto state 157
-INFO:root:Result : <dict @ 0x7f895f45ea08> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [relational -> =] with ['='] and goto state 192
-INFO:root:Result : <str @ 0x7f895fa1b110> ('=')
-INFO:root:Action : Reduce rule [literal -> NuLL] with ['null'] and goto state 70
-INFO:root:Result : <str @ 0x7f895f45d340> ('null')
-INFO:root:Action : Reduce rule [primary -> literal] with ['null'] and goto state 72
-INFO:root:Result : <str @ 0x7f895f45d340> ('null')
-INFO:root:Action : Reduce rule [factor -> primary] with ['null'] and goto state 67
-INFO:root:Result : <str @ 0x7f895f45d340> ('null')
-INFO:root:Action : Reduce rule [term -> factor] with ['null'] and goto state 77
-INFO:root:Result : <str @ 0x7f895f45d340> ('null')
-INFO:root:Action : Reduce rule [simple_expression -> term] with ['null'] and goto state 219
-INFO:root:Result : <str @ 0x7f895f45d340> ('null')
-INFO:root:Action : Reduce rule [relation -> simple_expression relational simple_expression] with [<dict @ 0x7f895f45ea08>,'=','null'] and goto state 159
-INFO:root:Result : <dict @ 0x7f895f45ed08> ({'type': 'bool', 'true_list': [5], 'fals ...)
-INFO:root:Action : Reduce rule [expression -> relation] with [<dict @ 0x7f895f45ed08>] and goto state 155
-INFO:root:Result : <dict @ 0x7f895f45ed08> ({'type': 'bool', 'true_list': [5], 'fals ...)
-INFO:root:Action : Reduce rule [condition -> expression] with [<dict @ 0x7f895f45ed08>] and goto state 156
-INFO:root:Result : <dict @ 0x7f895f45e888> ({'type': 'bool', 'true_list': [5], 'fals ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 218
-INFO:root:Result : <dict @ 0x7f895f45ec88> ({'quad': 7})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['print_int'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45ed30> ('print_int')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['print_int'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45ed30> ('print_int')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['print_int'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f6aaf88> ({'tag': 'print_int', 'what': 'io_functio ...)
-INFO:root:Action : Reduce rule [numeric_lit -> INT] with [5] and goto state 65
-INFO:root:Result : <dict @ 0x7f895f45e9c8> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [literal -> numeric_lit] with [<dict @ 0x7f895f45e9c8>] and goto state 70
-INFO:root:Result : <dict @ 0x7f895f45ed88> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [primary -> literal] with [<dict @ 0x7f895f45ed88>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f45e9c8> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f45e9c8>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f45ed88> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f45ed88>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f45e9c8> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f45e9c8>] and goto state 151
-INFO:root:Result : <dict @ 0x7f895f45ed88> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [value -> simple_expression] with [<dict @ 0x7f895f45ed88>] and goto state 150
-INFO:root:Result : <dict @ 0x7f895f45e9c8> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [value_s -> value] with [<dict @ 0x7f895f45e9c8>] and goto state 148
-INFO:root:Result : <list @ 0x7f895f6d9108> ([{'type': 'Integer', 'tag': 5}])
-INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [<dict @ 0x7f895f6aaf88>,'(',<list @ 0x7f895f6d9108>,')'] and goto state 64
-INFO:root:Result : <str @ 0x7f895f710c70> ('print_int')
+INFO:root:Result : <dict @ 0x10360edc8> ({'tag': 4, 'type': 'Integer'})
+INFO:root:Action : Reduce rule [literal -> numeric_lit] with [<dict @ 0x10360edc8>] and goto state 70
+INFO:root:Result : <dict @ 0x10360eca8> ({'tag': 4, 'type': 'Integer'})
+INFO:root:Action : Reduce rule [primary -> literal] with [<dict @ 0x10360eca8>] and goto state 72
+INFO:root:Result : <dict @ 0x10360edc8> ({'tag': 4, 'type': 'Integer'})
+INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x10360edc8>] and goto state 67
+INFO:root:Result : <dict @ 0x10360eca8> ({'tag': 4, 'type': 'Integer'})
+INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x10360eca8>] and goto state 77
+INFO:root:Result : <dict @ 0x10360edc8> ({'tag': 4, 'type': 'Integer'})
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x10360edc8>] and goto state 151
+INFO:root:Result : <dict @ 0x10360eca8> ({'tag': 4, 'type': 'Integer'})
+INFO:root:Action : Reduce rule [value -> simple_expression] with [<dict @ 0x10360eca8>] and goto state 150
+INFO:root:Result : <dict @ 0x10360edc8> ({'tag': 4, 'type': 'Integer'})
+INFO:root:Action : Reduce rule [value_s -> value] with [<dict @ 0x10360edc8>] and goto state 148
+INFO:root:Result : <list @ 0x1031f4148> ([{'tag': 4, 'type': 'Integer'}])
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [<dict @ 0x1035eb288>,'(',<list @ 0x1031f4148>,')'] and goto state 64
+INFO:root:Result : <str @ 0x1048373b0> ('print_int')
 INFO:root:Action : Reduce rule [name -> indexed_comp] with ['print_int'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f6aaf88> ({'tag': 'print_int', 'what': 'io_functio ...)
-INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<dict @ 0x7f895f6aaf88>,';'] and goto state 121
-INFO:root:Result : <dict @ 0x7f895f45ed48> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<dict @ 0x7f895f45ed48>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45ecc8> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45ecc8>] and goto state 118
-INFO:root:Result : <dict @ 0x7f895f45ed48> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement_s -> statement] with [<dict @ 0x7f895f45ed48>] and goto state 232
-INFO:root:Result : <dict @ 0x7f895f45ecc8> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [N -> <empty>] with [] and goto state 239
-INFO:root:Result : <dict @ 0x7f895f45ed88> ({'quad': 8})
-INFO:root:Action : Reduce rule [cond_clause -> condition THEN M statement_s N] with [<dict @ 0x7f895f45e888>,'then',{'quad': 7},<dict @ 0x7f895f45ecc8>,{'quad': 8}] and goto state 158
-INFO:root:Result : <dict @ 0x7f895f45eb88> ({'type': 'bool', 'true_list': [5], 'fals ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 221
-INFO:root:Result : <dict @ 0x7f895f45ea48> ({'quad': 9})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['a'] and goto state 23
-INFO:root:Result : <str @ 0x7f8960f95df8> ('a')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['a'] and goto state 78
-INFO:root:Result : <str @ 0x7f8960f95df8> ('a')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['a'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f45e0c8> ({'type': 'Integer', 'tag': 'a', 'what':  ...)
-INFO:root:Action : Reduce rule [numeric_lit -> INT] with [5] and goto state 65
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [literal -> numeric_lit] with [<dict @ 0x7f895f45e948>] and goto state 70
-INFO:root:Result : <dict @ 0x7f895f45ed08> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [primary -> literal] with [<dict @ 0x7f895f45ed08>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f45e948>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f45ed08> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f45ed08>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f45e948>] and goto state 200
-INFO:root:Result : <dict @ 0x7f895f45ed08> ({'type': 'Integer', 'tag': 5})
-INFO:root:Action : Reduce rule [assign_stmt -> name ASSIGN simple_expression ;] with [<dict @ 0x7f895f45e0c8>,':=',<dict @ 0x7f895f45ed08>,';'] and goto state 119
-INFO:root:Result : <dict @ 0x7f895f45ec88> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [simple_stmt -> assign_stmt] with [<dict @ 0x7f895f45ec88>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45e888> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45e888>] and goto state 118
-INFO:root:Result : <dict @ 0x7f895f45ec88> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [statement_s -> statement] with [<dict @ 0x7f895f45ec88>] and goto state 234
-INFO:root:Result : <dict @ 0x7f895f45e888> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 167
-INFO:root:Result : <dict @ 0x7f895f45ee48> ({'quad': 10})
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 164
-INFO:root:Result : <dict @ 0x7f895f45ea08> ({'quad': 10})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Temp'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d570> ('Temp')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Temp'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45d570> ('Temp')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['Temp'] and goto state 73
-INFO:root:Result : <dict @ 0x7f895f45e608> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [primary -> name] with [<dict @ 0x7f895f45e608>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f45ef08> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f45ef08>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f45ef48> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f45ef48>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f45ef08> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f45ef08>] and goto state 157
-INFO:root:Result : <dict @ 0x7f895f45ef48> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [relational -> =] with ['='] and goto state 192
-INFO:root:Result : <str @ 0x7f895fa1b110> ('=')
-INFO:root:Action : Reduce rule [literal -> NuLL] with ['null'] and goto state 70
-INFO:root:Result : <str @ 0x7f895f45d570> ('null')
-INFO:root:Action : Reduce rule [primary -> literal] with ['null'] and goto state 72
-INFO:root:Result : <str @ 0x7f895f45d570> ('null')
-INFO:root:Action : Reduce rule [factor -> primary] with ['null'] and goto state 67
-INFO:root:Result : <str @ 0x7f895f45d570> ('null')
-INFO:root:Action : Reduce rule [term -> factor] with ['null'] and goto state 77
-INFO:root:Result : <str @ 0x7f895f45d570> ('null')
-INFO:root:Action : Reduce rule [simple_expression -> term] with ['null'] and goto state 219
-INFO:root:Result : <str @ 0x7f895f45d570> ('null')
-INFO:root:Action : Reduce rule [relation -> simple_expression relational simple_expression] with [<dict @ 0x7f895f45ef48>,'=','null'] and goto state 159
-INFO:root:Result : <dict @ 0x7f895f45ef88> ({'type': 'bool', 'true_list': [10], 'fal ...)
-INFO:root:Action : Reduce rule [expression -> relation] with [<dict @ 0x7f895f45ef88>] and goto state 155
-INFO:root:Result : <dict @ 0x7f895f45ef88> ({'type': 'bool', 'true_list': [10], 'fal ...)
-INFO:root:Action : Reduce rule [condition -> expression] with [<dict @ 0x7f895f45ef88>] and goto state 202
-INFO:root:Result : <dict @ 0x7f895f45eec8> ({'type': 'bool', 'true_list': [10], 'fal ...)
-INFO:root:Action : Reduce rule [iteration -> WHILE M condition] with ['while',{'quad': 10},<dict @ 0x7f895f45eec8>] and goto state 124
-INFO:root:Result : <dict @ 0x7f895f45ef88> ({'type': 'bool', 'true_list': [10], 'fal ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 166
-INFO:root:Result : <dict @ 0x7f895f45ecc8> ({'quad': 12})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['print_int'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f461070> ('print_int')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['print_int'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f461070> ('print_int')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['print_int'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f6aaf88> ({'tag': 'print_int', 'what': 'io_functio ...)
-INFO:root:Action : Reduce rule [numeric_lit -> INT] with [6] and goto state 65
-INFO:root:Result : <dict @ 0x7f895f45eec8> ({'type': 'Integer', 'tag': 6})
-INFO:root:Action : Reduce rule [literal -> numeric_lit] with [<dict @ 0x7f895f45eec8>] and goto state 70
-INFO:root:Result : <dict @ 0x7f895f461048> ({'type': 'Integer', 'tag': 6})
-INFO:root:Action : Reduce rule [primary -> literal] with [<dict @ 0x7f895f461048>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f45eec8> ({'type': 'Integer', 'tag': 6})
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f45eec8>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f461048> ({'type': 'Integer', 'tag': 6})
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f461048>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f45eec8> ({'type': 'Integer', 'tag': 6})
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f45eec8>] and goto state 151
-INFO:root:Result : <dict @ 0x7f895f461048> ({'type': 'Integer', 'tag': 6})
-INFO:root:Action : Reduce rule [value -> simple_expression] with [<dict @ 0x7f895f461048>] and goto state 150
-INFO:root:Result : <dict @ 0x7f895f45eec8> ({'type': 'Integer', 'tag': 6})
-INFO:root:Action : Reduce rule [value_s -> value] with [<dict @ 0x7f895f45eec8>] and goto state 148
-INFO:root:Result : <list @ 0x7f895f6d8f08> ([{'type': 'Integer', 'tag': 6}])
-INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [<dict @ 0x7f895f6aaf88>,'(',<list @ 0x7f895f6d8f08>,')'] and goto state 64
-INFO:root:Result : <str @ 0x7f895f710c70> ('print_int')
-INFO:root:Action : Reduce rule [name -> indexed_comp] with ['print_int'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f6aaf88> ({'tag': 'print_int', 'what': 'io_functio ...)
-INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<dict @ 0x7f895f6aaf88>,';'] and goto state 121
-INFO:root:Result : <dict @ 0x7f895f461088> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<dict @ 0x7f895f461088>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45ea08> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45ea08>] and goto state 118
-INFO:root:Result : <dict @ 0x7f895f461088> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement_s -> statement] with [<dict @ 0x7f895f461088>] and goto state 225
-INFO:root:Result : <dict @ 0x7f895f45ea08> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 167
-INFO:root:Result : <dict @ 0x7f895f461048> ({'quad': 13})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['print_int'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f461130> ('print_int')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['print_int'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f461130> ('print_int')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['print_int'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f6aaf88> ({'tag': 'print_int', 'what': 'io_functio ...)
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Temp'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d768> ('Temp')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Temp'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45d768> ('Temp')
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['One_Letter'] and goto state 96
-INFO:root:Result : <str @ 0x7f895f461130> ('One_Letter')
-INFO:root:Action : Reduce rule [compound_name -> compound_name . simple_name] with ['Temp','.','One_Letter'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f4611f0> ('Temp.One_Letter')
-INFO:root:Action : Reduce rule [name -> compound_name] with [<str @ 0x7f895f4611f0>] and goto state 73
-INFO:root:Result : <dict @ 0x7f895f45e408> ({'type': 'Integer', 'tag': 'Temp.One_Let ...)
-INFO:root:Action : Reduce rule [primary -> name] with [<dict @ 0x7f895f45e408>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f4611c8> ({'type': 'Integer', 'tag': 'Temp.One_Let ...)
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f4611c8>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f45ef08> ({'type': 'Integer', 'tag': 'Temp.One_Let ...)
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f45ef08>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f4611c8> ({'type': 'Integer', 'tag': 'Temp.One_Let ...)
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f4611c8>] and goto state 151
-INFO:root:Result : <dict @ 0x7f895f45ef08> ({'type': 'Integer', 'tag': 'Temp.One_Let ...)
-INFO:root:Action : Reduce rule [value -> simple_expression] with [<dict @ 0x7f895f45ef08>] and goto state 150
-INFO:root:Result : <dict @ 0x7f895f4611c8> ({'type': 'Integer', 'tag': 'Temp.One_Let ...)
-INFO:root:Action : Reduce rule [value_s -> value] with [<dict @ 0x7f895f4611c8>] and goto state 148
-INFO:root:Result : <list @ 0x7f895f6bcdc8> ([{'type': 'Integer', 'tag': 'Temp.One_Le ...)
-INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [<dict @ 0x7f895f6aaf88>,'(',<list @ 0x7f895f6bcdc8>,')'] and goto state 64
-INFO:root:Result : <str @ 0x7f895f710c70> ('print_int')
-INFO:root:Action : Reduce rule [name -> indexed_comp] with ['print_int'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f6aaf88> ({'tag': 'print_int', 'what': 'io_functio ...)
-INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<dict @ 0x7f895f6aaf88>,';'] and goto state 121
-INFO:root:Result : <dict @ 0x7f895f461188> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<dict @ 0x7f895f461188>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45eec8> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45eec8>] and goto state 206
-INFO:root:Result : <dict @ 0x7f895f461188> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement_s -> statement_s M statement] with [<dict @ 0x7f895f45ea08>,{'quad': 13},<dict @ 0x7f895f461188>] and goto state 225
-INFO:root:Result : <dict @ 0x7f895f461108> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 167
-INFO:root:Result : <dict @ 0x7f895f45ed88> ({'quad': 14})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Temp'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d880> ('Temp')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Temp'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45d880> ('Temp')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['Temp'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f45e608> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp' ...)
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Temp'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f45d768> ('Temp')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Temp'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f45d768> ('Temp')
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Next_Rec'] and goto state 96
-INFO:root:Result : <str @ 0x7f895f4611f0> ('Next_Rec')
-INFO:root:Action : Reduce rule [compound_name -> compound_name . simple_name] with ['Temp','.','Next_Rec'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f461270> ('Temp.Next_Rec')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['Temp.Next_Rec'] and goto state 73
-INFO:root:Result : <dict @ 0x7f895f45e8c8> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp. ...)
-INFO:root:Action : Reduce rule [primary -> name] with [<dict @ 0x7f895f45e8c8>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f461088> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp. ...)
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f461088>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f461188> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp. ...)
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f461188>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f461088> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp. ...)
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f461088>] and goto state 200
-INFO:root:Result : <dict @ 0x7f895f461188> ({'type': 'CHAR_REC_POINT', 'tag': 'Temp. ...)
-INFO:root:Action : Reduce rule [assign_stmt -> name ASSIGN simple_expression ;] with [<dict @ 0x7f895f45e608>,':=',<dict @ 0x7f895f461188>,';'] and goto state 119
-INFO:root:Result : <dict @ 0x7f895f461048> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [simple_stmt -> assign_stmt] with [<dict @ 0x7f895f461048>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45ea08> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45ea08>] and goto state 206
-INFO:root:Result : <dict @ 0x7f895f461048> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [statement_s -> statement_s M statement] with [<dict @ 0x7f895f461108>,{'quad': 14},<dict @ 0x7f895f461048>] and goto state 225
-INFO:root:Result : <dict @ 0x7f895f45edc8> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [basic_loop -> LOOP statement_s END LOOP] with ['loop',<dict @ 0x7f895f45edc8>,'end','loop'] and goto state 204
-INFO:root:Result : <dict @ 0x7f895f461108> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [loop_stmt -> iteration M basic_loop ;] with [<dict @ 0x7f895f45ef88>,{'quad': 12},<dict @ 0x7f895f461108>,';'] and goto state 113
-INFO:root:Result : <dict @ 0x7f895f45ef08> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [compound_stmt -> loop_stmt] with [<dict @ 0x7f895f45ef08>] and goto state 126
-INFO:root:Result : <dict @ 0x7f895f45ef88> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement -> compound_stmt] with [<dict @ 0x7f895f45ef88>] and goto state 206
-INFO:root:Result : <dict @ 0x7f895f45ef08> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement_s -> statement_s M statement] with [<dict @ 0x7f895f45e888>,{'quad': 10},<dict @ 0x7f895f45ef08>] and goto state 234
-INFO:root:Result : <dict @ 0x7f895f45e9c8> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 167
-INFO:root:Result : <dict @ 0x7f895f45ee88> ({'quad': 16})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['print_int'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f4611f0> ('print_int')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['print_int'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f4611f0> ('print_int')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['print_int'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f6aaf88> ({'tag': 'print_int', 'what': 'io_functio ...)
-INFO:root:Action : Reduce rule [numeric_lit -> INT] with [7] and goto state 65
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'type': 'Integer', 'tag': 7})
-INFO:root:Action : Reduce rule [literal -> numeric_lit] with [<dict @ 0x7f895f45e948>] and goto state 70
-INFO:root:Result : <dict @ 0x7f895f45ecc8> ({'type': 'Integer', 'tag': 7})
-INFO:root:Action : Reduce rule [primary -> literal] with [<dict @ 0x7f895f45ecc8>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'type': 'Integer', 'tag': 7})
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f45e948>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f45ecc8> ({'type': 'Integer', 'tag': 7})
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f45ecc8>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'type': 'Integer', 'tag': 7})
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f45e948>] and goto state 151
-INFO:root:Result : <dict @ 0x7f895f45ecc8> ({'type': 'Integer', 'tag': 7})
-INFO:root:Action : Reduce rule [value -> simple_expression] with [<dict @ 0x7f895f45ecc8>] and goto state 150
-INFO:root:Result : <dict @ 0x7f895f45e948> ({'type': 'Integer', 'tag': 7})
-INFO:root:Action : Reduce rule [value_s -> value] with [<dict @ 0x7f895f45e948>] and goto state 148
-INFO:root:Result : <list @ 0x7f895f6d9488> ([{'type': 'Integer', 'tag': 7}])
-INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [<dict @ 0x7f895f6aaf88>,'(',<list @ 0x7f895f6d9488>,')'] and goto state 64
-INFO:root:Result : <str @ 0x7f895f710c70> ('print_int')
-INFO:root:Action : Reduce rule [name -> indexed_comp] with ['print_int'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f6aaf88> ({'tag': 'print_int', 'what': 'io_functio ...)
-INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<dict @ 0x7f895f6aaf88>,';'] and goto state 121
-INFO:root:Result : <dict @ 0x7f895f461108> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<dict @ 0x7f895f461108>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45ee48> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45ee48>] and goto state 206
-INFO:root:Result : <dict @ 0x7f895f461108> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement_s -> statement_s M statement] with [<dict @ 0x7f895f45e9c8>,{'quad': 16},<dict @ 0x7f895f461108>] and goto state 234
-INFO:root:Result : <dict @ 0x7f895f45ef08> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [else_opt -> ELSE M statement_s] with ['else',{'quad': 9},<dict @ 0x7f895f45ef08>] and goto state 198
-INFO:root:Result : <dict @ 0x7f895f45e9c8> ({'type': 'assign_stmt', 'quad': 9, 'what ...)
-INFO:root:Action : Reduce rule [if_stmt -> IF cond_clause else_opt END IF ;] with ['if',<dict @ 0x7f895f45eb88>,<dict @ 0x7f895f45e9c8>,'end','if',';'] and goto state 116
-INFO:root:Result : <dict @ 0x7f895f45e988> ({'type': 'if_stmt', 'next_list': [8]})
-INFO:root:Action : Reduce rule [compound_stmt -> if_stmt] with [<dict @ 0x7f895f45e988>] and goto state 126
-INFO:root:Result : <dict @ 0x7f895f45ed48> ({'type': 'if_stmt', 'next_list': [8]})
-INFO:root:Action : Reduce rule [statement -> compound_stmt] with [<dict @ 0x7f895f45ed48>] and goto state 206
-INFO:root:Result : <dict @ 0x7f895f45e988> ({'type': 'if_stmt', 'what': 'statement', ...)
-INFO:root:Action : Reduce rule [statement_s -> statement_s M statement] with [<dict @ 0x7f895f45ec08>,{'quad': 5},<dict @ 0x7f895f45e988>] and goto state 125
-INFO:root:Result : <dict @ 0x7f895f45e9c8> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 167
-INFO:root:Result : <dict @ 0x7f895f45ec48> ({'quad': 17})
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['a'] and goto state 23
-INFO:root:Result : <str @ 0x7f8960f95df8> ('a')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['a'] and goto state 78
-INFO:root:Result : <str @ 0x7f8960f95df8> ('a')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['a'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f45e0c8> ({'type': 'Integer', 'tag': 'a', 'what':  ...)
-INFO:root:Action : Reduce rule [numeric_lit -> INT] with [89] and goto state 65
-INFO:root:Result : <dict @ 0x7f895f45eb08> ({'type': 'Integer', 'tag': 89})
-INFO:root:Action : Reduce rule [literal -> numeric_lit] with [<dict @ 0x7f895f45eb08>] and goto state 70
-INFO:root:Result : <dict @ 0x7f895f45ee48> ({'type': 'Integer', 'tag': 89})
-INFO:root:Action : Reduce rule [primary -> literal] with [<dict @ 0x7f895f45ee48>] and goto state 72
-INFO:root:Result : <dict @ 0x7f895f45eb08> ({'type': 'Integer', 'tag': 89})
-INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f895f45eb08>] and goto state 67
-INFO:root:Result : <dict @ 0x7f895f45ee48> ({'type': 'Integer', 'tag': 89})
-INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f895f45ee48>] and goto state 77
-INFO:root:Result : <dict @ 0x7f895f45eb08> ({'type': 'Integer', 'tag': 89})
-INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f895f45eb08>] and goto state 200
-INFO:root:Result : <dict @ 0x7f895f45ee48> ({'type': 'Integer', 'tag': 89})
-INFO:root:Action : Reduce rule [assign_stmt -> name ASSIGN simple_expression ;] with [<dict @ 0x7f895f45e0c8>,':=',<dict @ 0x7f895f45ee48>,';'] and goto state 119
-INFO:root:Result : <dict @ 0x7f895f45e848> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [simple_stmt -> assign_stmt] with [<dict @ 0x7f895f45e848>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45ec08> ({'type': 'assign_stmt', 'next_list': []})
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45ec08>] and goto state 206
-INFO:root:Result : <dict @ 0x7f895f45e848> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [statement_s -> statement_s M statement] with [<dict @ 0x7f895f45e9c8>,{'quad': 17},<dict @ 0x7f895f45e848>] and goto state 125
-INFO:root:Result : <dict @ 0x7f895f45e988> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [block_body -> BEGIN statement_s] with ['begin',<dict @ 0x7f895f45e988>] and goto state 82
-INFO:root:Result : <dict @ 0x7f895f45e9c8> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END ;] with [<dict @ 0x7f895f45e1c8>,None,<dict @ 0x7f895f45e9c8>,'end',';'] and goto state 47
-INFO:root:Result : <dict @ 0x7f895f45eec8> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [body -> subprog_body] with [<dict @ 0x7f895f45eec8>] and goto state 27
-INFO:root:Result : <dict @ 0x7f895f45e1c8> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [decl_item_or_body -> body] with [<dict @ 0x7f895f45e1c8>] and goto state 62
-INFO:root:Result : <dict @ 0x7f895f45eec8> ({'type': 'assign_stmt', 'what': 'stateme ...)
-INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body_s decl_item_or_body] with [<list @ 0x7f8960fcb808>,<dict @ 0x7f895f45eec8>] and goto state 31
-INFO:root:Result : <list @ 0x7f895f6c6a88> ([None, {'tag': 'CHAR_REC', 'what': 'unkn ...)
-INFO:root:Action : Reduce rule [decl_part -> decl_item_or_body_s] with [<list @ 0x7f895f6c6a88>] and goto state 39
-INFO:root:Result : <NoneType @ 0xa40040> (None)
-INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Traverse_List'] and goto state 23
-INFO:root:Result : <str @ 0x7f895f4615b0> ('Traverse_List')
-INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Traverse_List'] and goto state 78
-INFO:root:Result : <str @ 0x7f895f4615b0> ('Traverse_List')
-INFO:root:Action : Reduce rule [name -> compound_name] with ['Traverse_List'] and goto state 115
-INFO:root:Result : <dict @ 0x7f895f45e648> ({'param_dict': {'Starting_Point': {'type ...)
-INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<dict @ 0x7f895f45e648>,';'] and goto state 121
-INFO:root:Result : <dict @ 0x7f895f45ed48> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<dict @ 0x7f895f45ed48>] and goto state 112
-INFO:root:Result : <dict @ 0x7f895f45e308> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f895f45e308>] and goto state 118
-INFO:root:Result : <dict @ 0x7f895f45ed48> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [statement_s -> statement] with [<dict @ 0x7f895f45ed48>] and goto state 125
-INFO:root:Result : <dict @ 0x7f895f45e308> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [block_body -> BEGIN statement_s] with ['begin',<dict @ 0x7f895f45e308>] and goto state 82
-INFO:root:Result : <dict @ 0x7f895f45ed48> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END ;] with [<dict @ 0x7f895f45e148>,None,<dict @ 0x7f895f45ed48>,'end',';'] and goto state 14
-INFO:root:Result : <dict @ 0x7f895fac2948> ({'type': 'procedure_call', 'call_what':  ...)
-INFO:root:Action : Reduce rule [unit -> subprog_body] with [<dict @ 0x7f895fac2948>] and goto state 24
-INFO:root:Result : <dict @ 0x7f895fac2948> ({'type': 'procedure_call', 'call_what':  ...)
+INFO:root:Result : <dict @ 0x1035eb288> ({'tag': 'print_int', 'what': 'io_functio ...)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<dict @ 0x1035eb288>,';'] and goto state 121
+INFO:root:Result : <dict @ 0x10360ee10> ({'type': 'procedure_call', 'call_what':  ...)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<dict @ 0x10360ee10>] and goto state 112
+INFO:root:Result : <dict @ 0x1032d71f8> ({'type': 'procedure_call', 'call_what':  ...)
+INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x1032d71f8>] and goto state 118
+INFO:root:Result : <dict @ 0x10360ee10> ({'type': 'procedure_call', 'call_what':  ...)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [<dict @ 0x10360ee10>] and goto state 125
+INFO:root:Result : <dict @ 0x1032d71f8> ({'type': 'procedure_call', 'call_what':  ...)
+INFO:root:Action : Reduce rule [block_body -> BEGIN statement_s] with ['begin',<dict @ 0x1032d71f8>] and goto state 82
+INFO:root:Result : <dict @ 0x10360ee10> ({'type': 'procedure_call', 'call_what':  ...)
+INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END ;] with [<dict @ 0x10360e798>,None,<dict @ 0x10360ee10>,'end',';'] and goto state 14
+INFO:root:Result : <dict @ 0x10360ecf0> ({'type': 'procedure_call', 'call_what':  ...)
+INFO:root:Action : Reduce rule [unit -> subprog_body] with [<dict @ 0x10360ecf0>] and goto state 24
+INFO:root:Result : <dict @ 0x10360ecf0> ({'type': 'procedure_call', 'call_what':  ...)
 INFO:root:Action : Reduce rule [pragma_s -> <empty>] with [] and goto state 60
-INFO:root:Result : <NoneType @ 0xa40040> (None)
-INFO:root:Action : Reduce rule [comp_unit -> context_spec unit pragma_s] with [None,<dict @ 0x7f895fac2948>,None] and goto state 11
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <NoneType @ 0x100919770> (None)
+INFO:root:Action : Reduce rule [comp_unit -> context_spec unit pragma_s] with [None,<dict @ 0x10360ecf0>,None] and goto state 11
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [compilation -> compilation comp_unit] with [None,None] and goto state 1
-INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Result : <NoneType @ 0x100919770> (None)
 INFO:root:Action : Reduce rule [goal_symbol -> compilation] with [None] and goto state 2
-INFO:root:Result : <NoneType @ 0xa40040> (None)
-INFO:root:Done   : Returning <NoneType @ 0xa40040> (None)
-INFO:root:PLY: PARSE DEBUG END

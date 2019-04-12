@@ -4,5 +4,5 @@ procedure Hello is
 	a,b,c : Integer;
 	p,q : Float;
 begin
-	print ("Hello");
+	print_int(4);
 end ;
