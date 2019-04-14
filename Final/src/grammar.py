@@ -22,7 +22,7 @@ def p_goal_symbol(p):
 	# ST.printTable()
 	if err == False:
 		TAC.output()
-	# CG.generateCode(ST,TAC.code_list,'character')
+	CG.generateCode(ST,TAC.code_list,'character')
 
 def p_pragma(p):
 	'''pragma : PRAGMA IDENTIFIER ';'
@@ -486,7 +486,10 @@ def p_relation(p):
 			p[0]['type'] = 'bool'
 			p[0]['true_list'] = TAC.makeList(TAC.getLine())
 			p[0]['false_list'] = TAC.makeList(TAC.getLine() + 1)
-			TAC.emit(op='goto_' + p[2], op1=p[1], op2=p[3])
+			if(ST.getAttrVal(p[1]['type'],'access')):
+				TAC.emit(op='goto_' + p[2] + '_ptr', op1=p[1], op2=p[3])
+			else:		
+				TAC.emit(op='goto_' + p[2], op1=p[1], op2=p[3])
 			TAC.emit(op='goto')
 	elif p[1]['type'] != p[3]['type']:
 		print('ERROR: Comparison among different types !')
@@ -497,7 +500,10 @@ def p_relation(p):
 		p[0]['type'] = 'bool'
 		p[0]['true_list'] = TAC.makeList(TAC.getLine())
 		p[0]['false_list'] = TAC.makeList(TAC.getLine() + 1)
-		TAC.emit(op='goto_' + p[2], op1=p[1], op2=p[3])
+		if(ST.getAttrVal(p[1]['type'],'access')):
+			TAC.emit(op='goto_' + p[2] + '_ptr', op1=p[1], op2=p[3])
+		else:				
+			TAC.emit(op='goto_' + p[2], op1=p[1], op2=p[3])
 		TAC.emit(op='goto')
 	
 def p_relational(p):
@@ -690,6 +696,10 @@ def p_assign_stmt(p):
 			op = '='
 			if p[1]['type'] == 'Float':
 				op = '=_float'
+			elif p[1]['type'] != 'Integer':
+				tmp = p[1]['type']
+				if(ST.getAttrVal(tmp,'access')):
+					op = '=_ptr'
 			TAC.emit(lhs=p[1]['tag'],op1=p[3],op=op)
 		elif p[1]['type'] == 'Char' and p[3]['type'] == 'Integer':
 			temp_var = TAC.newTemp('Char', ST)

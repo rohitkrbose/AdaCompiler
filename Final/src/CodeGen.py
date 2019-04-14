@@ -106,6 +106,10 @@ class CodeGen:
 			elif op == '=_float':
 				reg = self.loadIntoReg(op1, 0, 'Float')
 				self.regToMem(reg , lhs , 'Float')
+			elif op == '=_ptr':
+				reg = self.loadIntoReg(op1, 0, '') ### where to load for pointers
+				self.regToMem(reg , lhs , '')
+
 
 			# TypeCast
 			if op == 'typecast':
@@ -141,6 +145,34 @@ class CodeGen:
 					self.ac('syscall')
 					self.regToMem('v0', op1, 'Integer')
 
+
+
+			# procedure handling
+			if operator  == "label":
+	 			code.append("Label_" + lhs + ":")
+	 			symbol_table.set_current_table(symbol_table.get_Attribute_Value(result , "SymbolTable"))
+
+	 			code += [ '\tsw $fp, -4($sp)' ]
+	 			code += ['\tsw $ra, -8($sp)' ]
+	 			code += ['\tla $fp, 0($sp)' ] 
+	 			code += ['\tla $sp, -' + str(32 + ST.act_rec[lhs]) + '($sp)']
+
+	 			reg = "a0"
+	 			count = 0 
+
+	 		if operator == "call":
+	 			param_count = len(op2)
+	 			# out_count_variables = len(operand2) - parameter_count
+	 			width = ST.getAttrVal(op1 , "width") + 32
+	 			#sp is going to go down by this measure
+	 			count = 0 
+	 			for item in op2:
+	 				reg =  loadIntoReg(item , 0 ,"int")
+	 				code.append('\tsw $' + reg + ', ' + str(count*4 - width) + '($sp)')
+	 				count += 1
+
+	 			code.append('\tjal ProcLabel_' + operand1)
+
 			# and and or
 			if op == 'and':
 				reg_lhs = loadIntoReg(lhs, 2, 'Integer')
@@ -160,7 +192,7 @@ class CodeGen:
 
 			#comparison operators
 
-			if len(op.split("_")) >=2 and op.split("_")[1] in ['/=','=','>','<','<=','>=']:
+			if len(op.split("_")) >=2 and op.split("_")[1] in ['/=','=','>','<','<=','>=']:   
 				typ = op.split("_")[0]
 				sym = op.split("_")[1]
 
