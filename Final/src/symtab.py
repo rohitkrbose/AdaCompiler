@@ -28,6 +28,9 @@ class SymbolTable:
 						'Char': {'tag': 'Char', 'what': 'type', 'width': 2},
 						'print_int': {'tag': 'print_int', 'what': 'io_function'},
 						'scan_int' : {'tag': 'scan_int', 'what': 'io_function'},
+						'integer_arr': {'tag': 'integer_arr', 'what': 'type', 'width': 4},
+						'float_arr': {'tag': 'float_arr', 'what': 'type', 'width': 8},
+						'char_arr': {'tag': 'char_arr', 'what': 'type', 'width': 2},
 						'print_float': {'tag': 'print_float', 'what': 'io_function'},
 						'scan_float' : {'tag': 'scan_float', 'what': 'io_function'},
 						'print_char': {'tag': 'print_char', 'what': 'io_function'},
@@ -48,7 +51,10 @@ class SymbolTable:
 			print ('ERROR: Entity already exists')
 			return False
 		self.table[var] = attr_dict
-		if attr_dict['what'] == 'var':
+		if 'type' in attr_dict and self.getAttrVal(attr_dict['type'], 'access'): # is the type of access type
+			self.neg_offset += 4
+			self.act_rec[var] = -self.neg_offset
+		elif attr_dict['what'] == 'var':
 			width = width_dict[attr_dict['type']]
 			self.neg_offset += width
 			self.act_rec[var] = -self.neg_offset
@@ -63,6 +69,10 @@ class SymbolTable:
 					width = width_dict[v['type']]
 					self.neg_offset += width
 					self.act_rec[rec_ele] = -self.neg_offset
+		return True
+
+	def insert_NU (self, var, attr_dict):
+		self.table[var] = attr_dict
 		return True
 
 	def update (self, var, attr, val):
@@ -82,6 +92,8 @@ class SymbolTable:
 			if var not in currTable.table:
 				currTable = currTable.parentTable
 			else:
+				if attr not in currTable.table[var]:
+					return None
 				return currTable.table[var][attr]
 		print ('ERROR: GetAttrVal.', var, 'does not exist.')
 		return None

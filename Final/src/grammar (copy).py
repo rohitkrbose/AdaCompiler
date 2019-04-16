@@ -23,7 +23,7 @@ def p_goal_symbol(p):
 	# ST.printTable()
 	if err == False:
 		TAC.output()
-	CG.generateCode(ST, TAC.code_list, 'demo')
+	CG.generateCode(ST,TAC.code_list,'demo')
 
 def p_pragma(p):
 	'''pragma : PRAGMA IDENTIFIER ';'
@@ -119,12 +119,15 @@ def p_object_decl(p):
 						attr_dict = deepcopy(v)
 						attr_dict['tag'] = idx_n
 						ST.insert(idx_n, attr_dict)
-			elif p[3]['what'] == 'access_type':
-				U = ST.parentTable.table[p[3]['access']]
-				dtype = p[3]['tag']
-				attr_dict = {'tag': idx, 'what': 'var', 'type': dtype}
-				ST.insert(idx, attr_dict)
 			else:
+				if p[3]['what'] == 'access_type':
+					U = ST.parentTable.table[p[3]['access']]
+					for k,v in U.items():
+						if k not in ['what','tag']: 
+							idx_n = idx + '.' + k
+							attr_dict = deepcopy(v)
+							attr_dict['tag'] = idx_n
+							ST.insert(idx_n, attr_dict)
 				dtype = p[3]['tag']
 				attr_dict = {'tag': idx, 'what': 'var', 'type': dtype}
 				ST.insert(idx, attr_dict)
@@ -255,14 +258,7 @@ def p_name(p):
 	   | indexed_comp
 	'''
 	if not isinstance(p[1], dict):
-		if p[1].find('.') != -1:
-			l_part = p[1][:p[1].find('.')]
-			if ST.getAttrVal(ST.table[l_part]['type'], 'access'):
-				print ('Pointer to record!')
-			else:
-				p[0] = ST.getAttrDict(p[1])
-		else:
-			p[0] = ST.getAttrDict(p[1])
+		p[0] = ST.getAttrDict(p[1])
 	else:
 		p[0] = deepcopy(p[1])
 	
@@ -754,17 +750,8 @@ def p_assign_stmt(p):
 	if p[1] == None :
 		p_error(p)
 	elif 'access' in p[3].keys():
-		tp = p[3]['access']
-		val_mem = 0
-		for k,v in tp.items():
-			if k not in ['tag', 'what']:
-				if v['type'] == 'integer':
-					val_mem += 4
-				elif v['type'] == 'float':
-					val_mem += 8
-				elif ST.getAttrVal(v['type'],'access'):
-					val_mem += 4
-		TAC.emit(op='new', lhs=p[1]['tag'], op1 = val_mem)
+		print (p[3])
+		# TAC.emit(op='new', lhs=p[1]['tag'], op1)
 	else:
 		if p[1]['type'] == p[3]['type']:
 			op = '='
@@ -972,8 +959,8 @@ def p_subprog_body(p):
 	ST.endLine = TAC.getLine() - 1;
 	if ST.parentTable != None:
 		ST.parentTable.table[ST.scope]['ST'] = deepcopy(ST) # To access symTab of a function later on from parent
-	# print (ST.table)
-	# print ('\n\n')
+	print (ST.table)
+	print ('\n\n')
 	ST = ST.endScope()
 	
 def p_procedure_call(p):

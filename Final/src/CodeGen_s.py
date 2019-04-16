@@ -1,6 +1,4 @@
-Root_ST = None
 ST = None
-
 
 class CodeGen:
 
@@ -15,7 +13,7 @@ class CodeGen:
 		l = s + '\n'
 		self.code = self.code + '\t' + l if tab == True else self.code + l
 
-	def loadLocalIntoReg (self, var, selector, dtype):
+	def loadIntoReg (self, var, selector, dtype):
 		if selector == 2: # For LHS
 			return self.getReg(selector, dtype)
 		elif selector == -2:
@@ -33,7 +31,7 @@ class CodeGen:
 		if isinstance(var, int): # integer constant
 			self.ac('li $' + reg + ', ' + str(var) )
 		elif isinstance(var, float): # float constant
-			self.ac('li.s $' + reg + ', ' + str(var) )
+			self.ac('l.s $' + reg + ', ' + str(var) )
 		elif '[' in var: # array
 			off  = (var.split('[')[1]).split(']')[0]
 			var = var.split('[')[0]
@@ -54,7 +52,7 @@ class CodeGen:
 				self.ac('lw $'+ reg + ', ' + str(ST.act_rec[var]) + '($fp)')
 		return reg
 
-	def regToMemLocal (self, reg, var, dtype):
+	def regToMem (self, reg, var, dtype):
 		if '[' in var: # array
 			off  = (var.split('[')[1]).split(']')[0]
 			# print('daaaaaaaaaa',ST.table[off])
@@ -75,38 +73,9 @@ class CodeGen:
 			elif dtype == 'integer':
 				self.ac('sw $'+ reg + ', ' + str(ST.act_rec[var]) + '($fp)')
 
-	def loadGlobalIntoReg (self, var, selector, dtype):
-		if selector == -1:
-			if dtype == 'float':
-				reg = 'f12'
-			else:
-				reg = 'a0'
-		else:
-			reg = self.getReg (selector, dtype)
-		self.ac('lw $' + reg + ', ' + var)
-		return (reg)
-
-	def loadIntoReg (self, var, selector, dtype):
-		if var in Root_ST.table:
-			return self.loadGlobalIntoReg(var, selector, dtype)
-		else:
-			return self.loadLocalIntoReg(var, selector, dtype)
-
-	def regToMemGlobal (self, reg, var, dtype):
-		if dtype == 'float':
-			self.ac('s.s $'+ reg + ', ' + var)
-		elif dtype == 'integer':
-			self.ac('sw $'+ reg + ', ' + var)
-
-	def regToMem (self, reg, var, dtype):
-		if var in Root_ST.table:
-			self.regToMemGlobal(reg, var, dtype)
-		else:
-			self.regToMemLocal(reg, var, dtype)
-
 	def generateCode (self, symTab, instr_list, global_method):
 		
-		global ST, Root_ST
+		global ST
 		Root_ST = symTab.table[global_method]['ST']
 		ST = Root_ST
 
@@ -135,7 +104,7 @@ class CodeGen:
 		self.ac('j L_end')
 
 		for instr in instr_list:
-			# print (instr)
+			print (instr)
 			l_no,op,lhs,op1,op2 = instr
 			self.ac('L' + str(l_no) + ':', False)
 
@@ -175,13 +144,6 @@ class CodeGen:
 					self.ac('cvt.s.w $f0, $f0')
 					self.regToMem('f0', lhs, 'float')
 
-			# Dynamic memory allocation
-			if op == 'new':
-				self.ac('li $a0, ' + str(op1))
-				self.ac('li $v0, 9')
-				self.ac('syscall')
-				self.ac('sw $v0 ,' + str(ST.act_rec[lhs]) + '($fp)')
-
 			# Printing / Scanning
 			if op == 'io':
 				if lhs == 'print_int':
@@ -217,35 +179,19 @@ class CodeGen:
 					self.ac('sw  $t0, -4($sp)') # Hardcode register
 					self.ac('la $sp, -4($sp)')
 				elif isinstance(lhs, float):
-					self.ac('li.s $f0, ' + str(lhs))
+					self.ac('l.s $f0, ' + str(lhs))
 					self.ac('s.s  $f0, -8($sp)') # Hardcode register
 					self.ac('la $sp, -8($sp)')
 				elif 'type' in ST.table[lhs] and ST.table[lhs]['type'] == 'integer':
-					if 'what' in ST.table[lhs] and ST.table[lhs]['what'] == 'array':
-						reg_var = self.getReg( 5, 'integer')
-						self.ac('li $' + reg_var + ', ' + str(ST.act_rec[lhs]))
-						self.ac('add $' + reg_var + ', $fp, $' + reg_var)
-						self.ac('sw $' + reg_var + ', -4($sp)')
-						self.ac('la $sp, -4($sp)')
-						# print('daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',lhs)	
-					else:
-						reg = self.loadIntoReg(lhs, 0, 'integer')
-						self.ac('sw $' + reg + ', -4($sp)')
-						self.ac('la $sp, -4($sp)')
+					reg = self.loadIntoReg(lhs, 0, 'integer')
+					self.ac('sw $' + reg + ', -4($sp)')
+					self.ac('la $sp, -4($sp)')
 				elif 'type' in ST.table[lhs] and ST.table[lhs]['type'] == 'float':
-					if 'what' in ST.table[lhs] and ST.table[lhs]['what'] == 'array':
-						reg_var = self.getReg( 5, 'integer')
-						self.ac('li $' + reg_var + ', ' + str(ST.act_rec[var]))
-						self.ac('add $' + reg_var + ', $fp, $' + reg_var)
-						self.ac('sw $' + reg_var + ', -8($sp)')
-						self.ac('la $sp, -8($sp)')
-						print('daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',lhs)	
-					else:
-						reg = self.loadIntoReg(lhs, 0, 'float')
-						self.ac('s.s $' + reg + ', -8($sp)')
-						self.ac('la $sp, -8($sp)')		
+					reg = self.loadIntoReg(lhs, 0, 'float')
+					self.ac('s.s $' + reg + ', -8($sp)')
+					self.ac('la $sp, -8($sp)')
 				elif ST.getAttrVal(ST.table[lhs]['type'], 'access'):
-					self.ac('gambu')	
+					self.ac('gambu')
 
 
 			# procedure handling
@@ -254,6 +200,7 @@ class CodeGen:
 					self.ac('# Label_' + lhs + ':')
 					proc_name = lhs[:-6] # Exclude _BEGIN
 					ST = ST.table[proc_name]['ST']
+					# print (ST.act_rec)
 					self.ac('sw $fp, -4($sp)') # Store fp in sp[-4]
 					self.ac('sw $ra, -8($sp)') # Store ra in sp[-8]
 					self.ac('la $fp, 0($sp)') # Store sp[0] in fp
