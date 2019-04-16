@@ -1,17 +1,18 @@
-procedure func is
-	procedure Aviraj (R: integer) is
+procedure fibonacci is
+	function Aviraj (R: integer) return integer is
 		nn : integer;
 	begin
 		nn := 23;
 		nn := R + nn;
-		print_int (nn);
+		return nn;
 	end;
 	procedure Mkk (A, B : integer) is
 		u : integer;
 	begin
 		print_int (A);
 		print_int (B);
-		Aviraj (5);
+		u := Aviraj (5);
+		print_int (u);
 		-- if A <= B then
 		-- 	A := 5;
 		-- else

@@ -23,7 +23,7 @@ def p_goal_symbol(p):
 	# ST.printTable()
 	if err == False:
 		TAC.output()
-	CG.generateCode(ST,TAC.code_list,'func')
+	CG.generateCode(ST,TAC.code_list,'demo')
 
 def p_pragma(p):
 	'''pragma : PRAGMA IDENTIFIER ';'

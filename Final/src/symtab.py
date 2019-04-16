@@ -18,7 +18,7 @@ class SymbolTable:
 		self.parentTable = parentTable
 		self.beginLine = None; self.endLine = None;
 		self.scope = None
-		self.neg_offset = 0
+		self.neg_offset = 8
 		self.pos_offset = 0
 		self.act_rec = {}
 		
@@ -124,14 +124,14 @@ class SymbolTable:
 		if attr_dict['what'] == 'var':
 			width = 4 if attr_dict['type'] == 'integer' else 8
 			self.pos_offset += width
-			self.act_rec[var] = self.pos_offset
+			self.act_rec[var] = self.pos_offset - 4 # Normal case
 		elif attr_dict['what'] == 'record_type':
 			for k,v in attr_dict.items():
 				if k not in ['what','tag']:
 					rec_ele = var + '.' + v['tag']
 					width = 4 if v['type'] == 'integer' else 8
 					self.pos_offset += width
-					self.act_rec[rec_ele] = self.pos_offset
+					self.act_rec[rec_ele] = self.pos_offset - 4 # Handle later
 
 	def beginScope (self, scope):
 		newTable = SymbolTable(self)

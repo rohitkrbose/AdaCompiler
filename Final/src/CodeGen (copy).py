@@ -16,11 +16,6 @@ class CodeGen:
 	def loadIntoReg (self, var, selector, dtype):
 		if selector == 2: # For LHS
 			return self.getReg(selector, dtype)
-		elif selector == -2:
-			if dtype == 'integer':
-				reg = 'v0'
-			elif dtype == 'float':
-				reg = 'v1'
 		elif selector == -1: # For syscalls
 			if dtype == 'float':
 				reg = 'f12'
@@ -47,9 +42,9 @@ class CodeGen:
 				self.ac('lw $' + reg + ', ($' + reg_var +')')
 		else:
 			if dtype == 'float':
-				self.ac('l.s $'+ reg + ', ' + str(ST.act_rec[var]) + '($fp)')
+				self.ac('l.s $'+ reg + ', ' + str(ST.act_rec[var]) + '($sp)')
 			elif dtype == 'integer':
-				self.ac('lw $'+ reg + ', ' + str(ST.act_rec[var]) + '($fp)')
+				self.ac('lw $'+ reg + ', ' + str(ST.act_rec[var]) + '($sp)')
 		return reg
 
 	def regToMem (self, reg, var, dtype):
@@ -68,9 +63,9 @@ class CodeGen:
 				self.ac('sw $' + reg + ', ($' + reg_var +')')
 		else:
 			if dtype == 'float':
-				self.ac('s.s $'+ reg + ', ' + str(ST.act_rec[var]) + '($fp)')
+				self.ac('s.s $'+ reg + ', ' + str(ST.act_rec[var]) + '($sp)')
 			elif dtype == 'integer':
-				self.ac('sw $'+ reg + ', ' + str(ST.act_rec[var]) + '($fp)')
+				self.ac('sw $'+ reg + ', ' + str(ST.act_rec[var]) + '($sp)')
 
 	def generateCode (self, symTab, instr_list, global_method):
 		
@@ -172,6 +167,7 @@ class CodeGen:
 
 			# Parameter passing
 			if op == 'param':
+				# print ('zzuu')
 				if isinstance(lhs, int):
 					self.ac('li $t0, ' + str(lhs))
 					self.ac('sw  $t0, -4($sp)') # Hardcode register
@@ -216,29 +212,18 @@ class CodeGen:
 						self.ac('jr $ra')
 					self.ac('# Label_'+lhs+':')
 
-			if op == 'return':
-				if isinstance(op1, int):
-					self.ac('li $v0, ' + str(op1))
-				elif isinstance(op1, float):
-					self.ac('li $v1, ' + str(op1))
-				elif ST.table[op1]['type'] == 'integer':
-					reg = self.loadIntoReg(op1, -2, 'integer')
-				elif ST.table[op1]['type'] == 'float':
-					reg = self.loadIntoReg(op1, -2, 'float')
-				self.ac('la $sp, 0($fp)')
-				self.ac('lw $ra, -8($sp)')
-				self.ac('lw $fp, -4($sp)')
-				self.ac('jr $ra')
-
 			if op == 'call':
 				param_count = int(op1)
+				# out_count_variables = len(operand2) - parameter_count
+				# width = ST.getAttrVal(op1 , "width") + 32
+				# #sp is going to go down by this measure
+				# count = 0 
+				# for item in op2:
+				# 	reg =  self.loadIntoReg(item , 0 ,"int")
+				# 	code.append('sw $' + reg + ', ' + str(count*4 - width) + '($sp)')
+				# 	count += 1
 				self.ac('jal ' + 'L' + str(Root_ST.table[lhs]['ST'].beginLine))
 				self.ac('la $sp, ' + str(Root_ST.table[lhs]['ST'].pos_offset) + '($sp)')
-				if op2 != None:
-					if ST.table[op2]['type'] == 'integer':
-						self.regToMem('v0', op2, 'integer')
-					elif ST.table[op2]['type'] == 'float':
-						self.regToMem('v1', op2, 'float')
 
 			if op == 'goto':
 				self.ac('j L' + str(lhs))
