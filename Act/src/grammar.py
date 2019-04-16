@@ -23,7 +23,7 @@ def p_goal_symbol(p):
 	# ST.printTable()
 	if err == False:
 		TAC.output()
-	CG.generateCode(ST,TAC.code_list,'func')
+	# CG.generateCode(ST,TAC.code_list,'func')
 
 def p_pragma(p):
 	'''pragma : PRAGMA IDENTIFIER ';'
@@ -923,6 +923,8 @@ def p_subprog_body(p):
 	ST.endLine = TAC.getLine() - 1;
 	if ST.parentTable != None:
 		ST.parentTable.table[ST.scope]['ST'] = deepcopy(ST) # To access symTab of a function later on from parent
+	print (ST.act_rec)
+	print (ST.table)
 	ST = ST.endScope()
 	
 def p_procedure_call(p):

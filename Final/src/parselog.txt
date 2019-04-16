@@ -1,0 +1,293 @@
+INFO:root:PLY: PARSE DEBUG START
+INFO:root:Action : Reduce rule [compilation -> <empty>] with [] and goto state 2
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['func'] and goto state 55
+INFO:root:Result : <str @ 0x7f7cde047180> ('func')
+INFO:root:Action : Reduce rule [formal_part_opt -> <empty>] with [] and goto state 98
+INFO:root:Result : <OrderedDict @ 0x7f7cddcc26c8> (OrderedDict())
+INFO:root:Action : Reduce rule [subprog_spec -> PROCEDURE def_id formal_part_opt] with ['procedure','func',OrderedDict()] and goto state 15
+INFO:root:Result : <dict @ 0x7f7cddc87748> ({'what': 'procedure', 'tag': 'func', 'pa ...)
+INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [<dict @ 0x7f7cddc87748>,'is'] and goto state 12
+INFO:root:Result : <dict @ 0x7f7cddc87648> ({'tag': 'func', 'what': 'procedure', 'pa ...)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['Mkk'] and goto state 55
+INFO:root:Result : <str @ 0x7f7cddc86848> ('Mkk')
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['A'] and goto state 115
+INFO:root:Result : <str @ 0x7f7cddfb3340> ('A')
+INFO:root:Action : Reduce rule [def_id_s -> def_id] with ['A'] and goto state 114
+INFO:root:Result : <list @ 0x7f7cddc69e08> (['A'])
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['B'] and goto state 142
+INFO:root:Result : <str @ 0x7f7cdf5486c0> ('B')
+INFO:root:Action : Reduce rule [def_id_s -> def_id_s , def_id] with [['A'],',','B'] and goto state 114
+INFO:root:Result : <list @ 0x7f7cddc71b48> (['A', 'B'])
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['integer'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddc868f0> ('integer')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['integer'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddc868f0> ('integer')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['integer'] and goto state 188
+INFO:root:Result : <dict @ 0x7f7cddc52ec8> ({'what': 'type', 'width': 4, 'tag': 'int ...)
+INFO:root:Action : Reduce rule [mark -> name] with [<dict @ 0x7f7cddc52ec8>] and goto state 187
+INFO:root:Result : <dict @ 0x7f7cddc87908> ({'tag': 'integer', 'width': 4, 'what': ' ...)
+INFO:root:Action : Reduce rule [param -> def_id_s : mark] with [['A', 'B'],':',<dict @ 0x7f7cddc87908>] and goto state 117
+INFO:root:Result : <OrderedDict @ 0x7f7cddcc28c8> (OrderedDict([('A', {'what': 'var', 'tag' ...)
+INFO:root:Action : Reduce rule [param_s -> param] with [<OrderedDict @ 0x7f7cddcc28c8>] and goto state 116
+INFO:root:Result : <OrderedDict @ 0x7f7cddcc27c8> (OrderedDict([('A', {'tag': 'A', 'what':  ...)
+INFO:root:Action : Reduce rule [formal_part -> ( param_s )] with ['(',<OrderedDict @ 0x7f7cddcc27c8>,')'] and goto state 81
+INFO:root:Result : <OrderedDict @ 0x7f7cddcc28c8> (OrderedDict([('A', {'what': 'var', 'tag' ...)
+INFO:root:Action : Reduce rule [formal_part_opt -> formal_part] with [<OrderedDict @ 0x7f7cddcc28c8>] and goto state 98
+INFO:root:Result : <OrderedDict @ 0x7f7cddcc28c8> (OrderedDict([('A', {'what': 'var', 'tag' ...)
+INFO:root:Action : Reduce rule [subprog_spec -> PROCEDURE def_id formal_part_opt] with ['procedure','Mkk',<OrderedDict @ 0x7f7cddcc28c8>] and goto state 48
+INFO:root:Result : <dict @ 0x7f7cddc87b48> ({'what': 'procedure', 'tag': 'Mkk', 'par ...)
+INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [<dict @ 0x7f7cddc87b48>,'is'] and goto state 12
+INFO:root:Result : <dict @ 0x7f7cdf4f0c08> ({'tag': 'Mkk', 'what': 'procedure', 'par ...)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['u'] and goto state 44
+INFO:root:Result : <str @ 0x7f7cdf5e0f48> ('u')
+INFO:root:Action : Reduce rule [def_id_s -> def_id] with ['u'] and goto state 37
+INFO:root:Result : <list @ 0x7f7cddc7d0c8> (['u'])
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['integer'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddc86810> ('integer')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['integer'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddc86810> ('integer')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['integer'] and goto state 139
+INFO:root:Result : <dict @ 0x7f7cddc52ec8> ({'what': 'type', 'width': 4, 'tag': 'int ...)
+INFO:root:Action : Reduce rule [type_ind -> name] with [<dict @ 0x7f7cddc52ec8>] and goto state 141
+INFO:root:Result : <dict @ 0x7f7cdf4f7a48> ({'tag': 'integer', 'width': 4, 'what': ' ...)
+INFO:root:Action : Reduce rule [object_type_def -> type_ind] with [<dict @ 0x7f7cdf4f7a48>] and goto state 137
+INFO:root:Result : <dict @ 0x7f7cddc87c08> ({'what': 'type', 'width': 4, 'tag': 'int ...)
+INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_type_def ;] with [['u'],':',<dict @ 0x7f7cddc87c08>,';'] and goto state 47
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl -> object_decl] with [None] and goto state 45
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl_item -> decl] with [None] and goto state 39
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [None] and goto state 32
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body] with [None] and goto state 28
+INFO:root:Result : <list @ 0x7f7cddc69e08> ([None])
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['j'] and goto state 44
+INFO:root:Result : <str @ 0x7f7cdf540b20> ('j')
+INFO:root:Action : Reduce rule [def_id_s -> def_id] with ['j'] and goto state 37
+INFO:root:Result : <list @ 0x7f7cde05a0c8> (['j'])
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['float'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddc869d0> ('float')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['float'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddc869d0> ('float')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['float'] and goto state 139
+INFO:root:Result : <dict @ 0x7f7cddc52f08> ({'what': 'type', 'width': 8, 'tag': 'flo ...)
+INFO:root:Action : Reduce rule [type_ind -> name] with [<dict @ 0x7f7cddc52f08>] and goto state 141
+INFO:root:Result : <dict @ 0x7f7cddc87ac8> ({'tag': 'float', 'width': 8, 'what': 'ty ...)
+INFO:root:Action : Reduce rule [object_type_def -> type_ind] with [<dict @ 0x7f7cddc87ac8>] and goto state 137
+INFO:root:Result : <dict @ 0x7f7cddc87d48> ({'what': 'type', 'width': 8, 'tag': 'flo ...)
+INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_type_def ;] with [['j'],':',<dict @ 0x7f7cddc87d48>,';'] and goto state 47
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl -> object_decl] with [None] and goto state 45
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl_item -> decl] with [None] and goto state 39
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [None] and goto state 85
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body_s decl_item_or_body] with [[None],None] and goto state 28
+INFO:root:Result : <list @ 0x7f7cde05a0c8> ([None, None])
+INFO:root:Action : Reduce rule [decl_part -> decl_item_or_body_s] with [[None, None]] and goto state 30
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['print_int'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddc87df0> ('print_int')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['print_int'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddc87df0> ('print_int')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['print_int'] and goto state 120
+INFO:root:Result : <dict @ 0x7f7cdd98fd48> ({'what': 'io_function', 'tag': 'print_in ...)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['A'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddfb3340> ('A')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['A'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddfb3340> ('A')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['A'] and goto state 60
+INFO:root:Result : <dict @ 0x7f7cddc87988> ({'what': 'var', 'tag': 'A', 'type': 'int ...)
+INFO:root:Action : Reduce rule [primary -> name] with [<dict @ 0x7f7cddc87988>] and goto state 70
+INFO:root:Result : <dict @ 0x7f7cddc87c08> ({'tag': 'A', 'what': 'var', 'type': 'int ...)
+INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f7cddc87c08>] and goto state 57
+INFO:root:Result : <dict @ 0x7f7cddc87dc8> ({'what': 'var', 'tag': 'A', 'type': 'int ...)
+INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f7cddc87dc8>] and goto state 75
+INFO:root:Result : <dict @ 0x7f7cddc87c08> ({'tag': 'A', 'what': 'var', 'type': 'int ...)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f7cddc87c08>] and goto state 149
+INFO:root:Result : <dict @ 0x7f7cddc87dc8> ({'what': 'var', 'tag': 'A', 'type': 'int ...)
+INFO:root:Action : Reduce rule [value -> simple_expression] with [<dict @ 0x7f7cddc87dc8>] and goto state 148
+INFO:root:Result : <dict @ 0x7f7cddc87c08> ({'tag': 'A', 'what': 'var', 'type': 'int ...)
+INFO:root:Action : Reduce rule [value_s -> value] with [<dict @ 0x7f7cddc87c08>] and goto state 150
+INFO:root:Result : <list @ 0x7f7cddc7f908> ([{'tag': 'A', 'what': 'var', 'type': 'in ...)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [<dict @ 0x7f7cdd98fd48>,'(',<list @ 0x7f7cddc7f908>,')'] and goto state 68
+INFO:root:Result : <str @ 0x7f7cddcbbc30> ('print_int')
+INFO:root:Action : Reduce rule [name -> indexed_comp] with ['print_int'] and goto state 120
+INFO:root:Result : <dict @ 0x7f7cdd98fd48> ({'what': 'io_function', 'tag': 'print_in ...)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<dict @ 0x7f7cdd98fd48>,';'] and goto state 124
+INFO:root:Result : <dict @ 0x7f7cddc87d88> ({'next_list': [], 'type': 'procedure_cal ...)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<dict @ 0x7f7cddc87d88>] and goto state 129
+INFO:root:Result : <dict @ 0x7f7cddc878c8> ({'next_list': [], 'type': 'procedure_cal ...)
+INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f7cddc878c8>] and goto state 126
+INFO:root:Result : <dict @ 0x7f7cddc87d88> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [<dict @ 0x7f7cddc87d88>] and goto state 119
+INFO:root:Result : <dict @ 0x7f7cddc878c8> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [block_body -> BEGIN statement_s] with ['begin',<dict @ 0x7f7cddc878c8>] and goto state 87
+INFO:root:Result : <dict @ 0x7f7cddc87d88> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END ;] with [<dict @ 0x7f7cdf4f0c08>,None,<dict @ 0x7f7cddc87d88>,'end',';'] and goto state 46
+INFO:root:Result : <dict @ 0x7f7cddc87d08> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [body -> subprog_body] with [<dict @ 0x7f7cddc87d08>] and goto state 33
+INFO:root:Result : <dict @ 0x7f7cdf4f0c08> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [decl_item_or_body -> body] with [<dict @ 0x7f7cdf4f0c08>] and goto state 32
+INFO:root:Result : <dict @ 0x7f7cddc87d08> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body] with [<dict @ 0x7f7cddc87d08>] and goto state 28
+INFO:root:Result : <list @ 0x7f7cddc71b48> ([{'what': 'statement', 'next_list': [],  ...)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['main'] and goto state 55
+INFO:root:Result : <str @ 0x7f7cddc86998> ('main')
+INFO:root:Action : Reduce rule [formal_part_opt -> <empty>] with [] and goto state 98
+INFO:root:Result : <OrderedDict @ 0x7f7cddcc2ac8> (OrderedDict())
+INFO:root:Action : Reduce rule [subprog_spec -> PROCEDURE def_id formal_part_opt] with ['procedure','main',OrderedDict()] and goto state 48
+INFO:root:Result : <dict @ 0x7f7cddc87a08> ({'what': 'procedure', 'tag': 'main', 'pa ...)
+INFO:root:Action : Reduce rule [subprog_spec_is_push -> subprog_spec IS] with [<dict @ 0x7f7cddc87a08>,'is'] and goto state 12
+INFO:root:Result : <dict @ 0x7f7cdf4f0c08> ({'tag': 'main', 'what': 'procedure', 'pa ...)
+INFO:root:Action : Reduce rule [def_id -> IDENTIFIER] with ['z'] and goto state 44
+INFO:root:Result : <str @ 0x7f7cddfbfca8> ('z')
+INFO:root:Action : Reduce rule [def_id_s -> def_id] with ['z'] and goto state 37
+INFO:root:Result : <list @ 0x7f7cddc68f88> (['z'])
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['integer'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddc86960> ('integer')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['integer'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddc86960> ('integer')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['integer'] and goto state 139
+INFO:root:Result : <dict @ 0x7f7cddc52ec8> ({'what': 'type', 'width': 4, 'tag': 'int ...)
+INFO:root:Action : Reduce rule [type_ind -> name] with [<dict @ 0x7f7cddc52ec8>] and goto state 141
+INFO:root:Result : <dict @ 0x7f7cddc87848> ({'tag': 'integer', 'width': 4, 'what': ' ...)
+INFO:root:Action : Reduce rule [object_type_def -> type_ind] with [<dict @ 0x7f7cddc87848>] and goto state 137
+INFO:root:Result : <dict @ 0x7f7cddc87b88> ({'what': 'type', 'width': 4, 'tag': 'int ...)
+INFO:root:Action : Reduce rule [object_decl -> def_id_s : object_type_def ;] with [['z'],':',<dict @ 0x7f7cddc87b88>,';'] and goto state 47
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl -> object_decl] with [None] and goto state 45
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl_item -> decl] with [None] and goto state 39
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body -> decl_item] with [None] and goto state 32
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body] with [None] and goto state 28
+INFO:root:Result : <list @ 0x7f7cddc61f08> ([None])
+INFO:root:Action : Reduce rule [decl_part -> decl_item_or_body_s] with [[None]] and goto state 30
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['z'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddfbfca8> ('z')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['z'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddfbfca8> ('z')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['z'] and goto state 120
+INFO:root:Result : <dict @ 0x7f7cddc87c48> ({'what': 'var', 'tag': 'z', 'type': 'int ...)
+INFO:root:Action : Reduce rule [numeric_lit -> INT] with [8] and goto state 67
+INFO:root:Result : <dict @ 0x7f7cddc87848> ({'tag': 8, 'type': 'integer'})
+INFO:root:Action : Reduce rule [literal -> numeric_lit] with [<dict @ 0x7f7cddc87848>] and goto state 59
+INFO:root:Result : <dict @ 0x7f7cdd9870c8> ({'tag': 8, 'type': 'integer'})
+INFO:root:Action : Reduce rule [primary -> literal] with [<dict @ 0x7f7cdd9870c8>] and goto state 70
+INFO:root:Result : <dict @ 0x7f7cddc87848> ({'tag': 8, 'type': 'integer'})
+INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f7cddc87848>] and goto state 57
+INFO:root:Result : <dict @ 0x7f7cdd9870c8> ({'tag': 8, 'type': 'integer'})
+INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f7cdd9870c8>] and goto state 75
+INFO:root:Result : <dict @ 0x7f7cddc87848> ({'tag': 8, 'type': 'integer'})
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f7cddc87848>] and goto state 192
+INFO:root:Result : <dict @ 0x7f7cdd9870c8> ({'tag': 8, 'type': 'integer'})
+INFO:root:Action : Reduce rule [assign_stmt -> name ASSIGN simple_expression ;] with [<dict @ 0x7f7cddc87c48>,':=',<dict @ 0x7f7cdd9870c8>,';'] and goto state 125
+INFO:root:Result : <dict @ 0x7f7cddc878c8> ({'next_list': [], 'type': 'assign_stmt'})
+INFO:root:Action : Reduce rule [simple_stmt -> assign_stmt] with [<dict @ 0x7f7cddc878c8>] and goto state 129
+INFO:root:Result : <dict @ 0x7f7cddc87b88> ({'next_list': [], 'type': 'assign_stmt'})
+INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f7cddc87b88>] and goto state 126
+INFO:root:Result : <dict @ 0x7f7cddc878c8> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [<dict @ 0x7f7cddc878c8>] and goto state 119
+INFO:root:Result : <dict @ 0x7f7cddc87b88> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [M -> <empty>] with [] and goto state 164
+INFO:root:Result : <dict @ 0x7f7cddc87908> ({'quad': 6})
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['Mkk'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddc86bc8> ('Mkk')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['Mkk'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddc86bc8> ('Mkk')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['Mkk'] and goto state 120
+INFO:root:Result : <dict @ 0x7f7cddc87b48> ({'what': 'procedure', 'ST': <symtab.Symb ...)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['z'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddfbfca8> ('z')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['z'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddfbfca8> ('z')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['z'] and goto state 60
+INFO:root:Result : <dict @ 0x7f7cddc87c48> ({'what': 'var', 'tag': 'z', 'type': 'int ...)
+INFO:root:Action : Reduce rule [primary -> name] with [<dict @ 0x7f7cddc87c48>] and goto state 70
+INFO:root:Result : <dict @ 0x7f7cdf4f7a48> ({'tag': 'z', 'what': 'var', 'type': 'int ...)
+INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f7cdf4f7a48>] and goto state 57
+INFO:root:Result : <dict @ 0x7f7cddc87f48> ({'what': 'var', 'tag': 'z', 'type': 'int ...)
+INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f7cddc87f48>] and goto state 75
+INFO:root:Result : <dict @ 0x7f7cdf4f7a48> ({'tag': 'z', 'what': 'var', 'type': 'int ...)
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f7cdf4f7a48>] and goto state 149
+INFO:root:Result : <dict @ 0x7f7cddc87f48> ({'what': 'var', 'tag': 'z', 'type': 'int ...)
+INFO:root:Action : Reduce rule [value -> simple_expression] with [<dict @ 0x7f7cddc87f48>] and goto state 148
+INFO:root:Result : <dict @ 0x7f7cdf4f7a48> ({'tag': 'z', 'what': 'var', 'type': 'int ...)
+INFO:root:Action : Reduce rule [value_s -> value] with [<dict @ 0x7f7cdf4f7a48>] and goto state 150
+INFO:root:Result : <list @ 0x7f7cddc7f908> ([{'tag': 'z', 'what': 'var', 'type': 'in ...)
+INFO:root:Action : Reduce rule [numeric_lit -> INT] with [9] and goto state 67
+INFO:root:Result : <dict @ 0x7f7cddc87a88> ({'tag': 9, 'type': 'integer'})
+INFO:root:Action : Reduce rule [literal -> numeric_lit] with [<dict @ 0x7f7cddc87a88>] and goto state 59
+INFO:root:Result : <dict @ 0x7f7cdd987808> ({'tag': 9, 'type': 'integer'})
+INFO:root:Action : Reduce rule [primary -> literal] with [<dict @ 0x7f7cdd987808>] and goto state 70
+INFO:root:Result : <dict @ 0x7f7cddc87a88> ({'tag': 9, 'type': 'integer'})
+INFO:root:Action : Reduce rule [factor -> primary] with [<dict @ 0x7f7cddc87a88>] and goto state 57
+INFO:root:Result : <dict @ 0x7f7cdd987808> ({'tag': 9, 'type': 'integer'})
+INFO:root:Action : Reduce rule [term -> factor] with [<dict @ 0x7f7cdd987808>] and goto state 75
+INFO:root:Result : <dict @ 0x7f7cddc87a88> ({'tag': 9, 'type': 'integer'})
+INFO:root:Action : Reduce rule [simple_expression -> term] with [<dict @ 0x7f7cddc87a88>] and goto state 149
+INFO:root:Result : <dict @ 0x7f7cdd987808> ({'tag': 9, 'type': 'integer'})
+INFO:root:Action : Reduce rule [value -> simple_expression] with [<dict @ 0x7f7cdd987808>] and goto state 218
+INFO:root:Result : <dict @ 0x7f7cddc87a88> ({'tag': 9, 'type': 'integer'})
+INFO:root:Action : Reduce rule [value_s -> value_s , value] with [<list @ 0x7f7cddc7f908>,',',<dict @ 0x7f7cddc87a88>] and goto state 150
+INFO:root:Result : <list @ 0x7f7cddc61f08> ([{'tag': 'z', 'what': 'var', 'type': 'in ...)
+INFO:root:Action : Reduce rule [indexed_comp -> name ( value_s )] with [<dict @ 0x7f7cddc87b48>,'(',<list @ 0x7f7cddc61f08>,')'] and goto state 68
+INFO:root:Result : <dict @ 0x7f7cdd987788> ({'ST': <symtab.SymbolTable object at 0x7 ...)
+INFO:root:Action : Reduce rule [name -> indexed_comp] with [<dict @ 0x7f7cdd987788>] and goto state 120
+INFO:root:Result : <dict @ 0x7f7cddc878c8> ({'what': 'procedure', 'ST': <symtab.Symb ...)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<dict @ 0x7f7cddc878c8>,';'] and goto state 124
+INFO:root:Result : <dict @ 0x7f7cdd9878c8> ({'next_list': [], 'type': 'procedure_cal ...)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<dict @ 0x7f7cdd9878c8>] and goto state 129
+INFO:root:Result : <dict @ 0x7f7cddc878c8> ({'next_list': [], 'type': 'procedure_cal ...)
+INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f7cddc878c8>] and goto state 191
+INFO:root:Result : <dict @ 0x7f7cdd9878c8> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [statement_s -> statement_s M statement] with [<dict @ 0x7f7cddc87b88>,{'quad': 6},<dict @ 0x7f7cdd9878c8>] and goto state 119
+INFO:root:Result : <dict @ 0x7f7cdd988a08> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [block_body -> BEGIN statement_s] with ['begin',<dict @ 0x7f7cdd988a08>] and goto state 87
+INFO:root:Result : <dict @ 0x7f7cdd9878c8> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END ;] with [<dict @ 0x7f7cdf4f0c08>,None,<dict @ 0x7f7cdd9878c8>,'end',';'] and goto state 46
+INFO:root:Result : <dict @ 0x7f7cdd987ac8> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [body -> subprog_body] with [<dict @ 0x7f7cdd987ac8>] and goto state 33
+INFO:root:Result : <dict @ 0x7f7cdf4f0c08> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [decl_item_or_body -> body] with [<dict @ 0x7f7cdf4f0c08>] and goto state 85
+INFO:root:Result : <dict @ 0x7f7cdd987ac8> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [decl_item_or_body_s -> decl_item_or_body_s decl_item_or_body] with [<list @ 0x7f7cddc71b48>,<dict @ 0x7f7cdd987ac8>] and goto state 28
+INFO:root:Result : <list @ 0x7f7cddc7f588> ([{'what': 'statement', 'next_list': [],  ...)
+INFO:root:Action : Reduce rule [decl_part -> decl_item_or_body_s] with [<list @ 0x7f7cddc7f588>] and goto state 30
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [simple_name -> IDENTIFIER] with ['main'] and goto state 51
+INFO:root:Result : <str @ 0x7f7cddc86a78> ('main')
+INFO:root:Action : Reduce rule [compound_name -> simple_name] with ['main'] and goto state 71
+INFO:root:Result : <str @ 0x7f7cddc86a78> ('main')
+INFO:root:Action : Reduce rule [name -> compound_name] with ['main'] and goto state 120
+INFO:root:Result : <dict @ 0x7f7cddc87a08> ({'what': 'procedure', 'ST': <symtab.Symb ...)
+INFO:root:Action : Reduce rule [procedure_call -> name ;] with [<dict @ 0x7f7cddc87a08>,';'] and goto state 124
+INFO:root:Result : <dict @ 0x7f7cdd988a88> ({'next_list': [], 'type': 'procedure_cal ...)
+INFO:root:Action : Reduce rule [simple_stmt -> procedure_call] with [<dict @ 0x7f7cdd988a88>] and goto state 129
+INFO:root:Result : <dict @ 0x7f7cddc878c8> ({'next_list': [], 'type': 'procedure_cal ...)
+INFO:root:Action : Reduce rule [statement -> simple_stmt] with [<dict @ 0x7f7cddc878c8>] and goto state 126
+INFO:root:Result : <dict @ 0x7f7cdd988a88> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [statement_s -> statement] with [<dict @ 0x7f7cdd988a88>] and goto state 119
+INFO:root:Result : <dict @ 0x7f7cddc878c8> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [block_body -> BEGIN statement_s] with ['begin',<dict @ 0x7f7cddc878c8>] and goto state 87
+INFO:root:Result : <dict @ 0x7f7cdd988a88> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [subprog_body -> subprog_spec_is_push decl_part block_body END ;] with [<dict @ 0x7f7cddc87648>,None,<dict @ 0x7f7cdd988a88>,'end',';'] and goto state 14
+INFO:root:Result : <dict @ 0x7f7cddc87d08> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [unit -> subprog_body] with [<dict @ 0x7f7cddc87d08>] and goto state 10
+INFO:root:Result : <dict @ 0x7f7cddc87d08> ({'what': 'statement', 'next_list': [], ' ...)
+INFO:root:Action : Reduce rule [pragma_s -> <empty>] with [] and goto state 27
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [comp_unit -> unit pragma_s] with [<dict @ 0x7f7cddc87d08>,None] and goto state 16
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [compilation -> compilation comp_unit] with [None,None] and goto state 2
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Action : Reduce rule [goal_symbol -> compilation] with [None] and goto state 4
+INFO:root:Result : <NoneType @ 0xa40040> (None)
+INFO:root:Done   : Returning <NoneType @ 0xa40040> (None)
+INFO:root:PLY: PARSE DEBUG END

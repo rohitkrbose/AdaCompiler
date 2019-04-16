@@ -7,13 +7,10 @@ procedure arithmetic is
 		k,i : integer;
 		j,z : float;
 	begin
-		z := 2.0;
+		k := 5;
+		z := k*2;
 		j := 5.0;
 		z := j*z + 2.3;
-		-- k := 5;
-		-- -- i := 5*k + i * (k + 5) ;
-		-- k := k*i;
-		-- print_int (k,i);
 		print_float (z);
 	end;
 begin

@@ -198,7 +198,7 @@ class CodeGen:
 					self.ac('sw $fp, -4($sp)') # Store fp in sp[-4]
 					self.ac('sw $ra, -8($sp)') # Store ra in sp[-8]
 					self.ac('la $fp, 0($sp)') # Store sp[0] in fp
-					self.ac('la $sp, -' + str(ST.neg_offset) + '($sp)') # local variables
+					self.ac('la $sp, -' + str(ST.neg_offset) + '($sp)')
 					# print ('width = ', ST.neg_offset)
 					# We can access fp easily.
 					# self.ac('la $sp, -' + str(32 + ST.act_rec[proc_name]) + '($sp)')
@@ -223,7 +223,6 @@ class CodeGen:
 				# 	code.append('sw $' + reg + ', ' + str(count*4 - width) + '($sp)')
 				# 	count += 1
 				self.ac('jal ' + 'L' + str(Root_ST.table[lhs]['ST'].beginLine))
-				self.ac('la $sp, ' + str(Root_ST.table[lhs]['ST'].pos_offset) + '($sp)')
 
 			if op == 'goto':
 				self.ac('j L' + str(lhs))
