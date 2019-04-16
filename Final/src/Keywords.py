@@ -15,7 +15,7 @@ reserved = {
 	# 'separate':'SEPARATE',
 	# 'select':'SELECT',
 	# 'task':'TASK',
-	# 'new':'NEW',
+	'new':'NEW',
 	# 'private':'PRIVATE',
 	'with':'WITH',
 	# 'subtype':'SUBTYPE',

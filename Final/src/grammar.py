@@ -173,6 +173,16 @@ def p_type_ind(p):
 	'''
 	p[0] = deepcopy(p[1])
 
+def p_derived_type (p):
+	'''derived_type : NEW type_ind
+	'''
+	if p[2]['what'] == 'record_type':
+		p[0] = {'access': p[2], 'what': 'derived_type'}
+	else:
+		print ('ERROR : Pointer of non-record type !')
+		p_error(p)
+
+
 def p_range(p):
 	'''range : simple_expression DOTDOT simple_expression
 	'''
@@ -732,12 +742,16 @@ def p_lambda_begin (p):
 
 def p_assign_stmt(p):
 	'''assign_stmt : name ASSIGN simple_expression ';'
+					| name ASSIGN derived_type ';'
 	'''
 	p[0] = {}
 	p[0]['type'] = 'assign_stmt'
 	p[0]['next_list'] = []
 	if p[1] == None :
 		p_error(p)
+	elif 'access' in p[3].keys():
+		print (p[3])
+		TAC.emit(op='new', lhs=p[1]['tag'], op1)
 	else:
 		if p[1]['type'] == p[3]['type']:
 			op = '='

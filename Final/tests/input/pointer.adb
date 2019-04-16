@@ -34,6 +34,7 @@ procedure LinkList is
 		z : integer;
 	begin
 		z := 5;
+		LL := new CHAR_REC;
 		Traverse_List (LL);
 	end;
 begin
