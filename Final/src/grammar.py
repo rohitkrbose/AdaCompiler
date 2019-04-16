@@ -163,7 +163,8 @@ def p_record_decl(p):
 			ST.insert(p[2],attr_dict) # insert
 		else:
 			ST.table[p[2]] = attr_dict # update
-		p[0] = ST.getAttrDict(p[2])		
+		p[0] = ST.getAttrDict(p[2])	
+		print(attr_dict)	
 
 def p_type_ind(p):
 	'''type_ind : name
@@ -757,6 +758,7 @@ def p_assign_stmt(p):
 		tp = p[3]['access']
 		val_mem = 0
 		for k,v in tp.items():
+<<<<<<< HEAD
 			if k not in ['tag', 'what']:
 				if v['type'] == 'integer':
 					val_mem += 4
@@ -764,6 +766,15 @@ def p_assign_stmt(p):
 					val_mem += 8
 				elif ST.getAttrVal(v['type'],'access'):
 					val_mem += 4
+=======
+			if k !='tag' and k!='what':
+				if v['type']=='integer':
+					val_mem += 4
+				elif v['type']=='float':
+					val_mem += 8
+				elif(ST.getAttrVal(v['type'],'access')):
+					val_mem += 8
+>>>>>>> a0b007dfd9d3da86fddddbb0db26a45700c21715
 		TAC.emit(op='new', lhs=p[1]['tag'], op1 = val_mem)
 	else:
 		if p[1]['type'] == p[3]['type']:
