@@ -35,12 +35,12 @@ class CodeGen:
 		elif '[' in var: # array
 			off  = (var.split('[')[1]).split(']')[0]
 			var = var.split('[')[0]
-			reg_off = self.getReg(off_var, 4, 'integer')
-			reg_var = self.getReg(var, 5, 'integer')
+			reg_off = self.getReg( 4, 'integer')
+			reg_var = self.getReg( 5, 'integer')
 			self.ac('li $' + reg_var + ', ' + str(ST.act_rec[var])) # Get offset of base address
-			self.ac('add $' + reg_var + ', $sp, $', + reg_var) # Add it to stack pointer 
-			self.ac('lw $' + reg_off + ', ' + str(ST.act_rec[off]) + '($sp)') # Get offset of index (probably in temp)
-			self.ac('add $' + reg_var + ', ', reg_var, ', ', reg_off) # Add both offsets
+			self.ac('add $' + reg_var + ', $fp, $' + reg_var) # Add it to stack pointer 
+			self.ac('lw $' + reg_off + ', ' + str(ST.act_rec[off]) + '($fp)') # Get offset of index (probably in temp)
+			self.ac('add $' + reg_var + ', $' + reg_var + ', $' + reg_off) # Add both offsets
 			if dtype == 'float':
 				self.ac('l.s $' + reg + ', ($' + reg_var +')')
 			elif dtype == 'integer':
@@ -55,13 +55,14 @@ class CodeGen:
 	def regToMem (self, reg, var, dtype):
 		if '[' in var: # array
 			off  = (var.split('[')[1]).split(']')[0]
+			# print('daaaaaaaaaa',ST.table[off])
 			var = var.split('[')[0]
-			reg_off = self.getReg(off_var, 4, 'integer')
-			reg_var = self.getReg(var, 5, 'integer')
+			reg_off = self.getReg( 4, 'integer')
+			reg_var = self.getReg( 5, 'integer')
 			self.ac('li $' + reg_var + ', ' + str(ST.act_rec[var])) # Get offset of base address
-			self.ac('add $' + reg_var + ', $sp, $', + reg_var) # Add it to stack pointer 
-			self.ac('lw $' + reg_off + ', ' + str(ST.act_rec[off]) + '($sp)') # Get offset of index (probably in temp)
-			self.ac('add $' + reg_var + ', ', reg_var, ', ', reg_off) # Add both offsets
+			self.ac('add $' + reg_var + ', $fp, $' + reg_var) # Add it to stack pointer 
+			self.ac('lw $' + reg_off + ', ' + str(ST.act_rec[off]) + '($fp)') # Get offset of index (probably in temp)
+			self.ac('add $' + reg_var + ', $' + reg_var + ', $' + reg_off) # Add both offsets
 			if dtype == 'float':
 				self.ac('s.s $' + reg + ', ($' + reg_var +')')
 			elif dtype == 'integer':
@@ -172,6 +173,7 @@ class CodeGen:
 
 			# Parameter passing
 			if op == 'param':
+				# print (ST.table.keys())
 				if isinstance(lhs, int):
 					self.ac('li $t0, ' + str(lhs))
 					self.ac('sw  $t0, -4($sp)') # Hardcode register
@@ -180,16 +182,16 @@ class CodeGen:
 					self.ac('l.s $f0, ' + str(lhs))
 					self.ac('s.s  $f0, -8($sp)') # Hardcode register
 					self.ac('la $sp, -8($sp)')
-				elif ST.table[lhs]['type'] == 'integer':
+				elif 'type' in ST.table[lhs] and ST.table[lhs]['type'] == 'integer':
 					reg = self.loadIntoReg(lhs, 0, 'integer')
 					self.ac('sw $' + reg + ', -4($sp)')
 					self.ac('la $sp, -4($sp)')
-				elif ST.table[op1]['type'] == 'float':
+				elif 'type' in ST.table[lhs] and ST.table[lhs]['type'] == 'float':
 					reg = self.loadIntoReg(lhs, 0, 'float')
 					self.ac('s.s $' + reg + ', -8($sp)')
 					self.ac('la $sp, -8($sp)')
-				else:
-					self.ac('Not handled yet')
+				elif ST.getAttrVal(ST.table[lhs]['type'], 'access'):
+					self.ac('gambu')
 
 
 			# procedure handling

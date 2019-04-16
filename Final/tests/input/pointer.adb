@@ -1,16 +1,16 @@
-with Ada.Text_IO, Ada.Integer_Text_IO;
-use Ada.Text_IO, Ada.Integer_Text_IO;
+-- with Ada.Text_IO, Ada.Integer_Text_IO;
+-- use Ada.Text_IO, Ada.Integer_Text_IO;
 
 procedure LinkList is
-	b : Float;
+	b : float;
 	type CHAR_REC;
 	type CHAR_REC_POINT is access CHAR_REC;
 	type CHAR_REC is record
-		One_Letter : Integer;
+		One_Letter : integer;
 		Next_Rec   : CHAR_REC_POINT;
 	end record;
 	procedure Traverse_List (Starting_Point : CHAR_REC_POINT) is
-		a : Integer;
+		a : integer;
 		Temp : CHAR_REC_POINT;
 	begin
 		a := 4;
@@ -31,7 +31,7 @@ procedure LinkList is
 	end;
 	procedure main is
 		LL : CHAR_REC_POINT;
-		z : Integer;
+		z : integer;
 	begin
 		z := 5;
 		Traverse_List (LL);

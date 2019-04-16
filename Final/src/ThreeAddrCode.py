@@ -43,5 +43,6 @@ class ThreeAddrCode:
 
 	def backpatch (self, p, i):
 		for l in p:
+			# print (self.code_list[l-1])
 			assert self.code_list[l-1][1][:4] == 'goto'
 			self.code_list[l-1][2] = i # line numbers are indexed from 1, LHS placeholder contains jump label

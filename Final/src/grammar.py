@@ -23,7 +23,7 @@ def p_goal_symbol(p):
 	# ST.printTable()
 	if err == False:
 		TAC.output()
-	CG.generateCode(ST,TAC.code_list,'demo')
+	CG.generateCode(ST,TAC.code_list,'LinkList')
 
 def p_pragma(p):
 	'''pragma : PRAGMA IDENTIFIER ';'
@@ -487,10 +487,10 @@ def p_relation(p):
 			p[0]['type'] = 'bool'
 			p[0]['true_list'] = TAC.makeList(TAC.getLine())
 			p[0]['false_list'] = TAC.makeList(TAC.getLine() + 1)
-			if p[1]['type'] == 'access':
+			if ST.getAttrVal(p[1]['type'],'access'):
 				TAC.emit(op='goto_' + p[2] + '_ptr', op1=p[1], op2=p[3])
 			elif p[1]['type'] == 'integer':		
-				TAC.emit(op='goto_' + p[2]+'_integer', op1=p[1], op2=p[3])
+				TAC.emit(op='goto_' + p[2], op1=p[1], op2=p[3])
 			elif p[1]['type'] == 'float':		
 				TAC.emit(op='goto_' + p[2]+'_float', op1=p[1], op2=p[3])
 			TAC.emit(op='goto')
@@ -506,6 +506,17 @@ def p_relation(p):
 			p[0]['false_list'] = TAC.makeList(TAC.getLine() + 1)
 			TAC.emit(op='goto_' + p[2] + '_' + p[1]['type'], op1=p[1], op2=p[3])
 			TAC.emit(op='goto')
+		if p[1]['type'] == 'integer' and p[3]['type'] == 'float':
+			temp_var = TAC.newTemp('float', ST)
+			TAC.emit(op='typecast', op1=p[1]['tag'], op2='integer2float', lhs=temp_var)
+			p[1]['type'] = 'float'
+			p[1]['tag'] = temp_var
+			p[0] = {}
+			p[0]['type'] = 'bool'
+			p[0]['true_list'] = TAC.makeList(TAC.getLine())
+			p[0]['false_list'] = TAC.makeList(TAC.getLine() + 1)
+			TAC.emit(op='goto_' + p[2] + '_' + p[1]['type'], op1=p[1], op2=p[3])
+			TAC.emit(op='goto')
 		else:
 			print('ERROR: Comparison among different types !')
 			p_error(p)
@@ -515,9 +526,9 @@ def p_relation(p):
 		p[0]['type'] = 'bool'
 		p[0]['true_list'] = TAC.makeList(TAC.getLine())
 		p[0]['false_list'] = TAC.makeList(TAC.getLine() + 1)
-		if p[1]['type'] == 'access':
+		if ST.getAttrVal(p[1]['type'],'access'):
 			TAC.emit(op='goto_' + p[2] + '_ptr', op1=p[1], op2=p[3])
-		else:				
+		else:
 			TAC.emit(op='goto_' + p[2] + '_' + p[1]['type'], op1=p[1], op2=p[3])
 		TAC.emit(op='goto')
 	
@@ -734,8 +745,11 @@ def p_assign_stmt(p):
 				op = '=_float'
 			elif p[1]['type'] != 'integer':
 				tmp = p[1]['type']
-				if(ST.getAttrVal(tmp,'access')):
+				if ST.getAttrVal(tmp,'access'):
 					op = '=_ptr'
+				else:
+					print ('ERROR : Unknown data type!')
+					p_error(p)
 			TAC.emit(lhs=p[1]['tag'],op1=p[3],op=op)
 		elif p[1]['type'] == 'char' and p[3]['type'] == 'integer':
 			temp_var = TAC.newTemp('char', ST)
@@ -774,7 +788,7 @@ def p_cond_clause(p):
 def p_condition(p):
 	'''condition : expression
 	'''
-	if p[1]['type']!='bool':
+	if p[1]['type'] != 'bool':
 		print('ERROR: Condition not boolean !')
 		p_error(p)
 		p[0] = {'false_list':[],'true_list':[],'tag':None , 'type':None}
